@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect fill="#1a1a1a" width="400" height="400"/>
+  <circle fill="#e63946" cx="200" cy="150" r="60"/>
+  <text x="200" y="280" font-family="Bebas Neue, Oswald, sans-serif" font-size="24" font-weight="bold" fill="#e63946" text-anchor="middle" dominant-baseline="middle">Trainer 2</text>
+  <text x="200" y="320" font-family="Inter, sans-serif" font-size="14" fill="#a3a3a3" text-anchor="middle" dominant-baseline="middle">Weight Loss & Transformation</text>
+</svg>

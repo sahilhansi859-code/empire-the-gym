@@ -1,0 +1,17 @@
+{
+  "name": "empire-the-gym",
+  "version": "1.0.0",
+  "description": "Empire The Gym - Professional Fitness Website",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "npm run dev --prefix client",
+    "server": "npm run dev --prefix server",
+    "build": "npm run build --prefix client",
+    "start": "npm run start --prefix server",
+    "install:all": "npm install && npm run install --prefix client && npm run install --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

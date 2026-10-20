@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #0a0a0a;
+    --bg-alt: #111111;
+    --card: #1a1a1a;
+    --card-hover: #1f1f1f;
+    --border: #2a2a2a;
+    --border-strong: #333333;
+    --text: #ffffff;
+    --text-muted: #a3a3a3;
+    --accent: #e63946;
+    --accent-light: #ff4d5a;
+    --accent-dark: #c1121f;
+    --gold: #f4a261;
+    --gold-light: #ffb87a;
+    --gold-dark: #d48848;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-gym-black text-gym-white font-body antialiased;
+  }
+  
+  ::selection {
+    @apply bg-gym-red text-gym-white;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gym-dark;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gym-red rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gym-red-light;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .section-padding {
+    @apply py-16 sm:py-24 lg:py-32;
+  }
+  
+  .section-dark {
+    @apply bg-gym-black;
+  }
+  
+  .section-alt {
+    @apply bg-gym-dark;
+  }
+  
+  .heading-xl {
+    @apply font-heading text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold uppercase tracking-tight leading-tight text-gym-white;
+  }
+  
+  .heading-lg {
+    @apply font-heading text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-gym-white;
+  }
+  
+  .heading-md {
+    @apply font-heading text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-gym-white;
+  }
+  
+  .heading-sm {
+    @apply font-heading text-xl sm:text-2xl lg:text-3xl font-bold uppercase text-gym-white;
+  }
+  
+  .text-body {
+    @apply text-base sm:text-lg leading-relaxed text-gym-white-soft;
+  }
+  
+  .text-body-sm {
+    @apply text-sm sm:text-base leading-relaxed text-gym-gray;
+  }
+  
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 font-heading text-lg uppercase tracking-wider bg-gym-red text-gym-white rounded-lg transition-all duration-300 hover:bg-gym-red-light hover:shadow-[0_0_30px_rgba(230,57,70,0.5)] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gym-red focus:ring-offset-2 focus:ring-offset-gym-black;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-8 py-4 font-heading text-lg uppercase tracking-wider border-2 border-gym-red text-gym-red rounded-lg transition-all duration-300 hover:bg-gym-red hover:text-gym-white hover:shadow-[0_0_30px_rgba(230,57,70,0.3)] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gym-red focus:ring-offset-2 focus:ring-offset-gym-black;
+  }
+  
+  .btn-gold {
+    @apply inline-flex items-center justify-center px-8 py-4 font-heading text-lg uppercase tracking-wider bg-gym-gold text-gym-black rounded-lg transition-all duration-300 hover:bg-gym-gold-light hover:shadow-[0_0_30px_rgba(244,162,97,0.5)] hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-gym-gold focus:ring-offset-2 focus:ring-offset-gym-black;
+  }
+  
+  .card-base {
+    @apply bg-gym-card border border-gym-border rounded-2xl overflow-hidden transition-all duration-500 hover:border-gym-red hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)];
+  }
+  
+  .input-field {
+    @apply w-full px-5 py-4 bg-gym-dark border border-gym-border rounded-lg text-gym-white placeholder-gym-gray transition-all duration-300 focus:border-gym-red focus:ring-2 focus:ring-gym-red/20 focus:outline-none;
+  }
+  
+  .label-field {
+    @apply block text-sm font-medium text-gym-white-soft mb-2 font-body;
+  }
+  
+  .section-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-gym-red/10 border border-gym-red/30 rounded-full text-gym-red font-heading text-sm uppercase tracking-wider;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-gym-red to-gym-gold bg-clip-text text-transparent;
+  }
+  
+  .border-gradient {
+    @apply relative before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-gym-red before:to-gym-gold before:-z-10 before:p-[1px];
+  }
+  
+  .glass {
+    @apply bg-gym-card/50 backdrop-blur-sm border border-gym-border/50;
+  }
+  
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+  .animate-delay-600 { animation-delay: 600ms; }
+  .animate-delay-700 { animation-delay: 700ms; }
+  .animate-delay-800 { animation-delay: 800ms; }
+
+  /* Hero overlay helpers */
+  .hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-b from-gym-black/70 via-gym-black/50 to-gym-black/85;
+  }
+  
+  .hero-overlay-dark {
+    @apply absolute inset-0 bg-gradient-to-r from-gym-black/90 via-gym-red/10 to-gym-black/90;
+  }
+  
+  /* Navbar scrolled state */
+  .navbar-scrolled {
+    @apply bg-gym-black/95 backdrop-blur-md border-b border-gym-border shadow-[0_10px_40px_rgba(0,0,0,0.5)];
+  }
+}
