@@ -248,10 +248,10 @@ export const gymData = {
     ogImage: "https://empirethegym.com/og-image.jpg"
   },
   heroImages: {
-    home: "/images/hero/hero.jpg",
-    about: "/images/hero/hero-about.jpg",
-    gallery: "/images/hero/hero-gallery.jpg",
-    contact: "/images/hero/hero-contact.jpg"
+    home: ["/images/hero/hero-1.png", "/images/hero/hero-2.jpeg", "/images/hero/hero-3.jpeg"],
+    about: "/images/hero/hero-1.png",
+    gallery: "/images/hero/hero-1.png",
+    contact: "/images/hero/hero-1.png"
   },
   marqueeText: "STRENGTH • DISCIPLINE • POWER • EMPIRE • CONSISTENCY • GRIND • HUSTLE • ACHIEVE • TRANSFORM • DOMINATE • ",
   ctaText: "Be The Part Of An Epic Empire",
@@ -275,7 +275,18 @@ export const languageStrings = {
     contactInfo: { title: "Contact Information", phone: "Phone", whatsapp: "WhatsApp", address: "Address", timings: "Timings", openNow: "Open Now", closed: "Closed", getDirections: "Get Directions" },
     faq: { title: "Frequently Asked Questions" },
     footer: { quickLinks: "Quick Links", followUs: "Follow Us", copyright: "© 2024 Empire The Gym. All rights reserved.", designedBy: "Designed with passion for fitness" },
-    language: { en: "EN", hi: "हिन्दी" }
+    language: { en: "EN", hi: "हिन्दी" },
+    ui: {
+      loading: "लोड हो रहा है...",
+      callNow: "अभी कॉल करें",
+      whatsapp: "व्हाट्सएप",
+      whatsappUs: "हमें व्हाट्सएप करें",
+      closeLightbox: "लाइटबॉक्स बंद करें",
+      prevImage: "पिछली छवि",
+      nextImage: "अगली छवि",
+      openFullSize: "पूर्ण आकार खोलें",
+      whatsappMessage: "नमस्ते एम्पायर द जिम, मुझे आपके मेंबरशिप प्लान के बारे में और जानना है।"
+    }
   },
   hi: {
     nav: { home: "होम", about: "हमारे बारे में", gallery: "गैलरी", contact: "संपर्क" },
@@ -293,7 +304,18 @@ export const languageStrings = {
     contactInfo: { title: "संपर्क जानकारी", phone: "फोन", whatsapp: "व्हाट्सएप", address: "पता", timings: "समय", openNow: "खुला है", closed: "बंद", getDirections: "दिशा प्राप्त करें" },
     faq: { title: "अक्सर पूछे जाने वाले प्रश्न" },
     footer: { quickLinks: "त्वरित लिंक", followUs: "हमें फॉलो करें", copyright: "© 2024 एम्पायर द जिम। सर्वाधिकार सुरक्षित।", designedBy: "फिटनेस के जुनून के साथ डिज़ाइन किया गया" },
-    language: { en: "EN", hi: "हिन्दी" }
+    language: { en: "EN", hi: "हिन्दी" },
+    ui: {
+      loading: "लोड हो रहा है...",
+      callNow: "अभी कॉल करें",
+      whatsapp: "व्हाट्सएप",
+      whatsappUs: "हमें व्हाट्सएप करें",
+      closeLightbox: "लाइटबॉक्स बंद करें",
+      prevImage: "पिछली छवि",
+      nextImage: "अगली छवि",
+      openFullSize: "पूर्ण आकार खोलें",
+      whatsappMessage: "नमस्ते एम्पायर द जिम, मुझे आपके मेंबरशिप प्लान के बारे में और जानना है।"
+    }
   }
 };
 

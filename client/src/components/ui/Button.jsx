@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
 import { FiLoader } from 'react-icons/fi'
+import { useLanguage } from '../../context/LanguageContext'
+import { languageStrings } from '../../data/gymData'
 
 export function Button({ 
   children, 
@@ -11,6 +13,8 @@ export function Button({
   onClick,
   ...props 
 }) {
+  const { t } = useLanguage()
+  const strings = languageStrings[t]
   const variants = {
     primary: 'btn-primary',
     secondary: 'btn-secondary',
@@ -38,7 +42,7 @@ export function Button({
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
         >
           <FiLoader className="w-5 h-5" />
-          <span>Loading...</span>
+          <span>{strings.ui.loading}</span>
         </motion.div>
       ) : (
         children

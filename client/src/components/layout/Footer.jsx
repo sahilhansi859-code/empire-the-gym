@@ -19,9 +19,9 @@ export function Footer() {
   ]
 
   const socialLinks = [
-    { icon: FiFacebook, href: data.social.facebook, label: 'Facebook' },
-    { icon: FiInstagram, href: data.social.instagram, label: 'Instagram' },
-    { icon: FiYoutube, href: data.social.youtube, label: 'YouTube' }
+    { icon: FiFacebook, href: data.social.facebook, label: t === 'en' ? 'Facebook' : 'फेसबुक' },
+    { icon: FiInstagram, href: data.social.instagram, label: t === 'en' ? 'Instagram' : 'इंस्टाग्राम' },
+    { icon: FiYoutube, href: data.social.youtube, label: t === 'en' ? 'YouTube' : 'यूट्यूब' }
   ]
 
   return (
@@ -138,7 +138,7 @@ export function Footer() {
               className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-lg font-heading text-sm uppercase transition-colors"
             >
               <FiMessageCircle className="w-5 h-5" />
-              <span>WhatsApp Us</span>
+              <span>{strings.ui.whatsappUs}</span>
               <FiExternalLink className="w-4 h-4" />
             </a>
           </motion.div>

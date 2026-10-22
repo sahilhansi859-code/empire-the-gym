@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { FiArrowRight, FiPhone, FiCheck, FiStar, FiTarget, FiUsers, FiTag, FiDroplet, FiMapPin, FiMessageCircle, FiZap, FiTruck, FiWatch, FiWind, FiTool, FiAward, FiHelpCircle, FiCornerUpLeft } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings, interestedOptions } from '../data/gymData'
@@ -11,8 +11,7 @@ import {
   CardTitle, 
   CardDescription, 
   Button, 
-  Counter, 
-  Marquee 
+  Counter 
 } from '../components/ui'
 import { Navbar } from '../components/layout'
 
@@ -60,13 +59,7 @@ export default function Home() {
 
   const galleryPreview = data.gallery.slice(0, 6)
 
-  const heroSlides = [
-    '/images/hero/user-hero-1.jpg',
-    '/images/hero/user-hero-2.webp',
-    '/images/hero/user-hero-3.webp',
-    '/images/hero/user-hero-4.webp',
-    '/images/hero/user-hero-5.webp',
-  ]
+  const heroSlides = data.heroImages.home
   const [heroSlide, setHeroSlide] = useState(0)
   useEffect(() => {
     const timer = setInterval(() => {
@@ -78,15 +71,21 @@ export default function Home() {
   return (
     <>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="hero-heading">
-        <motion.div
-          key={heroSlide}
-          className="absolute inset-0 z-0"
-          style={{ backgroundImage: `url(${heroSlides[heroSlide]})` }}
-          initial={{ opacity: 0, scale: 1 }}
-          animate={{ opacity: 1, scale: 1.1 }}
-          transition={{ opacity: { duration: 0.8 }, scale: { duration: 5, ease: 'linear' } }}
-        >
-        </motion.div>
+        <div className="absolute inset-0 z-0">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={heroSlide}
+              src={heroSlides[heroSlide]}
+              alt=""
+              className="w-full h-full object-cover"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1 }}
+              aria-hidden="true"
+            />
+          </AnimatePresence>
+        </div>
 
         <div className="container-custom relative z-10 py-20">
           <motion.div
@@ -95,39 +94,6 @@ export default function Home() {
             initial="hidden"
             animate="visible"
           >
-            <motion.div
-              className="section-badge mb-8 mx-auto max-w-fit"
-              variants={itemVariants}
-            >
-              <span className="flex items-center gap-2">
-                <motion.span
-                  className="w-2 h-2 bg-gym-red rounded-full"
-                  animate={{ scale: [1, 1.5, 1] }}
-                  transition={{ duration: 1, repeat: Infinity }}
-                />
-                {strings.hero.openingHours}: {data.timing.weekdays}
-              </span>
-            </motion.div>
-
-            <motion.h1
-              id="hero-heading"
-              className="heading-xl mb-6"
-              variants={itemVariants}
-            >
-              {heroContent.headline.map((word, index) => (
-                <motion.span
-                  key={index}
-                  className="block"
-                  variants={itemVariants}
-                >
-                  {index === heroContent.headline.length - 1 ? (
-                    <span className="text-gradient">{word}</span>
-                  ) : (
-                    word
-                  )}
-                </motion.span>
-              ))}
-            </motion.h1>
 
             <motion.div
               className="flex flex-col sm:flex-row items-center justify-center gap-4"
@@ -188,11 +154,7 @@ export default function Home() {
           </motion.div>
         </motion.div>
       </section>
-
-      <section className="py-6 section-alt border-y border-gym-border overflow-hidden" aria-label="Motivational ticker">
-        <Marquee />
-      </section>
-
+      
       <section id="about" className="section-padding" aria-labelledby="about-heading">
         <div className="container-custom">
           <SectionHeading
@@ -612,12 +574,14 @@ export default function Home() {
       </section>
 
       <section id="cta" className="section-padding relative overflow-hidden" aria-labelledby="cta-heading">
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{ backgroundImage: `url(${data.heroImages.contact})` }}
-        >
-          <div className="hero-overlay-dark" />
-        </motion.div>
+        <div className="absolute inset-0 z-0">
+          <img
+            src={data.heroImages.contact}
+            alt=""
+            className="w-full h-full object-cover"
+            aria-hidden="true"
+          />
+        </div>
 
         <div className="container-custom relative z-10">
           <motion.div

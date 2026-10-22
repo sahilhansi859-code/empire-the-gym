@@ -17,13 +17,15 @@ export default function About() {
 
   return (
     <>
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden" aria-labelledby="about-hero-heading">
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{ backgroundImage: `url(${data.heroImages.about})` }}
-        >
-          <div className="hero-overlay" />
-        </motion.div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="about-hero-heading">
+        <div className="absolute inset-0 z-0">
+          <motion.img
+            src={data.heroImages.about}
+            alt=""
+            className="w-full h-full object-cover"
+            aria-hidden="true"
+          />
+        </div>
 
         <div className="container-custom relative z-10 py-20 text-center">
           <motion.div
@@ -326,12 +328,14 @@ export default function About() {
       </section>
 
       <section id="about-cta" className="section-padding relative overflow-hidden" aria-labelledby="about-cta-heading">
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{ backgroundImage: `url(${data.heroImages.contact})` }}
-        >
-          <div className="hero-overlay-dark" />
-        </motion.div>
+        <div className="absolute inset-0 z-0">
+          <img
+            src={data.heroImages.contact}
+            alt=""
+            className="w-full h-full object-cover"
+            aria-hidden="true"
+          />
+        </div>
 
         <div className="container-custom relative z-10 text-center">
           <motion.div

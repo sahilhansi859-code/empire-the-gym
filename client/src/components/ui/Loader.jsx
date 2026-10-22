@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
+import { useLanguage } from '../../context/LanguageContext'
+import { languageStrings } from '../../data/gymData'
 
 export function Loader({ onComplete }) {
+  const { t } = useLanguage()
+  const strings = languageStrings[t]
   const [progress, setProgress] = useState(0)
   const [animationDone, setAnimationDone] = useState(false)
 
@@ -42,7 +46,7 @@ export function Loader({ onComplete }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.5 } }}
       role="status"
-      aria-label="Loading"
+      aria-label={strings.ui.loading}
     >
       <div className="text-center">
         <motion.div
@@ -99,7 +103,7 @@ export function Loader({ onComplete }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 1 }}
         >
-          Loading... {Math.round(progress)}%
+          {strings.ui.loading} {Math.round(progress)}%
         </motion.p>
       </div>
     </motion.div>

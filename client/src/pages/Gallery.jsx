@@ -52,13 +52,15 @@ export default function Gallery() {
 
   return (
     <>
-      <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden" aria-labelledby="gallery-hero-heading">
-        <motion.div
-          className="absolute inset-0 z-0"
-          style={{ backgroundImage: `url(${data.heroImages.gallery})` }}
-        >
-          <div className="hero-overlay" />
-        </motion.div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="gallery-hero-heading">
+        <div className="absolute inset-0 z-0">
+          <motion.img
+            src={data.heroImages.gallery}
+            alt=""
+            className="w-full h-full object-cover"
+            aria-hidden="true"
+          />
+        </div>
 
         <div className="container-custom relative z-10 py-20 text-center">
           <motion.div

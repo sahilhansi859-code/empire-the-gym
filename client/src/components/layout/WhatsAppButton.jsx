@@ -1,10 +1,14 @@
 import { motion } from 'framer-motion'
 import { FiMessageCircle, FiPhone } from 'react-icons/fi'
 import { gymData } from '../../data/gymData'
+import { useLanguage } from '../../context/LanguageContext'
+import { languageStrings } from '../../data/gymData'
 
 export function WhatsAppButton() {
+  const { t } = useLanguage()
+  const strings = languageStrings[t]
   const phoneNumber = gymData.phoneClean
-  const message = encodeURIComponent('Hi Empire The Gym, I want to know more about your membership plans.')
+  const message = encodeURIComponent(strings.ui.whatsappMessage)
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
   const phoneUrl = `tel:+${phoneNumber}`
 
@@ -15,11 +19,11 @@ export function WhatsAppButton() {
         className="btn-primary shadow-lg animate-pulse-glow group"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        aria-label="Call Now"
+        aria-label={strings.ui.callNow}
       >
         <div className="flex items-center gap-2">
           <FiPhone className="w-5 h-5" />
-          <span className="hidden sm:inline font-heading text-lg">Call Now</span>
+          <span className="hidden sm:inline font-heading text-lg">{strings.ui.callNow}</span>
         </div>
       </motion.a>
       
@@ -30,7 +34,7 @@ export function WhatsAppButton() {
         className="bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-lg font-heading text-lg uppercase tracking-wider shadow-lg group flex items-center gap-2"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        aria-label="WhatsApp"
+        aria-label={strings.ui.whatsapp}
       >
         <motion.div
           className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center"
@@ -39,7 +43,7 @@ export function WhatsAppButton() {
         >
           <FiMessageCircle className="w-5 h-5" />
         </motion.div>
-        <span className="hidden sm:inline">WhatsApp</span>
+        <span className="hidden sm:inline">{strings.ui.whatsapp}</span>
       </motion.a>
     </div>
   )

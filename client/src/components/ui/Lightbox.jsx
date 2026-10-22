@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiX, FiChevronLeft, FiChevronRight, FiMaximize2 } from 'react-icons/fi'
+import { useLanguage } from '../../context/LanguageContext'
+import { languageStrings } from '../../data/gymData'
 
 export function Lightbox({ 
   images, 
@@ -8,6 +10,8 @@ export function Lightbox({
   onClose, 
   onNavigate 
 }) {
+  const { t } = useLanguage()
+  const strings = languageStrings[t]
   const [currentIndex, setCurrentIndex] = useState(initialIndex)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -61,7 +65,7 @@ export function Lightbox({
         className="absolute top-6 right-6 z-10 w-12 h-12 rounded-full bg-gym-card/80 backdrop-blur-sm border border-gym-border flex items-center justify-center text-gym-white hover:bg-gym-red hover:border-gym-red transition-all"
         whileHover={{ scale: 1.1, rotate: 90 }}
         whileTap={{ scale: 0.9 }}
-        aria-label="Close lightbox"
+        aria-label={strings.ui.closeLightbox}
       >
         <FiX className="w-6 h-6" />
       </motion.button>
@@ -103,7 +107,7 @@ export function Lightbox({
             className="absolute left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gym-card/80 backdrop-blur-sm border border-gym-border flex items-center justify-center text-gym-white hover:bg-gym-red hover:border-gym-red transition-all hidden md:flex"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            aria-label="Previous image"
+            aria-label={strings.ui.prevImage}
           >
             <FiChevronLeft className="w-6 h-6" />
           </motion.button>
@@ -113,7 +117,7 @@ export function Lightbox({
             className="absolute right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gym-card/80 backdrop-blur-sm border border-gym-border flex items-center justify-center text-gym-white hover:bg-gym-red hover:border-gym-red transition-all hidden md:flex"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            aria-label="Next image"
+            aria-label={strings.ui.nextImage}
           >
             <FiChevronRight className="w-6 h-6" />
           </motion.button>
@@ -136,7 +140,7 @@ export function Lightbox({
           className="w-8 h-8 rounded-full bg-gym-red flex items-center justify-center text-gym-white hover:bg-gym-red-light transition-colors"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          aria-label="Open full size"
+          aria-label={strings.ui.openFullSize}
         >
           <FiMaximize2 className="w-4 h-4" />
         </motion.a>

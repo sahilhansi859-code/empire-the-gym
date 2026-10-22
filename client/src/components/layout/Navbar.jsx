@@ -175,22 +175,22 @@ export function Navbar() {
           className="btn-primary shadow-lg animate-pulse-glow"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          aria-label="Call Now"
+          aria-label={strings.ui.callNow}
         >
           <FiPhone className="w-5 h-5 mr-2" />
-          <span className="hidden sm:inline">Call Now</span>
+          <span className="hidden sm:inline">{strings.ui.callNow}</span>
         </motion.a>
         <motion.a
-          href={`https://wa.me/919466709410?text=Hi%20Empire%20The%20Gym%2C%20I%20want%20to%20know%20more%20about%20your%20membership%20plans.`}
+          href={`https://wa.me/919466709410?text=${encodeURIComponent(strings.ui.whatsappMessage)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-lg font-heading uppercase text-sm shadow-lg flex items-center gap-2"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          aria-label="WhatsApp"
+          aria-label={strings.ui.whatsapp}
         >
           <FiMessageCircle className="w-5 h-5" />
-          <span className="hidden sm:inline">WhatsApp</span>
+          <span className="hidden sm:inline">{strings.ui.whatsapp}</span>
         </motion.a>
       </div>
     </>
