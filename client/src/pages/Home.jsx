@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiArrowRight, FiPhone, FiCheck, FiStar, FiTarget, FiUsers, FiTag, FiDroplet, FiMapPin, FiMessageCircle, FiZap, FiTruck, FiWatch, FiWind, FiTool, FiAward, FiHelpCircle, FiCornerUpLeft } from 'react-icons/fi'
+import { FiArrowRight, FiPhone, FiCheck, FiStar, FiTarget, FiUsers, FiTag, FiDroplet, FiMessageCircle, FiZap, FiTruck, FiWind, FiTool, FiAward, FiHelpCircle, FiCornerUpLeft } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings, interestedOptions } from '../data/gymData'
 import { 
   SectionHeading, 
+  HeroContent,
   Card, 
   CardHeader, 
   CardTitle, 
@@ -14,11 +15,6 @@ import {
   Counter,
   Lightbox
 } from '../components/ui'
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
-}
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -31,16 +27,6 @@ export default function Home() {
   const strings = languageStrings[t]
   const data = gymData[t]
   const [lightboxIndex, setLightboxIndex] = useState(null)
-
-  const heroContent = t === 'en' ? {
-    headline: ['BUILD YOUR', 'EMPIRE'],
-    ctaPrimary: strings.hero.joinNow,
-    ctaSecondary: strings.hero.callNow
-  } : {
-    headline: ['अपना', 'साम्राज्य बनाएं'],
-    ctaPrimary: strings.hero.joinNow,
-    ctaSecondary: strings.hero.callNow
-  }
 
   const whyChooseCards = data.usps.map((usp, index) => ({
     ...usp,
@@ -92,69 +78,7 @@ export default function Home() {
         <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_68%_48%,rgba(230,57,70,0.12),transparent_48%)]" aria-hidden="true" />
 
         <div className="container-custom relative z-10 py-24 sm:py-28">
-          <motion.div
-            className="max-w-5xl mx-auto text-center"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.p
-              className="mb-5 inline-flex items-center justify-center gap-3 font-heading text-base font-bold uppercase tracking-[0.3em] text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mb-6 sm:gap-4 sm:text-xl"
-              variants={itemVariants}
-            >
-              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
-              EMPIRE THE GYM
-              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
-            </motion.p>
-            <motion.h1
-              id="hero-heading"
-              className="font-heading text-[clamp(3.25rem,10vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.045em] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.7)]"
-              variants={itemVariants}
-            >
-              <span className="block">{heroContent.headline[0]}</span>
-              <span className="mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gym-red-light drop-shadow-none">
-                {heroContent.headline[1]}
-              </span>
-            </motion.h1>
-            <motion.div
-              className="mt-8 flex flex-col items-center justify-center gap-4 sm:mt-10 sm:flex-row"
-              variants={itemVariants}
-            >
-              <motion.button
-                onClick={() => navigate('/contact#contact')}
-                className="group inline-flex w-full min-h-14 items-center justify-center rounded-lg border border-white/70 bg-black/40 px-8 py-4 font-heading text-lg uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-white hover:bg-white hover:text-gym-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gym-black sm:w-auto"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {heroContent.ctaPrimary}
-                <FiArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-              <motion.a
-                href={`tel:+${data.phoneClean}`}
-                className="w-full min-h-14 inline-flex items-center justify-center rounded-lg border border-white/70 bg-black/40 px-8 py-4 font-heading text-lg uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-white hover:bg-white hover:text-gym-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gym-black sm:w-auto"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <FiPhone className="w-5 h-5 mr-2" />
-                {heroContent.ctaSecondary}
-              </motion.a>
-            </motion.div>
-
-            <motion.div
-              className="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-3 sm:mt-14 sm:gap-4"
-              variants={itemVariants}
-            >
-              <div className="flex items-center gap-2">
-                <FiWatch className="h-5 w-5 shrink-0 text-gym-red-light" />
-                <span className="font-body text-sm font-medium text-white">{data.timing.weekdays}</span>
-              </div>
-              <span className="hidden h-5 w-px bg-white/30 sm:block" aria-hidden="true" />
-              <div className="flex items-center gap-2">
-                <FiMapPin className="h-5 w-5 shrink-0 text-gym-red-light" />
-                <span className="font-body text-sm font-medium text-white">Hansi, Hisar, Haryana</span>
-              </div>
-            </motion.div>
-          </motion.div>
+          <HeroContent data={data} strings={strings} t={t} headingId="hero-heading" />
         </div>
 
         <motion.button
@@ -457,9 +381,6 @@ export default function Home() {
         <div className="container-custom">
           <SectionHeading
             title={t === 'en' ? 'Gallery Preview' : 'गैलरी पूर्वावलोकन'}
-            subtitle={t === 'en'
-              ? 'A glimpse into our facility, equipment, and community.'
-              : 'हमारी सुविधा, उपकरण और समुदाय की एक झलक।'}
           />
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
@@ -507,9 +428,6 @@ export default function Home() {
         <div className="container-custom">
           <SectionHeading
             title={strings.testimonials.title}
-            subtitle={t === 'en'
-              ? 'Real stories from real members. These are placeholder testimonials - replace with actual member feedback.'
-              : 'असली मेंबर्स की असली कहानियां। ये प्लेसहोल्डर टेस्टिमोनियल हैं - इन्हें वास्तविक मेंबर फीडबैक से बदलें।'}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -532,15 +450,6 @@ export default function Home() {
                     ))}
                   </div>
                   <CardDescription className="mb-6">"{testimonial.text}"</CardDescription>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gym-red/10 flex items-center justify-center text-gym-red font-heading text-xl">
-                      {testimonial.name.charAt(0)}
-                    </div>
-                    <div>
-                      <p className="font-heading text-gym-white text-sm">{testimonial.name}</p>
-                      <p className="text-gym-white-soft text-xs">{testimonial.role}</p>
-                    </div>
-                  </div>
                 </Card>
               </motion.div>
             ))}
@@ -548,47 +457,56 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="cta" className="section-padding relative overflow-hidden" aria-labelledby="cta-heading">
+      <section id="cta" className="relative flex min-h-[65vh] items-center justify-center overflow-hidden isolate py-24 sm:py-28" aria-labelledby="cta-heading">
         <div className="absolute inset-0 z-0">
           <img
             src={data.heroImages.contact}
             alt=""
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
             aria-hidden="true"
           />
         </div>
 
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/45 via-black/25 to-black/45" aria-hidden="true" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/30 via-transparent to-black/10" aria-hidden="true" />
+
         <div className="container-custom relative z-10">
           <motion.div
-            className="max-w-3xl mx-auto text-center"
+            className="mx-auto max-w-4xl text-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
           >
-            <motion.p
-              className="text-body text-xl mb-10"
+            <h2
+              id="cta-heading"
+              className="font-heading text-[clamp(2.5rem,7vw,5rem)] font-black uppercase leading-[1.05] tracking-tight text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.8)]"
             >
               {t === 'en'
-                ? 'Ready to start your transformation journey? Join the empire today and become the best version of yourself.'
-                : 'अपनी परिवर्तन यात्रा शुरू करने के लिए तैयार हैं? आज ही साम्राज्य में शामिल हों और अपना सर्वश्रेष्ठ संस्करण बनें।'}
+                ? 'Ready to start your transformation journey?'
+                : 'अपनी परिवर्तन यात्रा शुरू करने के लिए तैयार हैं?'}
+            </h2>
+            <motion.p
+              className="mx-auto mb-10 mt-6 max-w-3xl text-lg leading-relaxed text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:text-xl"
+            >
+              {t === 'en'
+                ? 'Join the empire today and become the best version of yourself.'
+                : 'आज ही साम्राज्य में शामिल हों और अपना सर्वश्रेष्ठ संस्करण बनें।'}
             </motion.p>
-            <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Button 
-                size="lg"
-                onClick={() => navigate('/contact#contact')}
+            <motion.div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+              <Link
+                to="/contact#contact"
+                className="inline-flex min-h-14 w-full items-center justify-center rounded-lg border border-white/70 bg-black/40 px-8 py-4 font-heading text-lg uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-white hover:bg-white hover:text-gym-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gym-black sm:w-auto"
               >
                 {strings.cta.button}
-                <FiArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-              <motion.a
+                <FiArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+              <a
                 href={`tel:+${data.phoneClean}`}
-                className="btn-secondary px-10 py-4"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                className="inline-flex min-h-14 w-full items-center justify-center rounded-lg border border-white/70 bg-black/40 px-8 py-4 font-heading text-lg uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-white hover:bg-white hover:text-gym-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gym-black sm:w-auto"
               >
-                <FiPhone className="w-5 h-5 mr-2" />
+                <FiPhone className="mr-2 h-5 w-5" />
                 {strings.hero.callNow}
-              </motion.a>
+              </a>
             </motion.div>
           </motion.div>
         </div>

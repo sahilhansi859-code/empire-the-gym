@@ -1,6 +1,7 @@
 export { Button } from './Button'
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './Card'
 export { SectionHeading } from './SectionHeading'
+export { HeroContent } from './HeroContent'
 export { Counter } from './Counter'
 export { Marquee } from './Marquee'
 export { Loader } from './Loader'

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
-import { FiMenu, FiX, FiGlobe, FiPhone, FiInstagram } from 'react-icons/fi'
-import { FaWhatsapp } from 'react-icons/fa'
+import { FiMenu, FiX, FiGlobe, FiPhone } from 'react-icons/fi'
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import { useLanguage } from '../../context/LanguageContext'
 import { languageStrings, gymData } from '../../data/gymData'
 
@@ -102,20 +102,20 @@ export function Navbar() {
                   whileTap={{ scale: 0.95 }}
                   aria-label={`${strings.ui.callNow}: ${phone}`}
                 >
-                  <FiPhone className="w-4 h-4" />
+                  <FiPhone className="w-5 h-5" />
                   <span>{phone}</span>
                 </motion.a>
                 <motion.a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-heading text-xs xl:text-sm uppercase tracking-wide transition-colors whitespace-nowrap"
+                  className="flex items-center justify-center p-2 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={strings.ui.whatsapp}
+                  title={strings.ui.whatsapp}
                 >
-                  <FaWhatsapp className="w-4 h-4" />
-                  <span>{strings.ui.whatsapp}</span>
+                  <FaWhatsapp className="w-5 h-5" />
                 </motion.a>
                 <motion.a
                   href={social.instagram}
@@ -127,7 +127,7 @@ export function Navbar() {
                   aria-label="Instagram"
                   title="Instagram"
                 >
-                  <FiInstagram className="w-5 h-5" />
+                  <FaInstagram className="w-5 h-5" />
                 </motion.a>
               </div>
 
@@ -138,7 +138,7 @@ export function Navbar() {
                 whileTap={{ scale: 0.95 }}
                 aria-label="Toggle language"
               >
-                <FiGlobe className="w-4 h-4" />
+                <FiGlobe className="w-5 h-5" />
                 <span className="font-heading text-xs xl:text-sm uppercase">{t === 'en' ? 'HI' : 'EN'}</span>
               </motion.button>
             </div>
@@ -159,7 +159,7 @@ export function Navbar() {
                 aria-label={isOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={isOpen}
               >
-                {isOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
+                {isOpen ? <FiX className="w-5 h-5" /> : <FiMenu className="w-5 h-5" />}
               </motion.button>
             </div>
           </div>
@@ -207,12 +207,12 @@ export function Navbar() {
                     href={whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-heading text-sm uppercase tracking-wide transition-colors"
+                    className="flex items-center justify-center p-4 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
                     whileTap={{ scale: 0.98 }}
                     aria-label={strings.ui.whatsapp}
+                    title={strings.ui.whatsapp}
                   >
                     <FaWhatsapp className="w-5 h-5" />
-                    <span>{strings.ui.whatsapp}</span>
                   </motion.a>
                   <motion.a
                     href={social.instagram}
@@ -222,7 +222,7 @@ export function Navbar() {
                     whileTap={{ scale: 0.98 }}
                     aria-label="Instagram"
                   >
-                    <FiInstagram className="w-5 h-5" />
+                    <FaInstagram className="w-5 h-5" />
                     <span>Instagram</span>
                   </motion.a>
                 </div>

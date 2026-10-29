@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FiStar, FiTarget, FiRepeat, FiUsers, FiAward, FiMapPin, FiWatch, FiPhone, FiMessageCircle, FiArrowRight, FiTool, FiPlus, FiMinus } from 'react-icons/fi'
+import { FiTarget, FiRepeat, FiUsers, FiAward, FiPhone, FiMessageCircle, FiArrowRight, FiTool, FiPlus, FiMinus } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings } from '../data/gymData'
-import { SectionHeading, Card, CardHeader, CardTitle, CardDescription, Button } from '../components/ui'
+import { SectionHeading, HeroContent, Card, CardHeader, CardTitle, CardDescription, Button } from '../components/ui'
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -35,28 +35,7 @@ export default function About() {
         <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_68%_48%,rgba(230,57,70,0.12),transparent_48%)]" aria-hidden="true" />
 
         <div className="container-custom relative z-10 py-24 text-center sm:py-28">
-          <motion.div
-            className="mx-auto max-w-5xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="mb-5 inline-flex items-center justify-center gap-3 font-heading text-base font-bold uppercase tracking-[0.3em] text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mb-6 sm:gap-4 sm:text-xl">
-              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
-              EMPIRE THE GYM
-              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
-            </p>
-            <motion.h1
-              id="about-hero-heading"
-              className="font-heading text-[clamp(3.25rem,10vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.045em] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.7)]"
-            >
-              <span className="block">BUILD YOUR</span>
-              <span className="mt-2 block bg-gradient-to-r from-white via-white to-gym-red-light bg-clip-text text-transparent">EMPIRE</span>
-            </motion.h1>
-            <p className="mt-6 font-heading text-lg font-bold uppercase tracking-[0.25em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mt-8 sm:text-2xl">
-              {t === 'en' ? 'About' : 'हमारे बारे में'}
-            </p>
-          </motion.div>
+          <HeroContent data={data} strings={strings} t={t} headingId="about-hero-heading" />
         </div>
       </section>
 

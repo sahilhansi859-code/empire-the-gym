@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FiFacebook, FiInstagram, FiYoutube, FiMapPin, FiClock, FiPhone, FiMessageCircle, FiExternalLink } from 'react-icons/fi'
+import { FiMapPin, FiClock, FiPhone } from 'react-icons/fi'
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import { useLanguage } from '../../context/LanguageContext'
 import { languageStrings, gymData } from '../../data/gymData'
 
@@ -8,8 +9,6 @@ export function Footer() {
   const { t } = useLanguage()
   const strings = languageStrings[t]
   const data = gymData[t]
-
-  const currentYear = new Date().getFullYear()
 
   const quickLinks = [
     { path: '/', label: strings.nav.home },
@@ -19,9 +18,7 @@ export function Footer() {
   ]
 
   const socialLinks = [
-    { icon: FiFacebook, href: data.social.facebook, label: t === 'en' ? 'Facebook' : 'फेसबुक' },
-    { icon: FiInstagram, href: data.social.instagram, label: t === 'en' ? 'Instagram' : 'इंस्टाग्राम' },
-    { icon: FiYoutube, href: data.social.youtube, label: t === 'en' ? 'YouTube' : 'यूट्यूब' }
+    { icon: FaInstagram, href: data.social.instagram, label: t === 'en' ? 'Instagram' : 'इंस्टाग्राम' }
   ]
 
   return (
@@ -95,7 +92,7 @@ export function Footer() {
                 <a href={`tel:+${data.phoneClean}`} className="text-gym-white-soft hover:text-gym-red transition-colors">{data.phone}</a>
               </div>
               <div className="flex items-center gap-3">
-                <FiMessageCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
+                <FaWhatsapp className="w-5 h-5 text-green-500 flex-shrink-0" />
                 <a href={data.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-gym-white-soft hover:text-green-500 transition-colors">WhatsApp</a>
               </div>
               <div className="flex items-start gap-3">
@@ -115,19 +112,18 @@ export function Footer() {
             transition={{ delay: 0.3 }}
           >
             <h4 className="font-heading text-lg uppercase tracking-wider text-gym-white mb-6">{strings.footer.followUs}</h4>
-            <div className="flex gap-4 mb-8">
+            <div className="mb-8">
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-gym-card border border-gym-border flex items-center justify-center text-gym-white-soft hover:text-gym-red hover:border-gym-red transition-all"
-                  whileHover={{ scale: 1.1, rotate: 3 }}
-                  whileTap={{ scale: 0.9 }}
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 hover:brightness-110 text-white px-5 py-3 rounded-lg font-heading text-sm uppercase transition-all"
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" />
+                  <span>{social.label}</span>
                 </motion.a>
               ))}
             </div>
@@ -137,27 +133,12 @@ export function Footer() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-lg font-heading text-sm uppercase transition-colors"
             >
-              <FiMessageCircle className="w-5 h-5" />
-              <span>{strings.ui.whatsappUs}</span>
-              <FiExternalLink className="w-4 h-4" />
+              <FaWhatsapp className="w-5 h-5" />
+              <span>WhatsApp</span>
             </a>
           </motion.div>
         </div>
 
-        <motion.div
-          className="mt-12 pt-8 border-t border-gym-border flex flex-col md:flex-row items-center justify-between gap-4"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ delay: 0.4 }}
-        >
-          <p className="text-gym-white-soft text-sm text-center md:text-left">
-            {strings.footer.copyright.replace('2024', currentYear.toString())}
-          </p>
-          <p className="text-gym-white-soft text-sm text-center md:text-right">
-            {strings.footer.designedBy}
-          </p>
-        </motion.div>
       </div>
     </footer>
   )

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { FiInstagram, FiPhone } from 'react-icons/fi'
-import { FaWhatsapp } from 'react-icons/fa'
+import { FiPhone } from 'react-icons/fi'
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import { gymData } from '../../data/gymData'
 import { useLanguage } from '../../context/LanguageContext'
 import { languageStrings } from '../../data/gymData'
@@ -50,7 +50,7 @@ export function WhatsAppButton() {
         aria-label="Instagram"
         title="Instagram"
       >
-        <FiInstagram className="h-5 w-5" />
+        <FaInstagram className="h-5 w-5" />
       </motion.a>
     </div>
   )

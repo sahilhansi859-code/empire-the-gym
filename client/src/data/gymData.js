@@ -450,7 +450,7 @@ export const languageStrings = {
     contact: { title: "Contact Us", formTitle: "Send a Message", name: "Full Name", phone: "Phone Number", email: "Email (Optional)", interestedIn: "Interested In", message: "Message", submit: "Send Message", submitting: "Sending...", success: "Message sent successfully!", error: "Failed to send message. Please try again." },
     contactInfo: { title: "Contact Information", phone: "Phone", whatsapp: "WhatsApp", address: "Address", timings: "Timings", openNow: "Open Now", closed: "Closed", getDirections: "Get Directions" },
     faq: { title: "Frequently Asked Questions" },
-    footer: { quickLinks: "Quick Links", followUs: "Follow Us", copyright: "© 2024 Empire The Gym. All rights reserved.", designedBy: "Designed with passion for fitness" },
+    footer: { quickLinks: "Quick Links", followUs: "Follow Us" },
     language: { en: "EN", hi: "हिन्दी" },
     ui: {
       loading: "Loading...",
@@ -479,7 +479,7 @@ export const languageStrings = {
     contact: { title: "संपर्क करें", formTitle: "संदेश भेजें", name: "पूरा नाम", phone: "फोन नंबर", email: "ईमेल (वैकल्पिक)", interestedIn: "रुचि है", message: "संदेश", submit: "भेजें", submitting: "भेज रहे हैं...", success: "संदेश सफलतापूर्वक भेजा गया!", error: "संदेश भेजने में विफल। कृपया पुनः प्रयास करें।" },
     contactInfo: { title: "संपर्क जानकारी", phone: "फोन", whatsapp: "व्हाट्सएप", address: "पता", timings: "समय", openNow: "खुला है", closed: "बंद", getDirections: "दिशा प्राप्त करें" },
     faq: { title: "अक्सर पूछे जाने वाले प्रश्न" },
-    footer: { quickLinks: "त्वरित लिंक", followUs: "हमें फॉलो करें", copyright: "© 2024 एम्पायर द जिम। सर्वाधिकार सुरक्षित।", designedBy: "फिटनेस के जुनून के साथ डिज़ाइन किया गया" },
+    footer: { quickLinks: "त्वरित लिंक", followUs: "हमें फॉलो करें" },
     language: { en: "EN", hi: "हिन्दी" },
     ui: {
       loading: "लोड हो रहा है...",

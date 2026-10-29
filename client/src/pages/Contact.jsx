@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiStar, FiMapPin, FiPhone, FiMessageCircle, FiWatch, FiMail, FiUser, FiPlus, FiMinus, FiCheck, FiHelpCircle, FiExternalLink } from 'react-icons/fi'
+import { FiMapPin, FiPhone, FiWatch, FiMail, FiUser, FiPlus, FiMinus, FiCheck, FiHelpCircle, FiExternalLink } from 'react-icons/fi'
+import { FaWhatsapp } from 'react-icons/fa'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings, interestedOptions } from '../data/gymData'
-import { SectionHeading, Button, Card, CardTitle, CardDescription } from '../components/ui'
+import { SectionHeading, HeroContent, Button, Card, CardTitle, CardDescription } from '../components/ui'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
@@ -177,28 +178,7 @@ export default function Contact() {
         <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_68%_48%,rgba(230,57,70,0.12),transparent_48%)]" aria-hidden="true" />
 
         <div className="container-custom relative z-10 py-24 text-center sm:py-28">
-          <motion.div
-            className="mx-auto max-w-5xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <p className="mb-5 inline-flex items-center justify-center gap-3 font-heading text-base font-bold uppercase tracking-[0.3em] text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mb-6 sm:gap-4 sm:text-xl">
-              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
-              EMPIRE THE GYM
-              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
-            </p>
-            <motion.h1
-              id="contact-hero-heading"
-              className="font-heading text-[clamp(3.25rem,10vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.045em] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.7)]"
-            >
-              <span className="block">BUILD YOUR</span>
-              <span className="mt-2 block bg-gradient-to-r from-white via-white to-gym-red-light bg-clip-text text-transparent">EMPIRE</span>
-            </motion.h1>
-            <p className="mt-6 font-heading text-lg font-bold uppercase tracking-[0.25em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mt-8 sm:text-2xl">
-              {t === 'en' ? 'Contact' : 'संपर्क'}
-            </p>
-          </motion.div>
+          <HeroContent data={data} strings={strings} t={t} headingId="contact-hero-heading" />
         </div>
       </section>
 
@@ -406,7 +386,7 @@ export default function Contact() {
 
                 <Card hover padding="p-6" className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-500 flex-shrink-0">
-                    <FiMessageCircle className="w-6 h-6" />
+                    <FaWhatsapp className="w-6 h-6" />
                   </div>
                   <div>
                     <h4 className="font-heading text-gym-white mb-1">{strings.contactInfo.whatsapp}</h4>
@@ -425,7 +405,7 @@ export default function Contact() {
                       className="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded-lg font-heading uppercase tracking-wider inline-flex items-center gap-2 transition-colors"
                       whileTap={{ scale: 0.98 }}
                     >
-                      <FiMessageCircle className="w-4 h-4" />
+                      <FaWhatsapp className="w-4 h-4" />
                       {t === 'en' ? 'Message Us' : 'हमें मैसेज करें'}
                     </motion.a>
                   </div>
@@ -478,9 +458,6 @@ export default function Contact() {
         <div className="container-custom">
           <SectionHeading
             title={strings.faq.title}
-            subtitle={t === 'en'
-              ? 'Quick answers to common questions.'
-              : 'सामान्य प्रश्नों के त्वरित उत्तर।'}
           />
 
           <div className="max-w-3xl mx-auto">
