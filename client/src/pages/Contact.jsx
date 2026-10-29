@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiMapPin, FiPhone, FiMessageCircle, FiWatch, FiMail, FiUser, FiMinus, FiCheck, FiHelpCircle, FiExternalLink } from 'react-icons/fi'
+import { FiStar, FiMapPin, FiPhone, FiMessageCircle, FiWatch, FiMail, FiUser, FiPlus, FiMinus, FiCheck, FiHelpCircle, FiExternalLink } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings, interestedOptions } from '../data/gymData'
 import { SectionHeading, Button, Card, CardTitle, CardDescription } from '../components/ui'
@@ -66,7 +66,7 @@ function FAQItem({ faq, index, t }) {
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          <FiMinus className="w-5 h-5" />
+          {isOpen ? <FiMinus className="w-5 h-5" /> : <FiPlus className="w-5 h-5" />}
         </motion.span>
       </button>
       <AnimatePresence>
@@ -91,8 +91,9 @@ function FAQItem({ faq, index, t }) {
 
 export default function Contact() {
   const { t } = useLanguage()
+  const data = gymData[t]
   const strings = languageStrings[t]
-  const data = gymData
+  const interestedOptionsData = interestedOptions[t]
 
   const [formData, setFormData] = useState({
     name: '',
@@ -158,34 +159,45 @@ export default function Contact() {
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="contact-hero-heading">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden isolate" aria-labelledby="contact-hero-heading">
         <div className="absolute inset-0 z-0">
           <motion.img
             src={data.heroImages.contact}
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-105"
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1.02 }}
+            transition={{ duration: 1.2, ease: 'easeOut' }}
             aria-hidden="true"
           />
         </div>
 
-        <div className="container-custom relative z-10 py-20 text-center">
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/55 via-black/30 to-transparent" aria-hidden="true" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/55 via-transparent to-black/10" aria-hidden="true" />
+        <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_68%_48%,rgba(230,57,70,0.12),transparent_48%)]" aria-hidden="true" />
+
+        <div className="container-custom relative z-10 py-24 text-center sm:py-28">
           <motion.div
+            className="mx-auto max-w-5xl"
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
           >
-            <motion.span className="section-badge mb-6">{strings.contact.subtitle}</motion.span>
+            <p className="mb-5 inline-flex items-center justify-center gap-3 font-heading text-base font-bold uppercase tracking-[0.3em] text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mb-6 sm:gap-4 sm:text-xl">
+              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
+              EMPIRE THE GYM
+              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
+            </p>
             <motion.h1
               id="contact-hero-heading"
-              className="heading-xl mb-6"
+              className="font-heading text-[clamp(3.25rem,10vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.045em] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.7)]"
             >
-              {strings.contact.title}
+              <span className="block">BUILD YOUR</span>
+              <span className="mt-2 block bg-gradient-to-r from-white via-white to-gym-red-light bg-clip-text text-transparent">EMPIRE</span>
             </motion.h1>
-            <motion.p className="text-body text-xl max-w-2xl mx-auto">
-              {t === 'en'
-                ? 'Have questions? Want to join? We\'d love to hear from you. Fill out the form or reach out directly.'
-                : 'कोई प्रश्न? शामिल होना चाहते हैं? हम आपसे सुनना पसंद करेंगे। फॉर्म भरें या सीधे संपर्क करें।'}
-            </motion.p>
+            <p className="mt-6 font-heading text-lg font-bold uppercase tracking-[0.25em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mt-8 sm:text-2xl">
+              {t === 'en' ? 'Contact' : 'संपर्क'}
+            </p>
           </motion.div>
         </div>
       </section>
@@ -289,7 +301,7 @@ export default function Contact() {
                     aria-describedby={errors.interestedIn ? 'interested-error' : undefined}
                   >
                     <option value="">{t === 'en' ? 'Select an option' : 'एक विकल्प चुनें'}</option>
-                    {interestedOptions.map(option => (
+                    {interestedOptionsData.map(option => (
                       <option key={option.value} value={option.value}>{option.label}</option>
                     ))}
                   </select>
@@ -377,13 +389,13 @@ export default function Contact() {
                   <div>
                     <h4 className="font-heading text-gym-white mb-1">{strings.contactInfo.phone}</h4>
                     <motion.a
-                      href={`tel:${data.phoneClean}`}
+                      href={`tel:+${data.phoneClean}`}
                       className="text-gym-white-soft hover:text-gym-red transition-colors block mb-1"
                     >
                       {data.phone}
                     </motion.a>
                     <motion.a
-                      href={`tel:${data.phoneClean}`}
+                      href={`tel:+${data.phoneClean}`}
                       className="btn-secondary text-sm px-4 py-2"
                       whileTap={{ scale: 0.98 }}
                     >

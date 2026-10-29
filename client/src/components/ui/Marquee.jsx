@@ -1,27 +1,32 @@
+import { useState } from 'react'
 import { useLanguage } from '../../context/LanguageContext'
 import { gymData } from '../../data/gymData'
 
 export function Marquee({ 
-  text = gymData.marqueeText, 
+  text,
   speed = 50, 
   className = '',
   paused = false
 }) {
-  const { language } = useLanguage()
-  const items = text.split(' • ').filter(Boolean)
+  const { t } = useLanguage()
+  const [isHovered, setIsHovered] = useState(false)
+  const marqueeText = text || gymData[t].marqueeText
+  const items = marqueeText.split(' • ').filter(Boolean)
   const duplicatedItems = [...items, ...items]
   const duration = Math.max(20, 120 - speed * 1.5)
 
   return (
-    <div className={`overflow-hidden ${className}`} 
-         onMouseEnter={() => paused && true} 
-         onMouseLeave={() => paused && true}
-         style={{ 
-           animationPlayState: paused ? 'paused' : 'running' 
-         }}>
+    <div
+      className={`overflow-hidden ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
+    >
       <div className="flex whitespace-nowrap" 
            style={{ 
              animation: `marquee ${duration}s linear infinite`,
+             animationPlayState: paused || isHovered ? 'paused' : 'running',
              willChange: 'transform'
            }}>
         {duplicatedItems.map((item, index) => (

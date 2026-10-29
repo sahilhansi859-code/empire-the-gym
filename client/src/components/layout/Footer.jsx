@@ -7,7 +7,7 @@ import { languageStrings, gymData } from '../../data/gymData'
 export function Footer() {
   const { t } = useLanguage()
   const strings = languageStrings[t]
-  const data = gymData
+  const data = gymData[t]
 
   const currentYear = new Date().getFullYear()
 
@@ -92,7 +92,7 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-3">
                 <FiPhone className="w-5 h-5 text-gym-red flex-shrink-0" />
-                <a href={`tel:${data.phoneClean}`} className="text-gym-white-soft hover:text-gym-red transition-colors">{data.phone}</a>
+                <a href={`tel:+${data.phoneClean}`} className="text-gym-white-soft hover:text-gym-red transition-colors">{data.phone}</a>
               </div>
               <div className="flex items-center gap-3">
                 <FiMessageCircle className="w-5 h-5 text-green-500 flex-shrink-0" />

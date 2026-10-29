@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { Navbar, Footer, WhatsAppButton, ScrollToTop } from './components/layout'
+import { Navbar, Footer, ScrollToTop, WhatsAppButton } from './components/layout'
 import { Loader } from './components/ui'
 import { useState } from 'react'
 import Home from './pages/Home'

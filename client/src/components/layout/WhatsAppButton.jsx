@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { FiMessageCircle, FiPhone } from 'react-icons/fi'
+import { FiInstagram, FiPhone } from 'react-icons/fi'
+import { FaWhatsapp } from 'react-icons/fa'
 import { gymData } from '../../data/gymData'
 import { useLanguage } from '../../context/LanguageContext'
 import { languageStrings } from '../../data/gymData'
@@ -7,43 +8,49 @@ import { languageStrings } from '../../data/gymData'
 export function WhatsAppButton() {
   const { t } = useLanguage()
   const strings = languageStrings[t]
-  const phoneNumber = gymData.phoneClean
+  const phoneNumber = gymData[t].phoneClean
   const message = encodeURIComponent(strings.ui.whatsappMessage)
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`
   const phoneUrl = `tel:+${phoneNumber}`
+  const linkClass = 'flex h-12 w-12 items-center justify-center rounded-full text-white shadow-lg transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gym-black'
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col-reverse gap-3 hidden lg:flex">
+    <div className="fixed bottom-6 left-4 z-40 flex flex-col gap-3 sm:left-6">
       <motion.a
         href={phoneUrl}
-        className="btn-primary shadow-lg animate-pulse-glow group"
-        whileHover={{ scale: 1.1 }}
+        className={`${linkClass} bg-gym-red hover:bg-gym-red-light`}
+        whileHover={{ scale: 1.1, y: -2 }}
         whileTap={{ scale: 0.95 }}
-        aria-label={strings.ui.callNow}
+        aria-label={`${strings.ui.callNow}: ${gymData[t].phone}`}
+        title={`${strings.ui.callNow}: ${gymData[t].phone}`}
       >
-        <div className="flex items-center gap-2">
-          <FiPhone className="w-5 h-5" />
-          <span className="hidden sm:inline font-heading text-lg">{strings.ui.callNow}</span>
-        </div>
+        <FiPhone className="h-5 w-5" />
       </motion.a>
-      
+
       <motion.a
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-green-600 hover:bg-green-700 text-white px-6 py-4 rounded-lg font-heading text-lg uppercase tracking-wider shadow-lg group flex items-center gap-2"
-        whileHover={{ scale: 1.1 }}
+        className={`${linkClass} bg-green-600 hover:bg-green-700`}
+        whileHover={{ scale: 1.1, y: -2 }}
         whileTap={{ scale: 0.95 }}
         aria-label={strings.ui.whatsapp}
+        title={strings.ui.whatsapp}
       >
-        <motion.div
-          className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center"
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <FiMessageCircle className="w-5 h-5" />
-        </motion.div>
-        <span className="hidden sm:inline">{strings.ui.whatsapp}</span>
+        <FaWhatsapp className="h-5 w-5" />
+      </motion.a>
+
+      <motion.a
+        href={gymData[t].social.instagram}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`${linkClass} bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:brightness-110`}
+        whileHover={{ scale: 1.1, y: -2 }}
+        whileTap={{ scale: 0.95 }}
+        aria-label="Instagram"
+        title="Instagram"
+      >
+        <FiInstagram className="h-5 w-5" />
       </motion.a>
     </div>
   )

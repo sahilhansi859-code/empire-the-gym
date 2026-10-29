@@ -104,7 +104,7 @@ export function Lightbox({
         <>
           <motion.button
             onClick={(e) => { e.stopPropagation(); navigate(-1); }}
-            className="absolute left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gym-card/80 backdrop-blur-sm border border-gym-border flex items-center justify-center text-gym-white hover:bg-gym-red hover:border-gym-red transition-all hidden md:flex"
+            className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gym-card/80 backdrop-blur-sm border border-gym-border flex items-center justify-center text-gym-white hover:bg-gym-red hover:border-gym-red transition-all"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label={strings.ui.prevImage}
@@ -114,7 +114,7 @@ export function Lightbox({
 
           <motion.button
             onClick={(e) => { e.stopPropagation(); navigate(1); }}
-            className="absolute right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gym-card/80 backdrop-blur-sm border border-gym-border flex items-center justify-center text-gym-white hover:bg-gym-red hover:border-gym-red transition-all hidden md:flex"
+            className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-gym-card/80 backdrop-blur-sm border border-gym-border flex items-center justify-center text-gym-white hover:bg-gym-red hover:border-gym-red transition-all"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             aria-label={strings.ui.nextImage}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiArrowRight, FiPhone, FiCheck, FiStar, FiTarget, FiUsers, FiTag, FiDroplet, FiMapPin, FiMessageCircle, FiZap, FiTruck, FiWatch, FiWind, FiTool, FiAward, FiHelpCircle, FiCornerUpLeft } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
@@ -11,9 +11,9 @@ import {
   CardTitle, 
   CardDescription, 
   Button, 
-  Counter 
+  Counter,
+  Lightbox
 } from '../components/ui'
-import { Navbar } from '../components/layout'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -27,17 +27,17 @@ const itemVariants = {
 
 export default function Home() {
   const { t } = useLanguage()
+  const navigate = useNavigate()
   const strings = languageStrings[t]
-  const data = gymData
+  const data = gymData[t]
+  const [lightboxIndex, setLightboxIndex] = useState(null)
 
   const heroContent = t === 'en' ? {
     headline: ['BUILD YOUR', 'EMPIRE'],
-    subheadline: 'Transform your body. Strengthen your mind. Join the elite.',
     ctaPrimary: strings.hero.joinNow,
     ctaSecondary: strings.hero.callNow
   } : {
     headline: ['अपना', 'साम्राज्य बनाएं'],
-    subheadline: 'अपने शरीर को बदलें। अपने दिमाग को मजबूत करें। एलीट में शामिल हों।',
     ctaPrimary: strings.hero.joinNow,
     ctaSecondary: strings.hero.callNow
   }
@@ -70,38 +70,59 @@ export default function Home() {
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="hero-heading">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden isolate" aria-labelledby="hero-heading">
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="wait">
             <motion.img
               key={heroSlide}
               src={heroSlides[heroSlide]}
               alt=""
-              className="w-full h-full object-cover"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
+              className="w-full h-full object-cover scale-105"
+              initial={{ opacity: 0, scale: 1.08 }}
+              animate={{ opacity: 1, scale: 1.02 }}
+              exit={{ opacity: 0, scale: 1.06 }}
+              transition={{ duration: 1.2, ease: 'easeOut' }}
               aria-hidden="true"
             />
           </AnimatePresence>
         </div>
 
-        <div className="container-custom relative z-10 py-20">
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/55 via-black/30 to-transparent" aria-hidden="true" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/55 via-transparent to-black/10" aria-hidden="true" />
+        <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_68%_48%,rgba(230,57,70,0.12),transparent_48%)]" aria-hidden="true" />
+
+        <div className="container-custom relative z-10 py-24 sm:py-28">
           <motion.div
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-5xl mx-auto text-center"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-
+            <motion.p
+              className="mb-5 inline-flex items-center justify-center gap-3 font-heading text-base font-bold uppercase tracking-[0.3em] text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mb-6 sm:gap-4 sm:text-xl"
+              variants={itemVariants}
+            >
+              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
+              EMPIRE THE GYM
+              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
+            </motion.p>
+            <motion.h1
+              id="hero-heading"
+              className="font-heading text-[clamp(3.25rem,10vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.045em] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.7)]"
+              variants={itemVariants}
+            >
+              <span className="block">{heroContent.headline[0]}</span>
+              <span className="mt-2 block text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-gym-red-light drop-shadow-none">
+                {heroContent.headline[1]}
+              </span>
+            </motion.h1>
             <motion.div
-              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              className="mt-8 flex flex-col items-center justify-center gap-4 sm:mt-10 sm:flex-row"
               variants={itemVariants}
             >
               <motion.button
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="btn-primary group w-full sm:w-auto"
+                onClick={() => navigate('/contact#contact')}
+                className="group inline-flex w-full min-h-14 items-center justify-center rounded-lg border border-white/70 bg-black/40 px-8 py-4 font-heading text-lg uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-white hover:bg-white hover:text-gym-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gym-black sm:w-auto"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -109,8 +130,8 @@ export default function Home() {
                 <FiArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </motion.button>
               <motion.a
-                href={`tel:${data.phoneClean}`}
-                className="btn-secondary w-full sm:w-auto"
+                href={`tel:+${data.phoneClean}`}
+                className="w-full min-h-14 inline-flex items-center justify-center rounded-lg border border-white/70 bg-black/40 px-8 py-4 font-heading text-lg uppercase tracking-wider text-white backdrop-blur-sm transition-all hover:border-white hover:bg-white hover:text-gym-black focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gym-black sm:w-auto"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -119,50 +140,46 @@ export default function Home() {
               </motion.a>
             </motion.div>
 
-<motion.div
-          className="mt-16 flex flex-wrap items-center justify-center gap-8 text-gym-white-soft"
-          variants={itemVariants}
-        >
+            <motion.div
+              className="mx-auto mt-10 flex max-w-4xl flex-wrap items-center justify-center gap-3 sm:mt-14 sm:gap-4"
+              variants={itemVariants}
+            >
               <div className="flex items-center gap-2">
-                <FiWatch className="w-5 h-5 text-gym-red" />
-                <span className="font-body text-sm">{data.timing.weekdays}</span>
+                <FiWatch className="h-5 w-5 shrink-0 text-gym-red-light" />
+                <span className="font-body text-sm font-medium text-white">{data.timing.weekdays}</span>
               </div>
+              <span className="hidden h-5 w-px bg-white/30 sm:block" aria-hidden="true" />
               <div className="flex items-center gap-2">
-                <FiMapPin className="w-5 h-5 text-gym-red" />
-                <span className="font-body text-sm hidden sm:inline">Hansi, Hisar, Haryana</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <FiStar className="w-5 h-5 text-gym-gold" />
-                <span className="font-body text-sm">{data.fitpassNote}</span>
+                <FiMapPin className="h-5 w-5 shrink-0 text-gym-red-light" />
+                <span className="font-body text-sm font-medium text-white">Hansi, Hisar, Haryana</span>
               </div>
             </motion.div>
           </motion.div>
         </div>
 
-        <motion.div
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
+        <motion.button
+          type="button"
+          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+          className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 cursor-pointer rounded-full p-2 text-white/80 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.5 }}
+          aria-label={t === 'en' ? 'Scroll to learn more' : 'और जानने के लिए स्क्रॉल करें'}
         >
           <motion.div
-            className="w-6 h-10 border-2 border-gym-white/20 rounded-full flex justify-center pt-2"
-            animate={{ y: [0, 10, 0] }}
+            className="flex h-10 w-6 justify-center rounded-full border-2 border-white/60 pt-2"
+            animate={{ y: [0, 5, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            <motion.div className="w-1.5 h-1.5 bg-gym-white rounded-full" />
+            <span className="h-1.5 w-1.5 rounded-full bg-white" />
           </motion.div>
-        </motion.div>
+        </motion.button>
       </section>
       
       <section id="about" className="section-padding" aria-labelledby="about-heading">
         <div className="container-custom">
           <SectionHeading
             title={t === 'en' ? 'About Empire The Gym' : 'एम्पायर द जिम के बारे में'}
-            subtitle={t === 'en' 
-              ? "Hansi's premier fitness destination with modern equipment, expert trainers, and a disciplined atmosphere."
-              : "हांसी का प्रमुख फिटनेस गंतव्य आधुनिक उपकरण, विशेषज्ञ ट्रेनर, और एक अनुशासित माहौल के साथ।"}
-            badge={strings.about.knowMore}
           />
           
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -193,33 +210,12 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-body mb-6">{data.about.story}</p>
-              <div className="grid grid-cols-2 gap-4 mb-8">
-                {data.usps.slice(0, 4).map((usp, index) => (
-                  <motion.div
-                    key={usp.id}
-                    className="flex items-start gap-3 p-4 bg-gym-card border border-gym-border rounded-xl"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.1 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-gym-red/10 flex items-center justify-center flex-shrink-0 text-gym-red">
-                      {usp.icon === 'dumbbell' && <FiTool className="w-5 h-5" />}
-                      {usp.icon === 'graduation-cap' && <FiTarget className="w-5 h-5" />}
-                      {usp.icon === 'users' && <FiUsers className="w-5 h-5" />}
-                      {usp.icon === 'tag' && <FiTag className="w-5 h-5" />}
-                    </div>
-                    <div>
-                      <h4 className="font-heading text-gym-white">{usp.title}</h4>
-                      <p className="text-gym-gray text-sm">{usp.description}</p>
-                    </div>
-                  </motion.div>
-                ))}
+              <div className="flex justify-center">
+                <Link to="/about" className="btn-secondary inline-flex items-center gap-2">
+                  {strings.about.knowMore}
+                  <FiArrowRight className="w-5 h-5" />
+                </Link>
               </div>
-              <Link to="/about" className="btn-secondary inline-flex items-center gap-2">
-                {strings.about.knowMore}
-                <FiArrowRight className="w-5 h-5" />
-              </Link>
             </motion.div>
           </div>
         </div>
@@ -229,9 +225,6 @@ export default function Home() {
         <div className="container-custom">
           <SectionHeading
             title={strings.whyChoose.title}
-            subtitle={t === 'en'
-              ? 'Four pillars that make Empire The Gym the ultimate fitness destination in Hansi.'
-              : 'चार स्तंभ जो एम्पायर द जिम को हांसी में अंतिम फिटनेस गंतव्य बनाते हैं।'}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -271,9 +264,6 @@ export default function Home() {
         <div className="container-custom">
           <SectionHeading
             title={strings.programs.title}
-            subtitle={t === 'en'
-              ? 'Comprehensive fitness programs designed for every goal and fitness level.'
-              : 'हर लक्ष्य और फिटनेस स्तर के लिए डिज़ाइन किए गए व्यापक फिटनेस प्रोग्राम।'}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -340,9 +330,6 @@ export default function Home() {
         <div className="container-custom">
           <SectionHeading
             title={strings.stats.title}
-            subtitle={t === 'en'
-              ? 'Numbers that speak louder than words. Our journey of excellence continues.'
-              : 'संख्याएं जो शब्दों से ज्यादा बोलती हैं। हमारी उत्कृष्टता की यात्रा जारी है।'}
           />
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
@@ -353,10 +340,10 @@ export default function Home() {
                 label={stat.label}
                 suffix={stat.suffix}
                 icon={
-                  stat.id === 'years' && <FiTarget className="w-7 h-7" />,
-                  stat.id === 'members' && <FiUsers className="w-7 h-7" />,
-                  stat.id === 'machines' && <FiTool className="w-7 h-7" />,
-                  stat.id === 'trainers' && <FiTarget className="w-7 h-7" />
+                  stat.id === 'years' ? <FiTarget className="w-7 h-7" /> :
+                  stat.id === 'members' ? <FiUsers className="w-7 h-7" /> :
+                  stat.id === 'machines' ? <FiTool className="w-7 h-7" /> :
+                  stat.id === 'trainers' ? <FiTarget className="w-7 h-7" /> : null
                 }
                 className="lg:col-span-1"
               />
@@ -369,9 +356,6 @@ export default function Home() {
         <div className="container-custom">
           <SectionHeading
             title={strings.amenities.title}
-            subtitle={t === 'en'
-              ? 'Premium facilities to enhance your workout experience.'
-              : 'आपके वर्कआउट अनुभव को बेहतर बनाने के लिए प्रीमियम सुविधाएं।'}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -410,9 +394,6 @@ export default function Home() {
         <div className="container-custom">
           <SectionHeading
             title={strings.membership.title}
-            subtitle={t === 'en'
-              ? 'Flexible plans to fit your lifestyle. All prices are placeholders - contact us for actual pricing.'
-              : 'आपकी जीवनशैली के अनुकूल लचीले प्लान। सभी कीमतें प्लेसहोल्डर हैं - वास्तविक कीमतों के लिए संपर्क करें।'}
           />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -460,6 +441,7 @@ export default function Home() {
                   <Button 
                     variant={plan.popular ? 'primary' : 'secondary'} 
                     className="w-full"
+                    onClick={() => navigate('/contact#contact')}
                   >
                     {plan.cta}
                   </Button>
@@ -468,16 +450,6 @@ export default function Home() {
             ))}
           </div>
 
-          <motion.p
-            className="text-center text-gym-white-soft text-sm mt-8"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            {t === 'en' 
-              ? 'All prices are placeholders. Contact us for current pricing and offers.'
-              : 'सभी कीमतें प्लेसहोल्डर हैं। वर्तमान कीमतों और ऑफ़र के लिए संपर्क करें।'}
-          </motion.p>
         </div>
       </section>
 
@@ -492,13 +464,16 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {galleryPreview.map((image, index) => (
-              <motion.div
+              <motion.button
                 key={image.id}
-                className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer"
+                type="button"
+                className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer w-full border-0 bg-transparent p-0 text-left"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ delay: index * 0.05 }}
+                onClick={() => setLightboxIndex(index)}
+                aria-label={t === 'en' ? `View ${image.alt}` : `${image.alt} देखें`}
               >
                 <img
                   src={image.src}
@@ -510,7 +485,7 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-gym-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="font-heading text-sm text-gym-white">{image.alt}</span>
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
 
@@ -590,12 +565,6 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
           >
-            <motion.h2
-              id="cta-heading"
-              className="heading-lg mb-6"
-            >
-              {strings.cta.title}
-            </motion.h2>
             <motion.p
               className="text-body text-xl mb-10"
             >
@@ -606,13 +575,13 @@ export default function Home() {
             <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button 
                 size="lg"
-                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => navigate('/contact#contact')}
               >
                 {strings.cta.button}
                 <FiArrowRight className="w-5 h-5 ml-2" />
               </Button>
               <motion.a
-                href={`tel:${data.phoneClean}`}
+                href={`tel:+${data.phoneClean}`}
                 className="btn-secondary px-10 py-4"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
@@ -624,6 +593,14 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={data.gallery}
+          initialIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onNavigate={setLightboxIndex}
+        />
+      )}
     </>
   )
 }

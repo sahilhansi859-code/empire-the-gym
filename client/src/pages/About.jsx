@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FiTarget, FiRepeat, FiUsers, FiAward, FiMapPin, FiWatch, FiPhone, FiMessageCircle, FiArrowRight, FiTool, FiPlus, FiMinus } from 'react-icons/fi'
+import { FiStar, FiTarget, FiRepeat, FiUsers, FiAward, FiMapPin, FiWatch, FiPhone, FiMessageCircle, FiArrowRight, FiTool, FiPlus, FiMinus } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings } from '../data/gymData'
 import { SectionHeading, Card, CardHeader, CardTitle, CardDescription, Button } from '../components/ui'
@@ -13,38 +13,49 @@ const itemVariants = {
 export default function About() {
   const { t } = useLanguage()
   const strings = languageStrings[t]
-  const data = gymData
+  const data = gymData[t]
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="about-hero-heading">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden isolate" aria-labelledby="about-hero-heading">
         <div className="absolute inset-0 z-0">
           <motion.img
             src={data.heroImages.about}
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-105"
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1.02 }}
+            transition={{ duration: 1.2, ease: 'easeOut' }}
             aria-hidden="true"
           />
         </div>
 
-        <div className="container-custom relative z-10 py-20 text-center">
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/55 via-black/30 to-transparent" aria-hidden="true" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/55 via-transparent to-black/10" aria-hidden="true" />
+        <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_68%_48%,rgba(230,57,70,0.12),transparent_48%)]" aria-hidden="true" />
+
+        <div className="container-custom relative z-10 py-24 text-center sm:py-28">
           <motion.div
+            className="mx-auto max-w-5xl"
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
           >
-            <motion.span className="section-badge mb-6">{strings.about.ourStory}</motion.span>
+            <p className="mb-5 inline-flex items-center justify-center gap-3 font-heading text-base font-bold uppercase tracking-[0.3em] text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mb-6 sm:gap-4 sm:text-xl">
+              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
+              EMPIRE THE GYM
+              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
+            </p>
             <motion.h1
               id="about-hero-heading"
-              className="heading-xl mb-6"
+              className="font-heading text-[clamp(3.25rem,10vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.045em] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.7)]"
             >
-              {t === 'en' ? 'Our Story' : 'हमारी कहानी'}
+              <span className="block">BUILD YOUR</span>
+              <span className="mt-2 block bg-gradient-to-r from-white via-white to-gym-red-light bg-clip-text text-transparent">EMPIRE</span>
             </motion.h1>
-            <motion.p className="text-body text-xl max-w-2xl mx-auto">
-              {t === 'en'
-                ? 'From a vision to reality - discover how Empire The Gym became Hansi\'s premier fitness destination.'
-                : 'एक दृष्टि से वास्तविकता तक - जानें कि एम्पायर द जिम कैसे हांसी का प्रमुख फिटनेस गंतव्य बना।'}
-            </motion.p>
+            <p className="mt-6 font-heading text-lg font-bold uppercase tracking-[0.25em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mt-8 sm:text-2xl">
+              {t === 'en' ? 'About' : 'हमारे बारे में'}
+            </p>
           </motion.div>
         </div>
       </section>
@@ -357,7 +368,7 @@ export default function About() {
                 <FiArrowRight className="w-5 h-5 ml-2" />
               </Link>
               <motion.a
-                href={`tel:${data.phoneClean}`}
+                href={`tel:+${data.phoneClean}`}
                 className="btn-secondary px-10 py-4"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}

@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { FiHome, FiSearch, FiArrowLeft } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { languageStrings } from '../data/gymData'
-import { Button } from '../components/ui'
 
 export default function NotFound() {
+  const navigate = useNavigate()
+  const location = useLocation()
   const { t } = useLanguage()
   const strings = languageStrings[t]
 
@@ -35,17 +36,12 @@ export default function NotFound() {
         </motion.p>
 
         <motion.div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button
-            asChild
-            size="lg"
-          >
-            <Link to="/">
-              <FiHome className="w-5 h-5 mr-2" />
-              {t === 'en' ? 'Back to Home' : 'होम पर वापस जाएं'}
-            </Link>
-          </Button>
+          <Link to="/" className="btn-primary inline-flex items-center px-10 py-5 text-xl">
+            <FiHome className="w-5 h-5 mr-2" />
+            {t === 'en' ? 'Back to Home' : 'होम पर वापस जाएं'}
+          </Link>
           <motion.button
-            onClick={() => window.history.back()}
+            onClick={() => location.key === 'default' ? navigate('/') : navigate(-1)}
             className="btn-secondary px-8 py-4"
             whileTap={{ scale: 0.98 }}
           >

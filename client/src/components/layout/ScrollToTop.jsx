@@ -8,11 +8,18 @@ import { languageStrings } from '../../data/gymData'
 export function ScrollToTop() {
   const { t } = useLanguage()
   const strings = languageStrings[t]
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [pathname])
+    const frame = window.requestAnimationFrame(() => {
+      if (hash) {
+        document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView({ behavior: 'smooth' })
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }
+    })
+    return () => window.cancelAnimationFrame(frame)
+  }, [pathname, hash])
 
   const handleClick = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })

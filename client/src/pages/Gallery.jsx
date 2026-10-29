@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiFilter, FiSearch, FiChevronLeft, FiChevronRight, FiX, FiMaximize2 } from 'react-icons/fi'
+import { FiStar, FiFilter, FiSearch, FiChevronLeft, FiChevronRight, FiX, FiMaximize2 } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings } from '../data/gymData'
 import { SectionHeading, Button } from '../components/ui'
@@ -17,15 +17,19 @@ const categories = [
 export default function Gallery() {
   const { t } = useLanguage()
   const strings = languageStrings[t]
-  const data = gymData
+  const data = gymData[t]
 
   const [activeCategory, setActiveCategory] = useState('all')
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
 
+  const getCategoryId = (image) => (
+    gymData.en.gallery.find(({ id }) => id === image.id)?.category.toLowerCase()
+  )
+
   const filteredImages = activeCategory === 'all'
     ? data.gallery
-    : data.gallery.filter(img => img.category.toLowerCase() === activeCategory)
+    : data.gallery.filter(image => getCategoryId(image) === activeCategory)
 
   const handleImageClick = useCallback((index) => {
     const image = filteredImages[index]
@@ -52,34 +56,45 @@ export default function Gallery() {
 
   return (
     <>
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden" aria-labelledby="gallery-hero-heading">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden isolate" aria-labelledby="gallery-hero-heading">
         <div className="absolute inset-0 z-0">
           <motion.img
             src={data.heroImages.gallery}
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover scale-105"
+            initial={{ scale: 1.08 }}
+            animate={{ scale: 1.02 }}
+            transition={{ duration: 1.2, ease: 'easeOut' }}
             aria-hidden="true"
           />
         </div>
 
-        <div className="container-custom relative z-10 py-20 text-center">
+        <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/55 via-black/30 to-transparent" aria-hidden="true" />
+        <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/55 via-transparent to-black/10" aria-hidden="true" />
+        <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_at_68%_48%,rgba(230,57,70,0.12),transparent_48%)]" aria-hidden="true" />
+
+        <div className="container-custom relative z-10 py-24 text-center sm:py-28">
           <motion.div
+            className="mx-auto max-w-5xl"
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
           >
-            <motion.span className="section-badge mb-6">{strings.gallery.title}</motion.span>
+            <p className="mb-5 inline-flex items-center justify-center gap-3 font-heading text-base font-bold uppercase tracking-[0.3em] text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mb-6 sm:gap-4 sm:text-xl">
+              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
+              EMPIRE THE GYM
+              <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
+            </p>
             <motion.h1
               id="gallery-hero-heading"
-              className="heading-xl mb-6"
+              className="font-heading text-[clamp(3.25rem,10vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.045em] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.7)]"
             >
-              {strings.gallery.title}
+              <span className="block">BUILD YOUR</span>
+              <span className="mt-2 block bg-gradient-to-r from-white via-white to-gym-red-light bg-clip-text text-transparent">EMPIRE</span>
             </motion.h1>
-            <motion.p className="text-body text-xl max-w-2xl mx-auto">
-              {t === 'en'
-                ? 'Explore our facility, equipment, training sessions, and community moments.'
-                : 'हमारी सुविधा, उपकरण, प्रशिक्षण सत्र और सामुदायिक क्षणों का अन्वेषण करें।'}
-            </motion.p>
+            <p className="mt-6 font-heading text-lg font-bold uppercase tracking-[0.25em] text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mt-8 sm:text-2xl">
+              {t === 'en' ? 'Gallery' : 'गैलरी'}
+            </p>
           </motion.div>
         </div>
       </section>
@@ -132,7 +147,7 @@ export default function Gallery() {
               {filteredImages.map((image, index) => (
                 <motion.div
                   key={image.id}
-                  className="relative aspect-[4/3] rounded-xl overflow-hidden group cursor-pointer"
+                  className="relative aspect-[4/3] rounded-xl overflow-hidden group cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-gym-red"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: index * 0.05 }}
@@ -162,9 +177,9 @@ export default function Gallery() {
                   </div>
                   <div className="absolute top-3 right-3">
                     <span className={`px-2 py-1 rounded text-xs font-heading uppercase tracking-wider ${
-                      image.category === 'equipment' ? 'bg-red-500/20 text-red-400' :
-                      image.category === 'workouts' ? 'bg-blue-500/20 text-blue-400' :
-                      image.category === 'training' ? 'bg-green-500/20 text-green-400' :
+                      getCategoryId(image) === 'equipment' ? 'bg-red-500/20 text-red-400' :
+                      getCategoryId(image) === 'workouts' ? 'bg-blue-500/20 text-blue-400' :
+                      getCategoryId(image) === 'training' ? 'bg-green-500/20 text-green-400' :
                       'bg-yellow-500/20 text-yellow-400'
                     }`}>
                       {image.category}
