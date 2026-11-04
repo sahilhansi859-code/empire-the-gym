@@ -20,13 +20,13 @@ function detectLanguage(lastMsg, prevMsgs, siteLang) {
 
 const uiStrings = {
   en: {
-    greeting: 'Namaste! Empire The Gym',
+    greeting: 'नमस्ते! एम्पायर द जिम',
     placeholder: 'Message...',
     send: 'Send',
     typing: 'typing...',
     chips: ['Timing kya hai?', 'Fees / Plans', 'Join kaise karein?'],
     fallback: "I can't answer right now, please call or WhatsApp +91 94667 09410.",
-    title: 'Empire The Gym Chatbot'
+    title: 'एम्पायर द जिम चैटबॉट'
   },
   hi: {
     greeting: 'नमस्ते! एम्पायर द जिम',
@@ -37,6 +37,7 @@ const uiStrings = {
     fallback: 'अभी जवाब नहीं दे पा रहा, कृपया +91 94667 09410 पर कॉल या वॉट्सऐप करें।',
     title: 'एम्पायर द जिम चैटबॉट'
   }
+}
 }
 
 export default function Chatbot() {
@@ -120,11 +121,7 @@ export default function Chatbot() {
               {typing && <div style={{ alignSelf:'flex-start', color:'#aaa', fontSize:13, fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}>{strings.typing}</div>}
               <div ref={endRef} />
             </div>
-            <div style={{ padding:8, display:'flex', gap:6, flexWrap:'wrap', borderTop:'1px solid #333' }}>
-              {chips.map((c, idx) => (
-                <button key={idx} onClick={()=>send(c)} style={{ padding:'4px 8px', borderRadius:6, border:'1px solid #444', background:'#1a1a1a', color:'#fff', cursor:'pointer', fontSize:12, fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}>{c}</button>
-              ))}
-            </div>
+            <div style={{ display:'none' }}></div>
             <div style={{ padding:8, display:'flex', gap:6, borderTop:'1px solid #333' }}>
               <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==='Enter'&&send()} placeholder={strings.placeholder} style={{ flex:1, padding:'8px 12px', borderRadius:8, border:'1px solid #444', background:'#1a1a1a', color:'#fff', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }} />
               <button onClick={()=>send()} style={{ padding:'8px 14px', borderRadius:8, border:'none', background:'linear-gradient(135deg,#ef4444,#f97316)', color:'#fff', cursor:'pointer', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}>{strings.send}</button>
