@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Link, useLocation } from 'react-router-dom'
-import { FiMenu, FiX, FiGlobe, FiPhone } from 'react-icons/fi'
+import { FiMenu, FiX, FiPhone } from 'react-icons/fi'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import { useLanguage } from '../../context/LanguageContext'
 import { languageStrings, gymData } from '../../data/gymData'
 
 export function Navbar() {
-  const { language, toggleLanguage, t } = useLanguage()
+  const { t } = useLanguage()
   const location = useLocation()
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -130,28 +130,9 @@ export function Navbar() {
                   <FaInstagram className="w-5 h-5" />
                 </motion.a>
               </div>
-
-              <motion.button
-                onClick={toggleLanguage}
-                className="flex items-center gap-2 px-3 py-2 bg-gym-card border border-gym-border rounded-lg text-gym-white hover:text-gym-red hover:border-gym-red transition-all whitespace-nowrap"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                aria-label="Toggle language"
-              >
-                <FiGlobe className="w-5 h-5" />
-                <span className="font-heading text-xs xl:text-sm uppercase">{t === 'en' ? 'HI' : 'EN'}</span>
-              </motion.button>
             </div>
 
             <div className="flex items-center gap-3 lg:hidden">
-              <motion.button
-                onClick={toggleLanguage}
-                className="p-2 bg-gym-card border border-gym-border rounded-lg text-gym-white hover:text-gym-red transition-colors"
-                whileTap={{ scale: 0.9 }}
-                aria-label="Toggle language"
-              >
-                <FiGlobe className="w-5 h-5" />
-              </motion.button>
               <motion.button
                 onClick={() => setIsOpen(!isOpen)}
                 className="p-2 text-gym-white hover:text-gym-red transition-colors"
@@ -226,18 +207,6 @@ export function Navbar() {
                     <span>Instagram</span>
                   </motion.a>
                 </div>
-
-                <motion.button
-                  onClick={toggleLanguage}
-                  className="flex items-center justify-center gap-2 px-4 py-3 bg-gym-card border border-gym-border rounded-lg text-gym-white hover:text-gym-red hover:border-gym-red transition-all font-heading text-sm uppercase"
-                  whileTap={{ scale: 0.98 }}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3, duration: 0.3 }}
-                >
-                  <FiGlobe className="w-5 h-5" />
-                  <span>{t === 'en' ? 'HI' : 'EN'}</span>
-                </motion.button>
               </div>
             </motion.div>
           )}

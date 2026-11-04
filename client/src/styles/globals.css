@@ -125,7 +125,7 @@
   }
   
   .border-gradient {
-    @apply relative before:absolute before:inset-0 before:rounded-2xl before:bg-gradient-to-r before:from-gym-red before:to-gym-gold before:-z-10 before:p-[1px];
+    @apply relative;
   }
   
   .glass {

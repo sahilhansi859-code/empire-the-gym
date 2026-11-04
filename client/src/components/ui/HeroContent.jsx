@@ -32,7 +32,7 @@ export function HeroContent({ data, strings, t, headingId }) {
       </motion.p>
       <motion.h1
         id={headingId}
-        className="font-heading text-[clamp(3.25rem,10vw,7.5rem)] font-black uppercase leading-[0.92] tracking-[-0.045em] text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.7)]"
+        className="font-heading text-[clamp(3.25rem,10vw,7.5rem)] font-black uppercase leading-[1.05] tracking-tight text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.7)]"
         variants={itemVariants}
       >
         <span className="block">{headline[0]}</span>

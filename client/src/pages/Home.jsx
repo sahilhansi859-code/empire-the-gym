@@ -145,6 +145,89 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="story" className="section-padding section-alt" aria-labelledby="story-heading">
+        <div className="container-custom">
+          <SectionHeading title={strings.about.ourStory} />
+
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-100px', amount: 0.1 }}
+            >
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
+                <img
+                  src={data.gallery[2].src}
+                  alt="Empire The Gym Interior"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/gallery/gallery-3.svg"; }}
+                />
+                <div className="absolute bottom-6 left-6 right-6 bg-gym-black/80 backdrop-blur-sm border border-gym-border rounded-xl p-6">
+                  <h3 className="font-heading text-xl text-gym-white mb-1">{data.name}</h3>
+                  <p className="text-gym-red font-heading text-sm uppercase tracking-wider">{data.slogan}</p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-100px', amount: 0.1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <p className="text-body mb-6">{data.about.story}</p>
+              <p className="text-body mb-6">
+                {t === 'en'
+                  ? 'Today, Empire The Gym stands as a testament to what passion, dedication, and community can achieve. We\'ve helped thousands transform their bodies and minds, and we\'re just getting started.'
+                  : 'आज, एम्पायर द जिम इस बात का प्रमाण है कि जुनून, समर्पण और समुदाय क्या हासिल कर सकते हैं। हमने हजारों लोगों को उनके शरीर और दिमाग को बदलने में मदद की है, और हमने अभी शुरुआत की है।'}
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section id="owner" className="section-padding" aria-labelledby="owner-heading">
+        <div className="container-custom">
+          <SectionHeading title={strings.about.meetOwner} />
+
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-100px', amount: 0.1 }}
+            >
+              <div className="relative aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden">
+                <img
+                  src={data.about.owner.photo}
+                  alt={data.about.owner.name}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/about/owner.svg"; }}
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-100px', amount: 0.1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <p className="text-gym-red font-heading text-sm uppercase tracking-wider mb-2">{data.about.owner.title}</p>
+              <h3 className="heading-md mb-4">{data.about.owner.name}</h3>
+              <p className="text-body mb-6">{data.about.owner.bio}</p>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/contact" className="btn-primary">
+                  {t === 'en' ? 'Get in Touch' : 'संपर्क करें'}
+                  <FiArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <section id="why-choose" className="section-padding section-alt" aria-labelledby="why-choose-heading">
         <div className="container-custom">
           <SectionHeading
@@ -320,7 +403,7 @@ export default function Home() {
             title={strings.membership.title}
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {data.membershipPlans.map((plan, index) => (
               <motion.div
                 key={plan.id}
@@ -332,20 +415,12 @@ export default function Home() {
                 <Card 
                   hover 
                   padding="p-8" 
-                  className={`h-full flex flex-col relative ${plan.popular ? 'border-gym-red ring-2 ring-gym-red/30' : ''}`}
+                  className="h-full flex flex-col relative"
                 >
-                  {plan.popular && (
-                    <motion.div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                      <span className="bg-gym-red text-gym-white text-xs font-heading uppercase tracking-wider px-3 py-1 rounded-full">
-                        {strings.membership.popular}
-                      </span>
-                    </motion.div>
-                  )}
                   <div className="text-center mb-6">
                     <h3 className="font-heading text-xl uppercase tracking-wider text-gym-white mb-2">{plan.name}</h3>
                     <div className="flex items-baseline justify-center gap-1">
                       <span className="font-heading text-4xl text-gym-white">{plan.price}</span>
-                      <span className="text-gym-white-soft font-body">{plan.period}</span>
                     </div>
                   </div>
                   <ul className="space-y-3 mb-8 flex-1">
@@ -363,7 +438,7 @@ export default function Home() {
                     ))}
                   </ul>
                   <Button 
-                    variant={plan.popular ? 'primary' : 'secondary'} 
+                    variant="secondary" 
                     className="w-full"
                     onClick={() => navigate('/contact#contact')}
                   >

@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { FiTarget, FiRepeat, FiUsers, FiAward, FiPhone, FiMessageCircle, FiArrowRight, FiTool, FiPlus, FiMinus } from 'react-icons/fi'
+import { FiTarget, FiRepeat, FiUsers, FiAward, FiArrowRight, FiTool } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings } from '../data/gymData'
-import { SectionHeading, HeroContent, Card, CardHeader, CardTitle, CardDescription, Button } from '../components/ui'
+import { SectionHeading, HeroContent, Card, CardHeader, CardTitle, CardDescription } from '../components/ui'
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -41,32 +41,13 @@ export default function About() {
 
       <section id="story" className="section-padding" aria-labelledby="story-heading">
         <div className="container-custom">
-          <SectionHeading
-            title={strings.about.ourStory}
-            subtitle={t === 'en'
-              ? 'How it all began and where we\'re headed.'
-              : 'यह सब कैसे शुरू हुआ और हम कहाँ जा रहे हैं।'}
-          />
+          <SectionHeading title={strings.about.ourStory} />
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-100px', amount: 0.1 }}
-            >
-              <p className="text-body mb-6">{data.about.story}</p>
-              <p className="text-body mb-6">
-                {t === 'en'
-                  ? 'Today, Empire The Gym stands as a testament to what passion, dedication, and community can achieve. We\'ve helped thousands transform their bodies and minds, and we\'re just getting started.'
-                  : 'आज, एम्पायर द जिम इस बात का प्रमाण है कि जुनून, समर्पण और समुदाय क्या हासिल कर सकते हैं। हमने हजारों लोगों को उनके शरीर और दिमाग को बदलने में मदद की है, और हमने अभी शुरुआत की है।'}
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-100px', amount: 0.1 }}
-              transition={{ delay: 0.2 }}
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <img
@@ -82,6 +63,20 @@ export default function About() {
                 </div>
               </div>
             </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-100px', amount: 0.1 }}
+              transition={{ delay: 0.2 }}
+            >
+              <p className="text-body mb-6">{data.about.story}</p>
+              <p className="text-body mb-6">
+                {t === 'en'
+                  ? 'Today, Empire The Gym stands as a testament to what passion, dedication, and community can achieve. We\'ve helped thousands transform their bodies and minds, and we\'re just getting started.'
+                  : 'आज, एम्पायर द जिम इस बात का प्रमाण है कि जुनून, समर्पण और समुदाय क्या हासिल कर सकते हैं। हमने हजारों लोगों को उनके शरीर और दिमाग को बदलने में मदद की है, और हमने अभी शुरुआत की है।'}
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -90,9 +85,6 @@ export default function About() {
         <div className="container-custom">
           <SectionHeading
             title={t === 'en' ? 'Mission & Vision' : 'मिशन और विजन'}
-            subtitle={t === 'en'
-              ? 'The guiding principles that drive everything we do.'
-              : 'मार्गदर्शक सिद्धांत जो हम जो कुछ भी करते हैं उसे चलाते हैं।'}
           />
 
           <div className="grid md:grid-cols-2 gap-8">
@@ -144,12 +136,7 @@ export default function About() {
 
       <section id="owner" className="section-padding" aria-labelledby="owner-heading">
         <div className="container-custom">
-          <SectionHeading
-            title={strings.about.meetOwner}
-            subtitle={t === 'en'
-              ? 'The visionary behind Empire The Gym.'
-              : 'एम्पायर द जिम के पीछे के दूरदर्शी।'}
-          />
+          <SectionHeading title={strings.about.meetOwner} />
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
@@ -188,57 +175,9 @@ export default function About() {
         </div>
       </section>
 
-      <section id="trainers" className="section-padding section-alt" aria-labelledby="trainers-heading">
-        <div className="container-custom">
-          <SectionHeading
-            title={strings.about.ourTrainers}
-            subtitle={t === 'en'
-              ? 'Certified professionals dedicated to your success. (Placeholder data - replace with actual trainer info)'
-              : 'प्रमाणित पेशेवर जो आपकी सफलता के लिए समर्पित हैं। (प्लेसहोल्डर डेटा - वास्तविक ट्रेनर जानकारी से बदलें)'}
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {data.trainers.map((trainer, index) => (
-              <motion.div
-                key={trainer.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px', amount: 0.1 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card hover padding="p-6 text-center" className="h-full border-gradient">
-                  <div className="relative aspect-square w-32 h-32 mx-auto mb-4 rounded-2xl overflow-hidden">
-                    <img
-                      src={trainer.photo}
-                      alt={trainer.name}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      onError={(e) => { e.target.onerror = null; e.target.src = `/images/trainers/trainer-${trainer.id}.svg`; }}
-                    />
-                  </div>
-                  <CardTitle size="md">{trainer.name}</CardTitle>
-                  <p className="text-gym-red font-heading text-sm uppercase tracking-wider mb-2">{trainer.specialization}</p>
-                  <p className="text-gym-white-soft text-sm mb-4">{trainer.experience}</p>
-                  <div className="flex flex-wrap justify-center gap-1 mb-4">
-                    {trainer.certifications.map((cert, i) => (
-                      <span key={i} className="text-xs bg-gym-card border border-gym-border text-gym-white-soft px-2 py-1 rounded">{cert}</span>
-                    ))}
-                  </div>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section id="values" className="section-padding" aria-labelledby="values-heading">
         <div className="container-custom">
-          <SectionHeading
-            title={strings.about.ourValues}
-            subtitle={t === 'en'
-              ? 'The core values that define our culture and community.'
-              : 'मूल मूल्य जो हमारी संस्कृति और समुदाय को परिभाषित करते हैं।'}
-          />
+          <SectionHeading title={strings.about.ourValues} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {data.about.values.map((value, index) => (
@@ -274,12 +213,7 @@ export default function About() {
 
       <section id="timeline" className="section-padding section-alt" aria-labelledby="timeline-heading">
         <div className="container-custom">
-          <SectionHeading
-            title={strings.about.whyEmpire}
-            subtitle={t === 'en'
-              ? 'Our journey from a vision to Hansi\'s premier fitness empire.'
-              : 'एक दृष्टि से हांसी के प्रमुख फिटनेस साम्राज्य तक हमारी यात्रा।'}
-          />
+          <SectionHeading title={strings.about.whyEmpire} />
 
           <div className="max-w-3xl mx-auto">
             <div className="relative">
@@ -314,49 +248,6 @@ export default function About() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="about-cta" className="section-padding relative overflow-hidden" aria-labelledby="about-cta-heading">
-        <div className="absolute inset-0 z-0">
-          <img
-            src={data.heroImages.contact}
-            alt=""
-            className="w-full h-full object-cover"
-            aria-hidden="true"
-          />
-        </div>
-
-        <div className="container-custom relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <h2 id="about-cta-heading" className="heading-lg mb-6">
-              {t === 'en' ? 'Ready to Join the Empire?' : 'साम्राज्य में शामिल होने के लिए तैयार?'}
-            </h2>
-            <p className="text-body text-xl mb-10 max-w-2xl mx-auto">
-              {t === 'en'
-                ? 'Start your fitness journey with us today. Modern equipment, expert trainers, and a community that pushes you to be your best.'
-                : 'आज ही हमारे साथ अपनी फिटनेस यात्रा शुरू करें। आधुनिक उपकरण, विशेषज्ञ ट्रेनर, और एक समुदाय जो आपको अपना सर्वश्रेष्ठ बनने के लिए प्रेरित करता है।'}
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link to="/contact" className="btn-primary px-10 py-4">
-                {strings.cta.button}
-                <FiArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-              <motion.a
-                href={`tel:+${data.phoneClean}`}
-                className="btn-secondary px-10 py-4"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <FiPhone className="w-5 h-5 mr-2" />
-                {strings.hero.callNow}
-              </motion.a>
-            </div>
-          </motion.div>
         </div>
       </section>
     </>

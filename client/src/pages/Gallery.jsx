@@ -80,12 +80,7 @@ export default function Gallery() {
 
       <section id="gallery" className="section-padding" aria-labelledby="gallery-heading">
         <div className="container-custom">
-          <SectionHeading
-            title={strings.gallery.title}
-            subtitle={t === 'en'
-              ? 'Filter by category to explore different aspects of our gym.'
-              : 'श्रेणी के अनुसार फ़िल्टर करके हमारे जिम के विभिन्न पहलुओं का अन्वेषण करें।'}
-          />
+          <SectionHeading title={strings.gallery.title} />
 
           <div className="flex flex-wrap justify-center gap-3 mb-12" role="tablist" aria-label="Gallery categories">
             {categories.map((category) => (

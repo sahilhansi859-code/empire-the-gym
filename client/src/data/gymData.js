@@ -22,6 +22,22 @@ export const gymDataBilingual = {
     },
     activities: [
       {
+        id: "weight-loss",
+        title: "Weight Loss / Muscle Gain",
+        subtitle: "Transform • Sculpt • Achieve",
+        description: "Targeted programs for body transformation - whether your goal is losing fat or building lean muscle mass.",
+        icon: "target",
+        features: ["Body Composition Analysis", "Customized Diet Plans", "Weekly Progress Checks", "Supplement Guidance", "Lifestyle Coaching"]
+      },
+      {
+        id: "personal-training",
+        title: "Personal Training",
+        subtitle: "Custom Plans • 1-on-1 Coaching",
+        description: "Personalized workout and nutrition plans with dedicated certified trainers for faster results.",
+        icon: "user-check",
+        features: ["Custom Workout Plans", "Nutrition Guidance", "Progress Tracking", "Flexible Scheduling", "Goal-Oriented Coaching"]
+      },
+      {
         id: "gym-workout",
         title: "Gym Workout",
         subtitle: "Strength • Muscle Gain • Fat Loss",
@@ -36,22 +52,6 @@ export const gymDataBilingual = {
         description: "Specialized core training sessions focusing on abdominal strength, posture correction, and stamina building.",
         icon: "fire",
         features: ["Core Strengthening", "Posture Correction", "Stamina Building", "Functional Training", "HIIT Sessions"]
-      },
-      {
-        id: "personal-training",
-        title: "Personal Training",
-        subtitle: "Custom Plans • 1-on-1 Coaching",
-        description: "Personalized workout and nutrition plans with dedicated certified trainers for faster results.",
-        icon: "user-check",
-        features: ["Custom Workout Plans", "Nutrition Guidance", "Progress Tracking", "Flexible Scheduling", "Goal-Oriented Coaching"]
-      },
-      {
-        id: "weight-loss",
-        title: "Weight Loss / Muscle Gain",
-        subtitle: "Transform • Sculpt • Achieve",
-        description: "Targeted programs for body transformation - whether your goal is losing fat or building lean muscle mass.",
-        icon: "target",
-        features: ["Body Composition Analysis", "Customized Diet Plans", "Weekly Progress Checks", "Supplement Guidance", "Lifestyle Coaching"]
       }
     ],
     amenities: [
@@ -76,6 +76,12 @@ export const gymDataBilingual = {
     ],
     usps: [
       {
+        id: "atmosphere",
+        title: "Disciplined & Motivating Atmosphere",
+        description: "A focused, energetic environment that pushes you to give your best every session. No distractions, only gains.",
+        icon: "users"
+      },
+      {
         id: "equipment",
         title: "Modern Equipment",
         description: "State-of-the-art machines and free weights from top international brands. Regularly maintained and updated.",
@@ -86,12 +92,6 @@ export const gymDataBilingual = {
         title: "Knowledgeable Trainers",
         description: "Certified trainers with years of experience in strength, conditioning, and rehabilitation.",
         icon: "graduation-cap"
-      },
-      {
-        id: "atmosphere",
-        title: "Disciplined & Motivating Atmosphere",
-        description: "A focused, energetic environment that pushes you to give your best every session. No distractions, only gains.",
-        icon: "users"
       },
       {
         id: "affordable",
@@ -108,29 +108,38 @@ export const gymDataBilingual = {
     ],
     membershipPlans: [
       {
-        id: "monthly",
-        name: "Monthly",
-        price: "Contact for Price",
-        period: "/month",
-        features: ["Full Gym Access", "All Group Classes", "Locker Facility", "Water & Towel Service", "Free Fitness Assessment"],
-        cta: "Enquire Now",
-        popular: false
-      },
-      {
-        id: "quarterly",
-        name: "Quarterly",
-        price: "Contact for Price",
-        period: "/3 months",
-        features: ["Full Gym Access", "All Group Classes", "Locker Facility", "Water & Towel Service", "Free Fitness Assessment", "1 Personal Training Session/Month", "Nutrition Consultation"],
-        cta: "Enquire Now",
-        popular: true
-      },
-      {
         id: "yearly",
         name: "Yearly",
         price: "Contact for Price",
         period: "/year",
         features: ["Full Gym Access", "All Group Classes", "Locker Facility", "Water & Towel Service", "Free Fitness Assessment", "4 Personal Training Sessions/Month", "Nutrition Consultation", "Priority Booking", "Guest Passes (4/year)", "Free Merchandise"],
+        cta: "Enquire Now",
+        popular: false
+      },
+      {
+        id: "half-yearly",
+        name: "6 Months",
+        price: "Contact for Price",
+        period: "/6 months",
+        features: ["Full Gym Access", "All Group Classes", "Locker Facility", "Water & Towel Service", "Free Fitness Assessment", "2 Personal Training Sessions/Month", "Nutrition Consultation"],
+        cta: "Enquire Now",
+        popular: false
+      },
+      {
+        id: "quarterly",
+        name: "3 Months",
+        price: "Contact for Price",
+        period: "/3 months",
+        features: ["Full Gym Access", "All Group Classes", "Locker Facility", "Water & Towel Service", "Free Fitness Assessment", "1 Personal Training Session/Month", "Nutrition Consultation"],
+        cta: "Enquire Now",
+        popular: false
+      },
+      {
+        id: "monthly",
+        name: "Monthly",
+        price: "Contact for Price",
+        period: "/month",
+        features: ["Full Gym Access", "All Group Classes", "Locker Facility", "Water & Towel Service", "Free Fitness Assessment"],
         cta: "Enquire Now",
         popular: false
       }
@@ -236,6 +245,22 @@ export const gymDataBilingual = {
     },
     activities: [
       {
+        id: "weight-loss",
+        title: "वजन घटाना / मांसपेशी वृद्धि",
+        subtitle: "परिवर्तन • मूर्तिकला • प्राप्ति",
+        description: "शरीर परिवर्तन के लिए लक्षित कार्यक्रम - चाहे आपका लक्ष्य वसा कम करना हो या दुबली मांसपेशियां बनाना हो।",
+        icon: "target",
+        features: ["शरीर संरचना विश्लेषण", "अनुकूलित आहार योजनाएँ", "साप्ताहिक प्रगति जांच", "पूरक मार्गदर्शन", "जीवनशैली कोचिंग"]
+      },
+      {
+        id: "personal-training",
+        title: "पर्सनल ट्रेनिंग",
+        subtitle: "अनुकूलित योजनाएँ • 1-ऑन-1 कोचिंग",
+        description: "तेजी से परिणामों के लिए समर्पित प्रमाणित ट्रेनरों के साथ व्यक्तिगत वर्कआउट और पोषण योजनाएँ।",
+        icon: "user-check",
+        features: ["अनुकूलित वर्कआउट योजनाएँ", "पोषण मार्गदर्शन", "प्रगति ट्रैकिंग", "लचीला समय", "लक्ष्य आधारित कोचिंग"]
+      },
+      {
         id: "gym-workout",
         title: "जिम वर्कआउट",
         subtitle: "ताकत • मांसपेशी वृद्धि • वसा हानि",
@@ -250,22 +275,6 @@ export const gymDataBilingual = {
         description: "पेट की ताकत, मुद्रा सुधार और सहनशक्ति पर केंद्रित विशेष कोर प्रशिक्षण सत्र।",
         icon: "fire",
         features: ["कोर मजबूती", "मुद्रा सुधार", "सहनशक्ति निर्माण", "फंक्शनल ट्रेनिंग", "HIIT सत्र"]
-      },
-      {
-        id: "personal-training",
-        title: "पर्सनल ट्रेनिंग",
-        subtitle: "अनुकूलित योजनाएँ • 1-ऑन-1 कोचिंग",
-        description: "तेजी से परिणामों के लिए समर्पित प्रमाणित ट्रेनरों के साथ व्यक्तिगत वर्कआउट और पोषण योजनाएँ।",
-        icon: "user-check",
-        features: ["अनुकूलित वर्कआउट योजनाएँ", "पोषण मार्गदर्शन", "प्रगति ट्रैकिंग", "लचीला समय", "लक्ष्य आधारित कोचिंग"]
-      },
-      {
-        id: "weight-loss",
-        title: "वजन घटाना / मांसपेशी वृद्धि",
-        subtitle: "परिवर्तन • मूर्तिकला • प्राप्ति",
-        description: "शरीर परिवर्तन के लिए लक्षित कार्यक्रम - चाहे आपका लक्ष्य वसा कम करना हो या दुबली मांसपेशियां बनाना हो।",
-        icon: "target",
-        features: ["शरीर संरचना विश्लेषण", "अनुकूलित आहार योजनाएँ", "साप्ताहिक प्रगति जांच", "पूरक मार्गदर्शन", "जीवनशैली कोचिंग"]
       }
     ],
     amenities: [
@@ -290,6 +299,12 @@ export const gymDataBilingual = {
     ],
     usps: [
       {
+        id: "atmosphere",
+        title: "अनुशासित और प्रेरणादायक माहौल",
+        description: "एक केंद्रित, ऊर्जावान वातावरण जो आपको हर सत्र में अपना सर्वश्रेष्ठ देने के लिए प्रेरित करता है। कोई ध्यान भटकाने वाली चीजें नहीं, केवल लाभ।",
+        icon: "users"
+      },
+      {
         id: "equipment",
         title: "आधुनिक उपकरण",
         description: "शीर्ष अंतर्राष्ट्रीय ब्रांडों के अत्याधुनिक मशीनें और फ्री वेट्स। नियमित रूप से रखरखाव और अद्यतन।",
@@ -300,12 +315,6 @@ export const gymDataBilingual = {
         title: "जानकार ट्रेनर",
         description: "शक्ति, कंडीशनिंग और पुनर्वास में वर्षों के अनुभव वाले प्रमाणित ट्रेनर।",
         icon: "graduation-cap"
-      },
-      {
-        id: "atmosphere",
-        title: "अनुशासित और प्रेरणादायक माहौल",
-        description: "एक केंद्रित, ऊर्जावान वातावरण जो आपको हर सत्र में अपना सर्वश्रेष्ठ देने के लिए प्रेरित करता है। कोई ध्यान भटकाने वाली चीजें नहीं, केवल लाभ।",
-        icon: "users"
       },
       {
         id: "affordable",
@@ -322,29 +331,38 @@ export const gymDataBilingual = {
     ],
     membershipPlans: [
       {
-        id: "monthly",
-        name: "मासिक",
-        price: "कीमत के लिए संपर्क करें",
-        period: "/माह",
-        features: ["पूर्ण जिम एक्सेस", "सभी ग्रुप क्लासेस", "लॉकर सुविधा", "पानी और तौलिया सेवा", "मुफ्त फिटनेस मूल्यांकन"],
-        cta: "पूछताछ करें",
-        popular: false
-      },
-      {
-        id: "quarterly",
-        name: "त्रैमासिक",
-        price: "कीमत के लिए संपर्क करें",
-        period: "/3 माह",
-        features: ["पूर्ण जिम एक्सेस", "सभी ग्रुप क्लासेस", "लॉकर सुविधा", "पानी और तौलिया सेवा", "मुफ्त फिटनेस मूल्यांकन", "प्रति माह 1 पर्सनल ट्रेनिंग सत्र", "पोषण परामर्श"],
-        cta: "पूछताछ करें",
-        popular: true
-      },
-      {
         id: "yearly",
         name: "वार्षिक",
         price: "कीमत के लिए संपर्क करें",
         period: "/वर्ष",
         features: ["पूर्ण जिम एक्सेस", "सभी ग्रुप क्लासेस", "लॉकर सुविधा", "पानी और तौलिया सेवा", "मुफ्त फिटनेस मूल्यांकन", "प्रति माह 4 पर्सनल ट्रेनिंग सत्र", "पोषण परामर्श", "प्राथमिकता बुकिंग", "गेस्ट पास (4/वर्ष)", "मुफ्त मर्चेंडाइज"],
+        cta: "पूछताछ करें",
+        popular: false
+      },
+      {
+        id: "half-yearly",
+        name: "6 माह",
+        price: "कीमत के लिए संपर्क करें",
+        period: "/6 माह",
+        features: ["पूर्ण जिम एक्सेस", "सभी ग्रुप क्लासेस", "लॉकर सुविधा", "पानी और तौलिया सेवा", "मुफ्त फिटनेस मूल्यांकन", "प्रति माह 2 पर्सनल ट्रेनिंग सत्र", "पोषण परामर्श"],
+        cta: "पूछताछ करें",
+        popular: false
+      },
+      {
+        id: "quarterly",
+        name: "3 माह",
+        price: "कीमत के लिए संपर्क करें",
+        period: "/3 माह",
+        features: ["पूर्ण जिम एक्सेस", "सभी ग्रुप क्लासेस", "लॉकर सुविधा", "पानी और तौलिया सेवा", "मुफ्त फिटनेस मूल्यांकन", "प्रति माह 1 पर्सनल ट्रेनिंग सत्र", "पोषण परामर्श"],
+        cta: "पूछताछ करें",
+        popular: false
+      },
+      {
+        id: "monthly",
+        name: "मासिक",
+        price: "कीमत के लिए संपर्क करें",
+        period: "/माह",
+        features: ["पूर्ण जिम एक्सेस", "सभी ग्रुप क्लासेस", "लॉकर सुविधा", "पानी और तौलिया सेवा", "मुफ्त फिटनेस मूल्यांकन"],
         cta: "पूछताछ करें",
         popular: false
       }

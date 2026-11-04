@@ -341,6 +341,44 @@ export default function Contact() {
                 align="left"
               />
 
+              <div className="mb-8 rounded-xl overflow-hidden border border-gym-border">
+                <a
+                  href="https://www.google.com/maps/place/empire+the+gym+hansi/data=!4m2!3m1!1s0x391239daf03395fd:0xc0a6404c7c376cbc?sa=X&ved=1t:242&ictx=111"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block"
+                  aria-label={t === 'en' ? 'Open Empire The Gym location in Google Maps' : 'गूगल मैप्स में एम्पायर द जिम का स्थान खोलें'}
+                  title={t === 'en' ? 'Open in Google Maps' : 'गूगल मैप्स में खोलें'}
+                >
+                  <img
+                    src="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=75.9577,29.1021,75.9629,29.1043&bboxSR=4326&imageSR=4326&size=1000,500&format=jpg&f=image"
+                    alt="Satellite view of Empire The Gym, Hansi"
+                    width="1000"
+                    height="500"
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-[300px] object-cover"
+                  />
+                  <svg
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    className="pointer-events-none absolute left-1/2 top-1/2 h-10 w-10 -translate-x-1/2 -translate-y-full drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]"
+                  >
+                    <path
+                      fill="#22c55e"
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                    />
+                    <circle cx="12" cy="9" r="2.6" fill="#ffffff" />
+                  </svg>
+                  <span className="pointer-events-none absolute left-1/2 top-1/2 ml-3 -translate-y-1/2 whitespace-nowrap rounded-md bg-white px-3 py-1 font-heading text-sm uppercase tracking-wider text-gym-black shadow-lg">
+                    {t === 'en' ? 'Empire The Gym, Hansi' : 'एम्पायर द जिम, हांसी'}
+                  </span>
+                  <span className="absolute inset-x-0 bottom-0 flex items-center justify-center bg-white py-2 font-heading text-sm uppercase tracking-wider text-gym-black">
+                    {t === 'en' ? 'Open in Google Maps' : 'गूगल मैप्स में खोलें'}
+                  </span>
+                </a>
+              </div>
+
               <div className="space-y-6">
                 <Card hover padding="p-6" className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl bg-gym-red/10 flex items-center justify-center text-gym-red flex-shrink-0">
@@ -350,7 +388,7 @@ export default function Contact() {
                     <h4 className="font-heading text-gym-white mb-1">{strings.contactInfo.address}</h4>
                     <p className="text-gym-white-soft">{data.address}</p>
                     <motion.a
-                      href="https://maps.google.com/?q=Empire+The+Gym+Lal+Sadak+Hansi+Hisar"
+                      href="https://www.google.com/maps/place/empire+the+gym+hansi/data=!4m2!3m1!1s0x391239daf03395fd:0xc0a6404c7c376cbc?sa=X&ved=1t:242&ictx=111"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1 mt-2 text-gym-red hover:text-gym-red-light font-heading text-sm uppercase tracking-wider transition-colors"
@@ -376,7 +414,7 @@ export default function Contact() {
                     </motion.a>
                     <motion.a
                       href={`tel:+${data.phoneClean}`}
-                      className="btn-secondary text-sm px-4 py-2"
+                      className="btn-primary text-sm px-4 py-2"
                       whileTap={{ scale: 0.98 }}
                     >
                       {strings.hero.callNow}
@@ -435,19 +473,6 @@ export default function Contact() {
                     </div>
                   </div>
                 </Card>
-              </div>
-
-              <div className="mt-8 rounded-xl overflow-hidden border border-gym-border">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3555.123456789!2d75.9876!3d29.1234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCszAnNDIuMiJOIDc1wrA1OScxNS4zIkU!5e0!3m2!1sen!2sin!4v1234567890"
-                  width="100%"
-                  height="300"
-                  style={{ border: 0 }}
-                  allowFullScreen=""
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Empire The Gym Location"
-                />
               </div>
             </motion.div>
           </div>
