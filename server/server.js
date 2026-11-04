@@ -2,12 +2,11 @@ import express from 'express'
 import cors from 'cors'
 import helmet from 'helmet'
 import rateLimit from 'express-rate-limit'
-import { body, validationResult } from 'express-validator'
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import dotenv from 'dotenv'
-import { knowledgeText, gymData } from './knowledge.js'
+import { knowledgeText } from './knowledge.js'
 
 // dotenv is optional in production; do not require .env file
 try {
@@ -188,7 +187,6 @@ async function sendEmail(enquiry) {
 function normalizeText(msg) {
   if (typeof msg !== 'string') return ''
   let m = msg.toLowerCase()
-  // common spelling fixes
   m = m.replace(/add?ress|adress|addrss/g, 'address')
   m = m.replace(/locat[ion]*/g, 'location')
   m = m.replace(/kahan|kha hai|kahaan/g, 'kahan hai')
@@ -224,6 +222,149 @@ function instantAnswer(msg) {
   return null
 }
 
+let cachedModels = []
+let lastModelFetch = 0
+const MODEL_CACHE_TTL = 60 * 60 * 1000 // 1 hour
+let workingModel = null
+
+function isActiveChatModel(m) {
+  if (!m) return false
+  const id = String(m.id || '').toLowerCase()
+  const obj = String(m.object || '').toLowerCase()
+  // skip known non-chat
+  if (id.includes('whisper') || id.includes('tts') || id.includes('orpheus') || id.includes('guard') || id.includes('embed') || obj.includes('embedding')) return false
+  // must be chat/completion capable - groq lists as model objects
+  return true
+}
+
+async function fetchGroqModels() {
+  const groqKey = process.env.GROQ_API_KEY
+  if (!groqKey) return []
+  try {
+    const resp = await fetch('https://api.groq.com/openai/v1/models', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${groqKey}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    if (!resp.ok) {
+      console.error('Groq models fetch status:', resp.status)
+      const errText = await resp.text()
+      console.error('Groq models fetch error:', errText)
+      return []
+    }
+    const data = await resp.json()
+    const models = Array.isArray(data?.data) ? data.data : []
+    return models.filter(isActiveChatModel)
+  } catch (e) {
+    console.error('Groq models fetch exception:', e?.message || e)
+    return []
+  }
+}
+
+async function getModelList(force = false) {
+  const now = Date.now()
+  if (!force && cachedModels.length > 0 && (now - lastModelFetch) < MODEL_CACHE_TTL) {
+    return cachedModels
+  }
+  cachedModels = await fetchGroqModels()
+  lastModelFetch = now
+  return cachedModels
+}
+
+function selectModel(models) {
+  if (!Array.isArray(models) || models.length === 0) return null
+  const ids = models.map(m => m.id)
+  // prefer order
+  if (ids.includes('openai/gpt-oss-20b')) return 'openai/gpt-oss-20b'
+  if (ids.includes('openai/gpt-oss-120b')) return 'openai/gpt-oss-120b'
+  // otherwise pick first active chat model
+  return ids[0] || null
+}
+
+async function ensureModel() {
+  if (workingModel) return workingModel
+  const models = await getModelList()
+  let candidate = selectModel(models)
+  if (!candidate && models.length > 0) candidate = models[0].id
+  if (candidate) {
+    workingModel = candidate
+    console.log('Groq model chosen:', candidate)
+    return workingModel
+  }
+  return null
+}
+
+async function tryChatCompletion(messagesToSend, groqKey) {
+  const models = await getModelList()
+  const tried = new Set()
+  // build candidate list in order
+  const candidates = []
+  if (workingModel && !tried.has(workingModel)) candidates.push(workingModel)
+  if (models.some(m => m.id === 'openai/gpt-oss-20b') && !tried.has('openai/gpt-oss-20b')) candidates.push('openai/gpt-oss-20b')
+  if (models.some(m => m.id === 'openai/gpt-oss-120b') && !tried.has('openai/gpt-oss-120b')) candidates.push('openai/gpt-oss-120b')
+  for (const m of models) {
+    if (!candidates.includes(m.id)) candidates.push(m.id)
+  }
+  if (candidates.length === 0 && workingModel) candidates.push(workingModel)
+  
+  for (const model of candidates) {
+    try {
+      const isReasoning = model.includes('gpt-oss')
+      const body = {
+        model,
+        messages: messagesToSend,
+        temperature: 0.3,
+      }
+      if (isReasoning) {
+        body.reasoning_effort = 'low'
+        body.max_completion_tokens = 500
+      } else {
+        body.max_tokens = 256
+      }
+      const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${groqKey}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      })
+      if (!resp.ok) {
+        const errText = await resp.text()
+        console.error('Groq error status:', resp.status)
+        console.error('Groq error message:', errText)
+        tried.add(model)
+        if (resp.status === 404 || resp.status === 400) {
+          // try next
+          continue
+        }
+        // other errors, try next anyway
+        continue
+      }
+      const data = await resp.json()
+      let reply = data?.choices?.[0]?.message?.content || ''
+      if ((!reply || reply.trim() === '') && data?.choices?.[0]?.message?.reasoning) {
+        // some reasoning models might put content elsewhere, but we asked for low effort; try to get content
+        reply = data?.choices?.[0]?.message?.content || data?.choices?.[0]?.delta?.content || ''
+      }
+      if (reply && reply.trim() !== '') {
+        workingModel = model
+        console.log('Groq model working:', model)
+        return reply
+      }
+      // empty reply, try next
+      tried.add(model)
+      continue
+    } catch (e) {
+      console.error('Groq chat exception:', e?.message || e)
+      continue
+    }
+  }
+  return null
+}
+
 app.post('/api/chat', chatLimiter, async (req, res) => {
   try {
     const { messages } = req.body || {}
@@ -251,60 +392,13 @@ app.post('/api/chat', chatLimiter, async (req, res) => {
       { role: 'system', content: systemPrompt },
       ...history
     ]
-    let model = 'llama-3.3-70b-versatile'
     try {
-      const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${groqKey}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          model,
-          messages: messagesToSend,
-          temperature: 0.7,
-          max_tokens: 256
-        })
-      })
-      if (!resp.ok) {
-        const errText = await resp.text()
-        console.error('Groq error status:', resp.status)
-        console.error('Groq error message:', errText)
-        // try fallback models if needed
-        const fallbackModels = ['llama-3.1-8b-instant', 'mixtral-8x7b-32768', 'gemma2-9b-it']
-        for (const fm of fallbackModels) {
-          try {
-            const r2 = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-              method: 'POST',
-              headers: {
-                'Authorization': `Bearer ${groqKey}`,
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                model: fm,
-                messages: messagesToSend,
-                temperature: 0.7,
-                max_tokens: 256
-              })
-            })
-            if (r2.ok) {
-              const data2 = await r2.json()
-              const reply2 = data2?.choices?.[0]?.message?.content || ''
-              return res.json({ success: true, reply: reply2 })
-            } else {
-              const et2 = await r2.text()
-              console.error('Groq fallback error status:', r2.status)
-              console.error('Groq fallback error message:', et2)
-            }
-          } catch (e2) {
-            console.error('Groq fallback exception:', e2?.message || e2)
-          }
-        }
-        return res.json({ success: false, reply: 'Abhi jawab nahi de paa raha, kripya +91 94667 09410 par call ya WhatsApp karein.' })
+      await ensureModel()
+      const reply = await tryChatCompletion(messagesToSend, groqKey)
+      if (reply && reply.trim() !== '') {
+        return res.json({ success: true, reply })
       }
-      const data = await resp.json()
-      const reply = data?.choices?.[0]?.message?.content || ''
-      return res.json({ success: true, reply })
+      return res.json({ success: false, reply: 'Abhi jawab nahi de paa raha, kripya +91 94667 09410 par call ya WhatsApp karein.' })
     } catch (err) {
       console.error('Chat error:', err?.message || err)
       console.error('Chat error stack:', err?.stack)
@@ -340,8 +434,14 @@ app.use((req, res) => {
   })
 })
 
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`GROQ_API_KEY_PRESENT:${!!process.env.GROQ_API_KEY}`)
+  try {
+    await getModelList(true)
+    await ensureModel()
+  } catch (e) {
+    // ignore
+  }
   console.log(`🚀 Server running on http://localhost:${PORT}`)
   console.log(`📝 API endpoint: http://localhost:${PORT}/api/contact`)
   console.log(`🏥 Health check: http://localhost:${PORT}/api/health`)
