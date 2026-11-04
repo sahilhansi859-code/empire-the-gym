@@ -1,46 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiMapPin, FiPhone, FiWatch, FiMail, FiUser, FiPlus, FiMinus, FiCheck, FiHelpCircle, FiExternalLink } from 'react-icons/fi'
-import { FaWhatsapp } from 'react-icons/fa'
+import { FiMapPin, FiPhone, FiUser, FiPlus, FiMinus, FiCheck, FiHelpCircle } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
-import { gymData, languageStrings, interestedOptions } from '../data/gymData'
+import { gymData, gymMapsUrl, languageStrings, interestedOptions } from '../data/gymData'
 import { SectionHeading, HeroContent, Button, Card, CardTitle, CardDescription } from '../components/ui'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001/api'
-
-function isOpenNow(timing) {
-  const now = new Date()
-  const istOffset = 5.5 * 60 * 60 * 1000
-  const istNow = new Date(now.getTime() + istOffset)
-  const day = istNow.getDay()
-  const hours = istNow.getHours()
-  const minutes = istNow.getMinutes()
-  const currentMinutes = hours * 60 + minutes
-
-  const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
-  const today = dayNames[day]
-  
-  const schedule = timing.raw[today]
-  if (!schedule || !schedule.open || !schedule.close) return false
-
-  const [openHours, openMinutes] = schedule.open.split(':').map(Number)
-  const [closeHours, closeMinutes] = schedule.close.split(':').map(Number)
-  const openTime = openHours * 60 + openMinutes
-  const closeTime = closeHours * 60 + closeMinutes
-
-  return currentMinutes >= openTime && currentMinutes < closeTime
-}
+const API_URL = '/api'
 
 function validatePhone(phone) {
   const cleaned = phone.replace(/\D/g, '')
   return cleaned.length === 10 && /^[6-9]\d{9}$/.test(cleaned)
-}
-
-function validateEmail(email) {
-  if (!email) return true
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
 function FAQItem({ faq, index, t }) {
@@ -99,22 +70,11 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    email: '',
     interestedIn: '',
     message: ''
   })
   const [errors, setErrors] = useState({})
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [openStatus, setOpenStatus] = useState(false)
-
-  useEffect(() => {
-    setOpenStatus(isOpenNow(data.timing))
-    const interval = setInterval(() => {
-      setOpenStatus(isOpenNow(data.timing))
-    }, 60000)
-    return () => clearInterval(interval)
-  }, [])
-
   const handleChange = (e) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
@@ -130,9 +90,6 @@ export default function Contact() {
       newErrors.phone = t === 'en' ? 'Phone number is required' : 'फोन नंबर आवश्यक है'
     } else if (!validatePhone(formData.phone)) {
       newErrors.phone = t === 'en' ? 'Enter a valid 10-digit Indian phone number' : 'मान्य 10-अंकीय भारतीय फोन नंबर दर्ज करें'
-    }
-    if (formData.email && !validateEmail(formData.email)) {
-      newErrors.email = t === 'en' ? 'Enter a valid email address' : 'मान्य ईमेल पता दर्ज करें'
     }
     if (!formData.interestedIn) newErrors.interestedIn = t === 'en' ? 'Please select an option' : 'कृपया एक विकल्प चुनें'
     if (!formData.message.trim()) newErrors.message = t === 'en' ? 'Message is required' : 'संदेश आवश्यक है'
@@ -150,7 +107,7 @@ export default function Contact() {
         headers: { 'Content-Type': 'application/json' }
       })
       toast.success(strings.contact.success)
-      setFormData({ name: '', phone: '', email: '', interestedIn: '', message: '' })
+      setFormData({ name: '', phone: '', interestedIn: '', message: '' })
     } catch (error) {
       toast.error(strings.contact.error)
     } finally {
@@ -246,28 +203,6 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="label-field">
-                    {strings.contact.email}
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className={`input-field ${errors.email ? 'border-gym-red focus:border-gym-red focus:ring-gym-red/20' : ''}`}
-                    placeholder={t === 'en' ? 'your@email.com' : 'your@email.com'}
-                    aria-invalid={errors.email ? 'true' : 'false'}
-                    aria-describedby={errors.email ? 'email-error' : undefined}
-                  />
-                  {errors.email && (
-                    <motion.p id="email-error" className="mt-1 text-sm text-gym-red" initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }}>
-                      <FiHelpCircle className="w-4 h-4 inline mr-1" /> {errors.email}
-                    </motion.p>
-                  )}
-                </div>
-
-                <div>
                   <label htmlFor="interestedIn" className="label-field">
                     {strings.contact.interestedIn} <span className="text-gym-red">*</span>
                   </label>
@@ -343,7 +278,7 @@ export default function Contact() {
 
               <div className="mb-8 rounded-xl overflow-hidden border border-gym-border">
                 <a
-                  href="https://www.google.com/maps/place/empire+the+gym+hansi/data=!4m2!3m1!1s0x391239daf03395fd:0xc0a6404c7c376cbc?sa=X&ved=1t:242&ictx=111"
+                  href={gymMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative block"
@@ -355,7 +290,9 @@ export default function Contact() {
                     alt="Satellite view of Empire The Gym, Hansi"
                     width="1000"
                     height="500"
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
                     referrerPolicy="no-referrer"
                     className="w-full h-[300px] object-cover"
                   />
@@ -381,29 +318,29 @@ export default function Contact() {
 
               <div className="space-y-6">
                 <Card hover padding="p-6" className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gym-red/10 flex items-center justify-center text-gym-red flex-shrink-0">
+                  <a
+                    href={gymMapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open gym address in Google Maps"
+                    className="w-12 h-12 rounded-xl bg-gym-red/10 flex items-center justify-center text-gym-red flex-shrink-0 hover:bg-gym-red/20 transition-colors"
+                  >
                     <FiMapPin className="w-6 h-6" />
-                  </div>
+                  </a>
                   <div>
                     <h4 className="font-heading text-gym-white mb-1">{strings.contactInfo.address}</h4>
-                    <p className="text-gym-white-soft">{data.address}</p>
-                    <motion.a
-                      href="https://www.google.com/maps/place/empire+the+gym+hansi/data=!4m2!3m1!1s0x391239daf03395fd:0xc0a6404c7c376cbc?sa=X&ved=1t:242&ictx=111"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 mt-2 text-gym-red hover:text-gym-red-light font-heading text-sm uppercase tracking-wider transition-colors"
-                      whileHover={{ x: 4 }}
-                    >
-                      {strings.contactInfo.getDirections}
-                      <FiExternalLink className="w-4 h-4" />
-                    </motion.a>
+                    <a href={gymMapsUrl} target="_blank" rel="noopener noreferrer" className="text-gym-white-soft hover:text-gym-red transition-colors">{data.address}</a>
                   </div>
                 </Card>
 
                 <Card hover padding="p-6" className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gym-red/10 flex items-center justify-center text-gym-red flex-shrink-0">
+                  <a
+                    href={`tel:+${data.phoneClean}`}
+                    aria-label={`${strings.ui.callNow}: ${data.phone}`}
+                    className="w-12 h-12 rounded-xl bg-gym-red/10 flex items-center justify-center text-gym-red flex-shrink-0 hover:bg-gym-red/20 transition-colors"
+                  >
                     <FiPhone className="w-6 h-6" />
-                  </div>
+                  </a>
                   <div>
                     <h4 className="font-heading text-gym-white mb-1">{strings.contactInfo.phone}</h4>
                     <motion.a
@@ -412,67 +349,9 @@ export default function Contact() {
                     >
                       {data.phone}
                     </motion.a>
-                    <motion.a
-                      href={`tel:+${data.phoneClean}`}
-                      className="btn-primary text-sm px-4 py-2"
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      {strings.hero.callNow}
-                    </motion.a>
                   </div>
                 </Card>
 
-                <Card hover padding="p-6" className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-500 flex-shrink-0">
-                    <FaWhatsapp className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-heading text-gym-white mb-1">{strings.contactInfo.whatsapp}</h4>
-                    <motion.a
-                      href={data.social.whatsapp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gym-white-soft hover:text-green-500 transition-colors block mb-1"
-                    >
-                      {t === 'en' ? 'Chat on WhatsApp' : 'व्हाट्सएप पर चैट करें'}
-                    </motion.a>
-                    <motion.a
-                      href={data.social.whatsapp}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-green-600 hover:bg-green-700 text-white text-sm px-4 py-2 rounded-lg font-heading uppercase tracking-wider inline-flex items-center gap-2 transition-colors"
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <FaWhatsapp className="w-4 h-4" />
-                      {t === 'en' ? 'Message Us' : 'हमें मैसेज करें'}
-                    </motion.a>
-                  </div>
-                </Card>
-
-                <Card hover padding="p-6" className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gym-gold/10 flex items-center justify-center text-gym-gold flex-shrink-0">
-                    <FiWatch className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <h4 className="font-heading text-gym-white mb-1">{strings.contactInfo.timings}</h4>
-                    <div className="space-y-1 text-gym-white-soft">
-                      <p>{data.timing.weekdays}</p>
-                      <p>{data.timing.sunday}</p>
-                    </div>
-                    <div className="flex items-center gap-2 mt-2">
-                      <motion.div
-                        className={`w-3 h-3 rounded-full ${openStatus ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                      />
-                      <span className="font-heading text-sm uppercase tracking-wider">
-                        {openStatus 
-                          ? (t === 'en' ? strings.contactInfo.openNow : 'खुला है') 
-                          : (t === 'en' ? strings.contactInfo.closed : 'बंद')}
-                      </span>
-                    </div>
-                  </div>
-                </Card>
               </div>
             </motion.div>
           </div>

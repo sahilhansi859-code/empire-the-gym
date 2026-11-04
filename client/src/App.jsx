@@ -1,7 +1,8 @@
+import { useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { Navbar, Footer, ScrollToTop, WhatsAppButton } from './components/layout'
 import { Loader } from './components/ui'
-import { useState } from 'react'
+import Chatbot from './components/ui/Chatbot'
 import Home from './pages/Home'
 import About from './pages/About'
 import Gallery from './pages/Gallery'
@@ -12,10 +13,12 @@ function App() {
   const [showLoader, setShowLoader] = useState(true)
   const location = useLocation()
 
+  if (showLoader) {
+    return <Loader onComplete={() => setShowLoader(false)} />
+  }
+
   return (
     <div className="min-h-screen bg-gym-black text-gym-white">
-      {showLoader && <Loader onComplete={() => setShowLoader(false)} />}
-      
       <Navbar />
 
       <main id="main-content" className="pt-16 lg:pt-20">
@@ -31,6 +34,7 @@ function App() {
       <Footer />
 
       <WhatsAppButton />
+      <Chatbot />
       <ScrollToTop />
     </div>
   )

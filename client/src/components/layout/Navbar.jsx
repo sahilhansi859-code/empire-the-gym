@@ -121,7 +121,7 @@ export function Navbar() {
                   href={social.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center px-3 py-2 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:brightness-110 text-white rounded-lg transition-all"
+                  className="flex items-center justify-center p-2 bg-gradient-to-br from-purple-600 via-pink-600 to-orange-500 hover:brightness-110 text-white rounded-lg transition-all"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label="Instagram"

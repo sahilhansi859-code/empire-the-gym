@@ -67,19 +67,19 @@
   }
   
   .heading-xl {
-    @apply font-heading text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold uppercase tracking-tight leading-tight text-gym-white;
+    @apply font-heading text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold uppercase tracking-normal leading-[1.2] text-gym-white;
   }
   
   .heading-lg {
-    @apply font-heading text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-tight text-gym-white;
+    @apply font-heading text-3xl sm:text-4xl lg:text-5xl font-bold uppercase tracking-normal leading-[1.2] text-gym-white;
   }
   
   .heading-md {
-    @apply font-heading text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-tight text-gym-white;
+    @apply font-heading text-2xl sm:text-3xl lg:text-4xl font-bold uppercase tracking-normal leading-[1.2] text-gym-white;
   }
   
   .heading-sm {
-    @apply font-heading text-xl sm:text-2xl lg:text-3xl font-bold uppercase text-gym-white;
+    @apply font-heading text-xl sm:text-2xl lg:text-3xl font-bold uppercase tracking-normal leading-[1.2] text-gym-white;
   }
   
   .text-body {

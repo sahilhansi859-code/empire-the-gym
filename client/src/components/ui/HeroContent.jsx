@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { FiArrowRight, FiMapPin, FiPhone, FiStar, FiWatch } from 'react-icons/fi'
+import { FiArrowRight, FiClock, FiMapPin, FiPhone } from 'react-icons/fi'
+import { gymMapsUrl } from '../../data/gymData'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -23,16 +24,16 @@ export function HeroContent({ data, strings, t, headingId }) {
       animate="visible"
     >
       <motion.p
-        className="mb-5 inline-flex items-center justify-center gap-3 font-heading text-base font-bold uppercase tracking-[0.3em] text-white/90 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mb-6 sm:gap-4 sm:text-xl"
+        className="mb-5 inline-flex items-center justify-center gap-2 font-heading text-2xl uppercase drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:mb-6 sm:gap-3 sm:text-3xl lg:text-4xl"
         variants={itemVariants}
       >
-        <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
-        EMPIRE THE GYM
-        <FiStar className="h-6 w-6 fill-white text-white sm:h-8 sm:w-8" aria-hidden="true" />
+        <span className="text-white">EMPIRE</span>
+        <span className="h-7 w-px bg-gradient-to-b from-gym-red to-gym-gold sm:h-9" aria-hidden="true" />
+        <span className="text-gym-red">THE GYM</span>
       </motion.p>
       <motion.h1
         id={headingId}
-        className="font-heading text-[clamp(3.25rem,10vw,7.5rem)] font-black uppercase leading-[1.05] tracking-tight text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.7)]"
+        className="font-heading text-[clamp(3.25rem,10vw,7.5rem)] font-black uppercase leading-[1.2] tracking-normal text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.7)]"
         variants={itemVariants}
       >
         <span className="block">{headline[0]}</span>
@@ -64,14 +65,20 @@ export function HeroContent({ data, strings, t, headingId }) {
         variants={itemVariants}
       >
         <div className="flex items-center gap-2">
-          <FiWatch className="h-5 w-5 shrink-0 text-gym-red-light" />
+          <FiClock className="h-5 w-5 shrink-0 text-gym-red-light" />
           <span className="font-body text-sm font-medium text-white">{data.timing.weekdays}</span>
         </div>
         <span className="hidden h-5 w-px bg-white/30 sm:block" aria-hidden="true" />
-        <div className="flex items-center gap-2">
+        <a
+          href={gymMapsUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-white transition-colors hover:text-gym-red-light"
+          aria-label="Open gym location in Google Maps"
+        >
           <FiMapPin className="h-5 w-5 shrink-0 text-gym-red-light" />
-          <span className="font-body text-sm font-medium text-white">Hansi, Hisar, Haryana</span>
-        </div>
+          <span className="font-body text-sm font-medium">Hansi, Hisar, Haryana</span>
+        </a>
       </motion.div>
     </motion.div>
   )

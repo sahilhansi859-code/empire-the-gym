@@ -1,110 +1,36 @@
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
-import { useLanguage } from '../../context/LanguageContext'
-import { languageStrings } from '../../data/gymData'
+import { useEffect } from 'react'
 
 export function Loader({ onComplete }) {
-  const { t } = useLanguage()
-  const strings = languageStrings[t]
-  const [progress, setProgress] = useState(0)
-  const [animationDone, setAnimationDone] = useState(false)
-
   useEffect(() => {
-    const duration = 2000
-    const startTime = Date.now()
-    
-    const animate = () => {
-      const elapsed = Date.now() - startTime
-      const progressValue = Math.min(elapsed / duration, 1)
-      const easedProgress = 1 - Math.pow(1 - progressValue, 3)
-      
-      setProgress(easedProgress * 100)
-      
-      if (progressValue < 1) {
-        requestAnimationFrame(animate)
-      } else {
-        setAnimationDone(true)
-      }
-    }
-    
-    requestAnimationFrame(animate)
-  }, [])
-
-  useEffect(() => {
-    if (animationDone) {
-      const timer = setTimeout(() => {
-        onComplete?.()
-      }, 300)
-      return () => clearTimeout(timer)
-    }
-  }, [animationDone, onComplete])
+    const timer = window.setTimeout(() => onComplete?.(), 1000)
+    return () => window.clearTimeout(timer)
+  }, [onComplete])
 
   return (
     <motion.div
-      className="fixed inset-0 bg-gym-black z-50 flex items-center justify-center"
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.5 } }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-gym-black"
       role="status"
-      aria-label={strings.ui.loading}
+      aria-label="Loading"
     >
-      <div className="text-center">
-        <motion.div
-          className="inline-flex items-center justify-center w-24 h-24 rounded-2xl bg-gradient-to-br from-gym-red to-gym-gold mb-8"
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, type: 'spring', stiffness: 100 }}
-        >
-          <motion.span
-            className="font-heading text-3xl text-gym-white"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-          >
-            E
-          </motion.span>
-        </motion.div>
-        
-        <motion.h1
-          className="font-heading text-3xl sm:text-4xl lg:text-5xl text-gym-white mb-2"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-        >
-          EMPIRE THE GYM
-        </motion.h1>
-        
-        <motion.p
-          className="text-gym-red font-heading text-lg uppercase tracking-wider mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-          Be The Part Of An Epic Empire
-        </motion.p>
-
-        <motion.div
-          className="w-64 h-2 bg-gym-border rounded-full overflow-hidden"
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
-        >
-          <motion.div
-            className="h-full bg-gradient-to-r from-gym-red to-gym-gold rounded-full"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
-          />
-        </motion.div>
-
-        <motion.p
-          className="mt-4 text-gym-white-soft text-sm font-body"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1 }}
-        >
-          {strings.ui.loading} {Math.round(progress)}%
-        </motion.p>
+      <div className="flex flex-col items-center">
+        <motion.img
+          src="/favicon.png"
+          alt="Empire The Gym logo"
+          className="h-[min(72vw,20rem)] w-[min(72vw,20rem)] object-contain"
+          initial={{ opacity: 0.75, scale: 0.94 }}
+          animate={{ opacity: [0.75, 1, 0.75], scale: [0.94, 1, 0.94] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <div className="mt-4 flex items-center gap-2">
+          <span className="font-heading text-2xl text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] sm:text-3xl lg:text-4xl">
+            EMPIRE
+          </span>
+          <span className="hidden h-8 w-px bg-gradient-to-b from-gym-red to-gym-gold sm:block" />
+          <span className="font-heading text-2xl text-gym-red sm:text-3xl lg:text-4xl">
+            THE GYM
+          </span>
+        </div>
       </div>
     </motion.div>
   )

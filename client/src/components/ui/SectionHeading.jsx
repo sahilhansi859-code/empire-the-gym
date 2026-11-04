@@ -16,6 +16,11 @@ export function SectionHeading({
     center: 'text-center',
     right: 'text-right'
   }
+  const widthAlignments = {
+    left: '',
+    center: 'mx-auto',
+    right: 'ml-auto'
+  }
 
   return (
     <motion.div
@@ -37,7 +42,7 @@ export function SectionHeading({
         </motion.span>
       )}
       <motion.h2
-        className="heading-lg mb-4"
+        className={`heading-lg mb-5 max-w-4xl ${widthAlignments[align]}`}
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5 }}
@@ -46,7 +51,7 @@ export function SectionHeading({
       </motion.h2>
       {subtitle && (
         <motion.p
-          className="text-body max-w-3xl mx-auto"
+          className={`text-body max-w-3xl ${alignments[align]} ${widthAlignments[align]}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}

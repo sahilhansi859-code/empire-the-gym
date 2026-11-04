@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiArrowRight, FiPhone, FiCheck, FiStar, FiTarget, FiUsers, FiTag, FiDroplet, FiMessageCircle, FiZap, FiTruck, FiWind, FiTool, FiAward, FiHelpCircle, FiCornerUpLeft } from 'react-icons/fi'
+import { FiArrowRight, FiPhone, FiCheck, FiStar, FiTarget, FiRepeat, FiUsers, FiTag, FiDroplet, FiMessageCircle, FiZap, FiTruck, FiWind, FiTool, FiAward, FiHelpCircle, FiCornerUpLeft } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings, interestedOptions } from '../data/gymData'
 import { 
@@ -11,7 +11,6 @@ import {
   CardHeader, 
   CardTitle, 
   CardDescription, 
-  Button, 
   Counter,
   Lightbox
 } from '../components/ui'
@@ -23,7 +22,6 @@ const itemVariants = {
 
 export default function Home() {
   const { t } = useLanguage()
-  const navigate = useNavigate()
   const strings = languageStrings[t]
   const data = gymData[t]
   const [lightboxIndex, setLightboxIndex] = useState(null)
@@ -134,12 +132,6 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <p className="text-body mb-6">{data.about.story}</p>
-              <div className="flex justify-center">
-                <Link to="/about" className="btn-secondary inline-flex items-center gap-2">
-                  {strings.about.knowMore}
-                  <FiArrowRight className="w-5 h-5" />
-                </Link>
-              </div>
             </motion.div>
           </div>
         </div>
@@ -217,12 +209,6 @@ export default function Home() {
               <p className="text-gym-red font-heading text-sm uppercase tracking-wider mb-2">{data.about.owner.title}</p>
               <h3 className="heading-md mb-4">{data.about.owner.name}</h3>
               <p className="text-body mb-6">{data.about.owner.bio}</p>
-              <div className="flex flex-wrap gap-4">
-                <Link to="/contact" className="btn-primary">
-                  {t === 'en' ? 'Get in Touch' : 'संपर्क करें'}
-                  <FiArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </div>
             </motion.div>
           </div>
         </div>
@@ -283,6 +269,7 @@ export default function Home() {
                 viewport={{ once: true, margin: '-100px', amount: 0.1 }}
                 transition={{ delay: program.delay }}
               >
+                <a href="https://wa.me/919466709410?text=नमस्ते! एम्पायर द जिम" target="_blank" rel="noreferrer" className="block h-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-gym-red">
                 <Card hover padding="p-8" className="h-full group border-gradient">
                   <CardHeader>
                     <motion.div
@@ -315,6 +302,7 @@ export default function Home() {
                     ))}
                   </ul>
                 </Card>
+                </a>
               </motion.div>
             ))}
           </div>
@@ -325,41 +313,104 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
           >
-            <Link to="/contact" className="btn-primary inline-flex items-center gap-2">
+            <Link to="/contact" className="btn-secondary">
               {strings.programs.viewAll}
-              <FiArrowRight className="w-5 h-5" />
             </Link>
           </motion.div>
         </div>
       </section>
 
-      <section id="stats" className="section-padding section-alt border-y border-gym-border" aria-labelledby="stats-heading">
+      <section id="mission-vision" className="section-padding section-alt" aria-label={t === 'en' ? 'Mission and Vision' : 'मिशन और विजन'}>
         <div className="container-custom">
-          <SectionHeading
-            title={strings.stats.title}
-          />
+          <SectionHeading title={t === 'en' ? 'Mission & Vision' : 'मिशन और विजन'} />
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            {data.stats.map((stat, index) => (
-              <Counter
-                key={stat.id}
-                value={stat.value}
-                label={stat.label}
-                suffix={stat.suffix}
-                icon={
-                  stat.id === 'years' ? <FiTarget className="w-7 h-7" /> :
-                  stat.id === 'members' ? <FiUsers className="w-7 h-7" /> :
-                  stat.id === 'machines' ? <FiTool className="w-7 h-7" /> :
-                  stat.id === 'trainers' ? <FiTarget className="w-7 h-7" /> : null
-                }
-                className="lg:col-span-1"
-              />
+          <div className="grid gap-8 md:grid-cols-2">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+            >
+              <Card hover padding="p-8 h-full border-gradient">
+                <CardHeader>
+                  <motion.div
+                    className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gym-red/10 text-gym-red"
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.5, type: 'spring' }}
+                  >
+                    <FiTarget className="h-7 w-7" />
+                  </motion.div>
+                  <CardTitle size="lg">{strings.about.mission}</CardTitle>
+                </CardHeader>
+                <CardDescription className="text-gym-white-soft">{data.about.mission}</CardDescription>
+              </Card>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.1 }}
+              transition={{ delay: 0.1 }}
+            >
+              <Card hover padding="p-8 h-full border-gradient">
+                <CardHeader>
+                  <motion.div
+                    className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gym-gold/10 text-gym-gold"
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.5, type: 'spring' }}
+                  >
+                    <FiAward className="h-7 w-7" />
+                  </motion.div>
+                  <CardTitle size="lg">{strings.about.vision}</CardTitle>
+                </CardHeader>
+                <CardDescription className="text-gym-white-soft">{data.about.vision}</CardDescription>
+              </Card>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <section id="values" className="section-padding" aria-label={strings.about.ourValues}>
+        <div className="container-custom">
+          <SectionHeading title={strings.about.ourValues} />
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {data.about.values.map((value, index) => (
+              <motion.div
+                key={value.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-100px', amount: 0.1 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card hover padding="p-8 text-center" className="h-full border-gradient">
+                  <CardHeader>
+                    <motion.div
+                      className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-gym-red/10 text-gym-red"
+                      initial={{ scale: 0, rotate: -180 }}
+                      whileInView={{ scale: 1, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3, duration: 0.5, type: 'spring' }}
+                    >
+                      {value.icon === 'target' && <FiTarget className="h-8 w-8" />}
+                      {value.icon === 'repeat' && <FiRepeat className="h-8 w-8" />}
+                      {value.icon === 'dumbbell' && <FiTool className="h-8 w-8" />}
+                      {value.icon === 'users' && <FiUsers className="h-8 w-8" />}
+                    </motion.div>
+                    <CardTitle size="md">{value.title}</CardTitle>
+                  </CardHeader>
+                  <CardDescription className="text-gym-white-soft">{value.description}</CardDescription>
+                </Card>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="amenities" className="section-padding" aria-labelledby="amenities-heading">
+      <section id="amenities" className="section-padding section-alt" aria-labelledby="amenities-heading">
         <div className="container-custom">
           <SectionHeading
             title={strings.amenities.title}
@@ -394,61 +445,6 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section id="membership" className="section-padding section-alt" aria-labelledby="membership-heading">
-        <div className="container-custom">
-          <SectionHeading
-            title={strings.membership.title}
-          />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {data.membershipPlans.map((plan, index) => (
-              <motion.div
-                key={plan.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-100px', amount: 0.1 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card 
-                  hover 
-                  padding="p-8" 
-                  className="h-full flex flex-col relative"
-                >
-                  <div className="text-center mb-6">
-                    <h3 className="font-heading text-xl uppercase tracking-wider text-gym-white mb-2">{plan.name}</h3>
-                    <div className="flex items-baseline justify-center gap-1">
-                      <span className="font-heading text-4xl text-gym-white">{plan.price}</span>
-                    </div>
-                  </div>
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {plan.features.map((feature, i) => (
-                      <motion.li
-                        key={i}
-                        className="flex items-center gap-3 text-gym-white-soft"
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 0.2 + i * 0.05 }}
-                      >
-                        <FiCheck className="w-5 h-5 text-gym-red flex-shrink-0" />
-                        <span className="text-body-sm">{feature}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                  <Button 
-                    variant="secondary" 
-                    className="w-full"
-                    onClick={() => navigate('/contact#contact')}
-                  >
-                    {plan.cta}
-                  </Button>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-
         </div>
       </section>
 
@@ -492,14 +488,67 @@ export default function Home() {
             viewport={{ once: true, amount: 0.1 }}
           >
             <Link to="/gallery" className="btn-secondary inline-flex items-center gap-2">
-              {t === 'en' ? 'View Full Gallery' : 'पूरी गैलरी देखें'}
-              <FiArrowRight className="w-5 h-5" />
+              {t === 'en' ? 'View Gallery' : 'गैलरी देखें'}
             </Link>
           </motion.div>
         </div>
       </section>
 
-      <section id="testimonials" className="section-padding section-alt" aria-labelledby="testimonials-heading">
+      <section id="membership" className="section-padding section-alt" aria-labelledby="membership-heading">
+        <div className="container-custom">
+          <SectionHeading
+            title={strings.membership.title}
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {data.membershipPlans.map((plan, index) => (
+              <motion.div
+                key={plan.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-100px', amount: 0.1 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <a href="https://wa.me/919466709410?text=नमस्ते! एम्पायर द जिम" target="_blank" rel="noreferrer" className="block h-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-gym-red">
+                <Card 
+                  hover 
+                  padding="p-8" 
+                  className="h-full flex flex-col relative"
+                >
+                  <div className="text-center mb-6">
+                    <h3 className="font-heading text-xl uppercase tracking-wider text-gym-white mb-2">{plan.name}</h3>
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="font-heading text-4xl text-gym-white">{plan.price}</span>
+                    </div>
+                  </div>
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {plan.features.map((feature, i) => (
+                      <motion.li
+                        key={i}
+                        className="flex items-center gap-3 text-gym-white-soft"
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 + i * 0.05 }}
+                      >
+                        <FiCheck className="w-5 h-5 text-gym-red flex-shrink-0" />
+                        <span className="text-body-sm">{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </Card>
+                </a>
+              </motion.div>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Link to="/contact" className="btn-secondary">
+              {strings.programs.viewAll}
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="section-padding" aria-labelledby="testimonials-heading">
         <div className="container-custom">
           <SectionHeading
             title={strings.testimonials.title}
@@ -532,6 +581,30 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="stats" className="section-padding section-alt border-y border-gym-border" aria-labelledby="stats-heading">
+        <div className="container-custom">
+          <SectionHeading title={strings.stats.title} />
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {data.stats.map((stat) => (
+              <Counter
+                key={stat.id}
+                value={stat.value}
+                label={stat.label}
+                suffix={stat.suffix}
+                icon={
+                  stat.id === 'years' ? <FiTarget className="w-7 h-7" /> :
+                  stat.id === 'members' ? <FiUsers className="w-7 h-7" /> :
+                  stat.id === 'machines' ? <FiTool className="w-7 h-7" /> :
+                  stat.id === 'trainers' ? <FiTarget className="w-7 h-7" /> : null
+                }
+                className="lg:col-span-1"
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="cta" className="relative flex min-h-[65vh] items-center justify-center overflow-hidden isolate py-24 sm:py-28" aria-labelledby="cta-heading">
         <div className="absolute inset-0 z-0">
           <img
@@ -554,7 +627,7 @@ export default function Home() {
           >
             <h2
               id="cta-heading"
-              className="font-heading text-[clamp(2.5rem,7vw,5rem)] font-black uppercase leading-[1.05] tracking-tight text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.8)]"
+              className="font-heading text-[clamp(2.5rem,7vw,5rem)] font-black uppercase leading-[1.2] tracking-normal text-white drop-shadow-[0_6px_28px_rgba(0,0,0,0.8)]"
             >
               {t === 'en'
                 ? 'Ready to start your transformation journey?'

@@ -3,12 +3,13 @@ import { motion } from 'framer-motion'
 import { FiMapPin, FiClock, FiPhone } from 'react-icons/fi'
 import { FaInstagram, FaWhatsapp } from 'react-icons/fa'
 import { useLanguage } from '../../context/LanguageContext'
-import { languageStrings, gymData } from '../../data/gymData'
+import { gymMapsUrl, languageStrings, gymData } from '../../data/gymData'
 
 export function Footer() {
   const { t } = useLanguage()
   const strings = languageStrings[t]
   const data = gymData[t]
+  const whatsappUrl = `https://wa.me/${data.phoneClean}?text=${encodeURIComponent(strings.ui.whatsappMessage)}`
 
   const quickLinks = [
     { path: '/', label: strings.nav.home },
@@ -83,18 +84,20 @@ export function Footer() {
           >
             <h4 className="font-heading text-lg uppercase tracking-wider text-gym-white mb-6">{strings.contactInfo.title}</h4>
             <address className="not-italic space-y-4 text-body-sm">
-              <div className="flex items-start gap-3">
+              <a
+                href={gymMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open gym address in Google Maps"
+                className="flex items-start gap-3 text-gym-white-soft transition-colors hover:text-gym-red"
+              >
                 <FiMapPin className="w-5 h-5 text-gym-red mt-0.5 flex-shrink-0" />
-                <span className="text-gym-white-soft">{data.address}</span>
-              </div>
-              <div className="flex items-center gap-3">
+                <span>{data.address}</span>
+              </a>
+              <a href={`tel:+${data.phoneClean}`} className="flex items-center gap-3 text-gym-white-soft transition-colors hover:text-gym-red">
                 <FiPhone className="w-5 h-5 text-gym-red flex-shrink-0" />
-                <a href={`tel:+${data.phoneClean}`} className="text-gym-white-soft hover:text-gym-red transition-colors">{data.phone}</a>
-              </div>
-              <div className="flex items-center gap-3">
-                <FaWhatsapp className="w-5 h-5 text-green-500 flex-shrink-0" />
-                <a href={data.social.whatsapp} target="_blank" rel="noopener noreferrer" className="text-gym-white-soft hover:text-green-500 transition-colors">WhatsApp</a>
-              </div>
+                <span>{data.phone}</span>
+              </a>
               <div className="flex items-start gap-3">
                 <FiClock className="w-5 h-5 text-gym-red mt-0.5 flex-shrink-0" />
                 <div>
@@ -112,14 +115,25 @@ export function Footer() {
             transition={{ delay: 0.3 }}
           >
             <h4 className="font-heading text-lg uppercase tracking-wider text-gym-white mb-6">{strings.footer.followUs}</h4>
-            <div className="mb-8">
+            <div className="flex flex-col items-start gap-3">
+              <motion.a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-40 items-center justify-center gap-2 rounded-lg bg-green-600 px-5 py-3 font-heading text-sm uppercase text-white transition-colors hover:bg-green-700"
+                whileTap={{ scale: 0.98 }}
+                aria-label="Chat on WhatsApp"
+              >
+                <FaWhatsapp className="h-5 w-5" />
+                <span>WhatsApp</span>
+              </motion.a>
               {socialLinks.map((social) => (
                 <motion.a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 hover:brightness-110 text-white px-5 py-3 rounded-lg font-heading text-sm uppercase transition-all"
+                  className="inline-flex w-40 items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 hover:brightness-110 text-white px-5 py-3 rounded-lg font-heading text-sm uppercase transition-all"
                   aria-label={social.label}
                 >
                   <social.icon className="w-5 h-5" />
@@ -127,15 +141,6 @@ export function Footer() {
                 </motion.a>
               ))}
             </div>
-            <a
-              href={data.social.whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-lg font-heading text-sm uppercase transition-colors"
-            >
-              <FaWhatsapp className="w-5 h-5" />
-              <span>WhatsApp</span>
-            </a>
           </motion.div>
         </div>
 

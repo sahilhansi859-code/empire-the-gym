@@ -1,9 +1,12 @@
+export const gymMapsUrl = "https://www.google.com/maps/place/empire+the+gym+hansi/data=!4m2!3m1!1s0x391239daf03395fd:0xc0a6404c7c376cbc?sa=X&ved=1t:242&ictx=111"
+
 export const gymDataBilingual = {
   en: {
     name: "Empire The Gym",
     slogan: "Be The Part Of An Epic Empire",
     owner: "Ramandeep Singh",
-    address: "Plot No. 103/7, Lal Sadak, Hansi, Hisar, Haryana - 125033",
+    address: "Near Royal Kids School, Bajriya Chowk, Laal Sadak, Hansi, Hisar, Haryana - 125033",
+    addressAlt: "Plot No. 103/7, Laal Sadak, Hansi, Hisar, Haryana - 125033",
     phone: "+91 94667 09410",
     phoneClean: "919466709410",
     email: "info@empirethegym.com",
@@ -22,12 +25,20 @@ export const gymDataBilingual = {
     },
     activities: [
       {
-        id: "weight-loss",
-        title: "Weight Loss / Muscle Gain",
-        subtitle: "Transform • Sculpt • Achieve",
-        description: "Targeted programs for body transformation - whether your goal is losing fat or building lean muscle mass.",
-        icon: "target",
-        features: ["Body Composition Analysis", "Customized Diet Plans", "Weekly Progress Checks", "Supplement Guidance", "Lifestyle Coaching"]
+        id: "gym-workout",
+        title: "Gym Workout",
+        subtitle: "Muscle Gain • Fat Loss • Strength",
+        description: "Complete workout facility with modern equipment for strength training, muscle building, and fat loss programs.",
+        icon: "dumbbell",
+        features: ["Strength Training", "Muscle Gain Programs", "Fat Loss Workouts", "Free Weights Area", "Machine Circuit"]
+      },
+      {
+        id: "abs-training",
+        title: "Abs Training",
+        subtitle: "Core Strength • Posture • Stamina",
+        description: "Specialized core training sessions focusing on abdominal strength, posture correction, and stamina building.",
+        icon: "fire",
+        features: ["Core Strengthening", "Posture Correction", "Stamina Building", "Functional Training", "HIIT Sessions"]
       },
       {
         id: "personal-training",
@@ -38,20 +49,12 @@ export const gymDataBilingual = {
         features: ["Custom Workout Plans", "Nutrition Guidance", "Progress Tracking", "Flexible Scheduling", "Goal-Oriented Coaching"]
       },
       {
-        id: "gym-workout",
-        title: "Gym Workout",
-        subtitle: "Strength • Muscle Gain • Fat Loss",
-        description: "Complete workout facility with modern equipment for strength training, muscle building, and fat loss programs.",
-        icon: "dumbbell",
-        features: ["Strength Training", "Muscle Gain Programs", "Fat Loss Workouts", "Free Weights Area", "Machine Circuit"]
-      },
-      {
-        id: "abs-training",
-        title: "Abs Training",
-        subtitle: "Core • Posture • Stamina",
-        description: "Specialized core training sessions focusing on abdominal strength, posture correction, and stamina building.",
-        icon: "fire",
-        features: ["Core Strengthening", "Posture Correction", "Stamina Building", "Functional Training", "HIIT Sessions"]
+        id: "weight-loss",
+        title: "Weight Loss / Muscle Gain",
+        subtitle: "Transform • Sculpt • Achieve",
+        description: "Targeted programs for body transformation - whether your goal is losing fat or building lean muscle mass.",
+        icon: "target",
+        features: ["Body Composition Analysis", "Customized Diet Plans", "Weekly Progress Checks", "Supplement Guidance", "Lifestyle Coaching"]
       }
     ],
     amenities: [
@@ -109,7 +112,7 @@ export const gymDataBilingual = {
     membershipPlans: [
       {
         id: "yearly",
-        name: "Yearly",
+        name: "1 year",
         price: "Contact for Price",
         period: "/year",
         features: ["Full Gym Access", "All Group Classes", "Locker Facility", "Water & Towel Service", "Free Fitness Assessment", "4 Personal Training Sessions/Month", "Nutrition Consultation", "Priority Booking", "Guest Passes (4/year)", "Free Merchandise"],
@@ -118,7 +121,7 @@ export const gymDataBilingual = {
       },
       {
         id: "half-yearly",
-        name: "6 Months",
+        name: "6 month",
         price: "Contact for Price",
         period: "/6 months",
         features: ["Full Gym Access", "All Group Classes", "Locker Facility", "Water & Towel Service", "Free Fitness Assessment", "2 Personal Training Sessions/Month", "Nutrition Consultation"],
@@ -127,7 +130,7 @@ export const gymDataBilingual = {
       },
       {
         id: "quarterly",
-        name: "3 Months",
+        name: "3 month",
         price: "Contact for Price",
         period: "/3 months",
         features: ["Full Gym Access", "All Group Classes", "Locker Facility", "Water & Towel Service", "Free Fitness Assessment", "1 Personal Training Session/Month", "Nutrition Consultation"],
@@ -136,7 +139,7 @@ export const gymDataBilingual = {
       },
       {
         id: "monthly",
-        name: "Monthly",
+        name: "1 month",
         price: "Contact for Price",
         period: "/month",
         features: ["Full Gym Access", "All Group Classes", "Locker Facility", "Water & Towel Service", "Free Fitness Assessment"],
@@ -193,13 +196,16 @@ export const gymDataBilingual = {
       { id: 3, name: "Trainer Name", specialization: "Muscle Building", experience: "6+ Years", certifications: ["ACSM Certified", "Powerlifting Coach"], photo: "/images/trainers/trainer-3.jpg" },
       { id: 4, name: "Trainer Name", specialization: "Functional Training", experience: "3+ Years", certifications: ["CrossFit Level 1", "Mobility Specialist"], photo: "/images/trainers/trainer-4.jpg" }
     ],
+    trainersNote: "Trainer names are not publicly listed. Call or WhatsApp +91 94667 09410 to know who will train you.",
     faq: [
-      { id: 1, question: "What are the gym timings?", answer: "We are open Monday to Saturday from 5:30 AM to 10:00 PM. Sunday is closed." },
+      { id: 1, question: "What are the gym timings?", answer: "We are open Monday to Saturday from 5:30 AM to 10:00 PM. Sunday is closed. Evenings from 5 PM are usually the busiest." },
       { id: 2, question: "Do you offer personal training?", answer: "Yes, we have certified personal trainers available for 1-on-1 sessions. Custom workout and nutrition plans included." },
       { id: 3, question: "Is there parking available?", answer: "Yes, we have ample parking space for both two-wheelers and four-wheelers right at the facility." },
-      { id: 4, question: "Can I book via FITPASS?", answer: "Yes! Empire The Gym is listed on the FITPASS app. You can book your sessions directly through the app." },
-      { id: 5, question: "What amenities do you provide?", answer: "We offer a fully air-conditioned hall, parking facility, water cooler, locker rooms, and towel service." },
-      { id: 6, question: "Do you have trial sessions?", answer: "Please contact us at +91 94667 09410 for trial session availability and details." }
+      { id: 4, question: "Can I book via FITPASS?", answer: "Yes! Empire The Gym is a FITPASS partner gym. FITPASS members can book sessions at our gym through the FITPASS app, subject to their plan and slot availability." },
+      { id: 5, question: "What amenities do you provide?", answer: "We offer a fully air-conditioned hall, parking facility, and water cooler." },
+      { id: 6, question: "Do you have trial sessions?", answer: "Please contact us at +91 94667 09410 for trial session availability and details." },
+      { id: 7, question: "What are your facilities?", answer: "We have modern equipment, knowledgeable trainers, and a disciplined, motivating atmosphere with affordable fees." },
+      { id: 8, question: "How do I join?", answer: "Visit the gym during opening hours or call/WhatsApp +91 94667 09410. You can also book through the FITPASS app." }
     ],
     social: {
       instagram: "https://instagram.com/empirethegym",
@@ -213,20 +219,32 @@ export const gymDataBilingual = {
       ogImage: "https://empirethegym.com/og-image.jpg"
     },
     heroImages: {
-      home: ["/images/hero/hero-1.png", "/images/hero/hero-2.jpeg", "/images/hero/hero-3.jpeg"],
-      about: "/images/hero/hero-1.png",
-      gallery: "/images/hero/hero-1.png",
-      contact: "/images/hero/hero-1.png"
+      home: ["/images/hero/hero%201.png", "/images/hero/hero%202.png", "/images/hero/hero%203.png"],
+      about: "/images/hero/hero%201.png",
+      gallery: "/images/hero/hero%202.png",
+      contact: "/images/hero/hero%203.png"
     },
     marqueeText: "STRENGTH • DISCIPLINE • POWER • EMPIRE • CONSISTENCY • GRIND • HUSTLE • ACHIEVE • TRANSFORM • DOMINATE • ",
     ctaText: "Be The Part Of An Epic Empire",
-    fitpassNote: "Also bookable via FITPASS"
+    fitpassNote: "Also bookable via FITPASS",
+    partner: "FITPASS",
+    partnerDescription: "Empire The Gym is a partner gym on FITPASS. FITPASS members can book sessions at our gym through the FITPASS app, subject to their plan and slot availability.",
+    unverified: {
+      note: "The following details are not yet confirmed with the owner. Please call +91 94667 09410 to verify before relying on them.",
+      details: [
+        "5,000+ sq ft space with zones for cardio, stretching, aerobics and crossfit",
+        "Imported commercial cardio machines, cross trainers, multifunction stations, forearm machines, and a dedicated deadlift platform",
+        "Female-only batches (timings not available)",
+        "Structured workout plans, customized diet charts, workout observation, and supplements (protein, pre-workout, BCAA) available"
+      ]
+    }
   },
   hi: {
     name: "एम्पायर द जिम",
     slogan: "एक महाकाव्य साम्राज्य का हिस्सा बनें",
     owner: "रामनदीप सिंह",
-    address: "प्लॉट नंबर 103/7, लाल सदक, हांसी, हिसार, हरियाणा - 125033",
+    address: "नियर रॉयल किड्स स्कूल, बाजरिया चौक, लाल सदक, हांसी, हिसार, हरियाणा - 125033",
+    addressAlt: "प्लॉट नंबर 103/7, लाल सदक, हांसी, हिसार, हरियाणा - 125033",
     phone: "+91 94667 09410",
     phoneClean: "919466709410",
     email: "info@empirethegym.com",
@@ -245,12 +263,20 @@ export const gymDataBilingual = {
     },
     activities: [
       {
-        id: "weight-loss",
-        title: "वजन घटाना / मांसपेशी वृद्धि",
-        subtitle: "परिवर्तन • मूर्तिकला • प्राप्ति",
-        description: "शरीर परिवर्तन के लिए लक्षित कार्यक्रम - चाहे आपका लक्ष्य वसा कम करना हो या दुबली मांसपेशियां बनाना हो।",
-        icon: "target",
-        features: ["शरीर संरचना विश्लेषण", "अनुकूलित आहार योजनाएँ", "साप्ताहिक प्रगति जांच", "पूरक मार्गदर्शन", "जीवनशैली कोचिंग"]
+        id: "gym-workout",
+        title: "जिम वर्कआउट",
+        subtitle: "मांसपेशी वृद्धि • वसा हानि • ताकत",
+        description: "शक्ति प्रशिक्षण, मांसपेशी निर्माण और वसा हानि के लिए आधुनिक उपकरणों के साथ पूर्ण वर्कआउट सुविधा।",
+        icon: "dumbbell",
+        features: ["शक्ति प्रशिक्षण", "मांसपेशी वृद्धि कार्यक्रम", "वसा हानि वर्कआउट", "फ्री वेट्स क्षेत्र", "मशीन सर्किट"]
+      },
+      {
+        id: "abs-training",
+        title: "एब्स ट्रेनिंग",
+        subtitle: "कोर ताकत • मुद्रा • सहनशक्ति",
+        description: "पेट की ताकत, मुद्रा सुधार और सहनशक्ति पर केंद्रित विशेष कोर प्रशिक्षण सत्र।",
+        icon: "fire",
+        features: ["कोर मजबूती", "मुद्रा सुधार", "सहनशक्ति निर्माण", "फंक्शनल ट्रेनिंग", "HIIT सत्र"]
       },
       {
         id: "personal-training",
@@ -261,20 +287,12 @@ export const gymDataBilingual = {
         features: ["अनुकूलित वर्कआउट योजनाएँ", "पोषण मार्गदर्शन", "प्रगति ट्रैकिंग", "लचीला समय", "लक्ष्य आधारित कोचिंग"]
       },
       {
-        id: "gym-workout",
-        title: "जिम वर्कआउट",
-        subtitle: "ताकत • मांसपेशी वृद्धि • वसा हानि",
-        description: "शक्ति प्रशिक्षण, मांसपेशी निर्माण और वसा हानि के लिए आधुनिक उपकरणों के साथ पूर्ण वर्कआउट सुविधा।",
-        icon: "dumbbell",
-        features: ["शक्ति प्रशिक्षण", "मांसपेशी वृद्धि कार्यक्रम", "वसा हानि वर्कआउट", "फ्री वेट्स क्षेत्र", "मशीन सर्किट"]
-      },
-      {
-        id: "abs-training",
-        title: "एब्स ट्रेनिंग",
-        subtitle: "कोर • मुद्रा • सहनशक्ति",
-        description: "पेट की ताकत, मुद्रा सुधार और सहनशक्ति पर केंद्रित विशेष कोर प्रशिक्षण सत्र।",
-        icon: "fire",
-        features: ["कोर मजबूती", "मुद्रा सुधार", "सहनशक्ति निर्माण", "फंक्शनल ट्रेनिंग", "HIIT सत्र"]
+        id: "weight-loss",
+        title: "वजन घटाना / मांसपेशी वृद्धि",
+        subtitle: "परिवर्तन • मूर्तिकला • प्राप्ति",
+        description: "शरीर परिवर्तन के लिए लक्षित कार्यक्रम - चाहे आपका लक्ष्य वसा कम करना हो या दुबली मांसपेशियां बनाना हो।",
+        icon: "target",
+        features: ["शरीर संरचना विश्लेषण", "अनुकूलित आहार योजनाएँ", "साप्ताहिक प्रगति जांच", "पूरक मार्गदर्शन", "जीवनशैली कोचिंग"]
       }
     ],
     amenities: [
@@ -416,13 +434,16 @@ export const gymDataBilingual = {
       { id: 3, name: "ट्रेनर का नाम", specialization: "मांसपेशी निर्माण", experience: "6+ वर्ष", certifications: ["ACSM प्रमाणित", "पावरलिफ्टिंग कोच"], photo: "/images/trainers/trainer-3.jpg" },
       { id: 4, name: "ट्रेनर का नाम", specialization: "फंक्शनल ट्रेनिंग", experience: "3+ वर्ष", certifications: ["CrossFit लेवल 1", "गतिशीलता विशेषज्ञ"], photo: "/images/trainers/trainer-4.jpg" }
     ],
+    trainersNote: "ट्रेनर के नाम सार्वजनिक नहीं हैं। जानने के लिए +91 94667 09410 पर कॉल या व्हाट्सएप करें।",
     faq: [
-      { id: 1, question: "जिम का समय क्या है?", answer: "हम सोमवार से शनिवार तक सुबह 5:30 से रात 10:00 तक खुले हैं। रविवार बंद रहता है।" },
+      { id: 1, question: "जिम का समय क्या है?", answer: "हम सोमवार से शनिवार तक सुबह 5:30 से रात 10:00 तक खुले हैं। रविवार बंद रहता है। शाम 5 बजे से आमतौर पर भीड़ रहती है।" },
       { id: 2, question: "क्या आप पर्सनल ट्रेनिंग प्रदान करते हैं?", answer: "हां, हमारे पास 1-ऑन-1 सत्रों के लिए प्रमाणित पर्सनल ट्रेनर उपलब्ध हैं। अनुकूलित वर्कआउट और पोषण योजनाएं शामिल हैं।" },
       { id: 3, question: "क्या पार्किंग उपलब्ध है?", answer: "हां, सुविधा में ही दोपहिया और चारपहिया वाहनों के लिए पर्याप्त पार्किंग स्थान उपलब्ध है।" },
-      { id: 4, question: "क्या मैं FITPASS के माध्यम से बुक कर सकता हूं?", answer: "हां! एम्पायर द जिम FITPASS ऐप पर सूचीबद्ध है। आप सीधे ऐप के माध्यम से अपने सत्र बुक कर सकते हैं।" },
-      { id: 5, question: "आप कौन सी सुविधाएं प्रदान करते हैं?", answer: "हम पूरी तरह से एयर कंडीशन्ड हॉल, पार्किंग सुविधा, वॉटर कूलर, लॉकर रूम और तौलिया सेवा प्रदान करते हैं।" },
-      { id: 6, question: "क्या ट्रायल सत्र हैं?", answer: "कृपया ट्रायल सत्र की उपलब्धता और विवरण के लिए +91 94667 09410 पर संपर्क करें।" }
+      { id: 4, question: "क्या मैं FITPASS के माध्यम से बुक कर सकता हूं?", answer: "हां! एम्पायर द जिम एक FITPASS पार्टनर जिम है। FITPASS मेंबर हमारे जिम में सत्र FITPASS ऐप के माध्यम से बुक कर सकते हैं, जो उनकी योजना और स्लॉट उपलब्धता पर निर्भर करता है।" },
+      { id: 5, question: "आप कौन सी सुविधाएं प्रदान करते हैं?", answer: "हम पूरी तरह से एयर कंडीशन्ड हॉल, पार्किंग सुविधा, और वॉटर कूलर प्रदान करते हैं।" },
+      { id: 6, question: "क्या ट्रायल सत्र हैं?", answer: "कृपया ट्रायल सत्र की उपलब्धता और विवरण के लिए +91 94667 09410 पर संपर्क करें।" },
+      { id: 7, question: "आपकी सुविधाएं क्या हैं?", answer: "हमारे पास आधुनिक उपकरण, जानकार ट्रेनर, और अनुशासित और प्रेरणादायक माहौल है जहां किफायती शुल्क है।" },
+      { id: 8, question: "मैं कैसे जॉइन करूं?", answer: "खुलने के समय के दौरान जिम आएं या +91 94667 09410 पर कॉल/व्हाट्सएप करें। आप FITPASS ऐप के माध्यम से भी बुक कर सकते हैं।" }
     ],
     social: {
       instagram: "https://instagram.com/empirethegym",
@@ -436,14 +457,25 @@ export const gymDataBilingual = {
       ogImage: "https://empirethegym.com/og-image.jpg"
     },
     heroImages: {
-      home: ["/images/hero/hero-1.png", "/images/hero/hero-2.jpeg", "/images/hero/hero-3.jpeg"],
-      about: "/images/hero/hero-1.png",
-      gallery: "/images/hero/hero-1.png",
-      contact: "/images/hero/hero-1.png"
+      home: ["/images/hero/hero%201.png", "/images/hero/hero%202.png", "/images/hero/hero%203.png"],
+      about: "/images/hero/hero%201.png",
+      gallery: "/images/hero/hero%202.png",
+      contact: "/images/hero/hero%203.png"
     },
     marqueeText: "शक्ति • अनुशासन • ताकत • साम्राज्य • निरंतरता • मेहनत • परिश्रम • प्राप्ति • परिवर्तन • विजय • ",
     ctaText: "एक महाकाव्य साम्राज्य का हिस्सा बनें",
-    fitpassNote: "FITPASS के माध्यम से भी बुक करें"
+    fitpassNote: "FITPASS के माध्यम से भी बुक करें",
+    partner: "FITPASS",
+    partnerDescription: "एम्पायर द जिम FITPASS का एक पार्टनर जिम है। FITPASS मेंबर FITPASS ऐप के माध्यम से हमारे जिम में सत्र बुक कर सकते हैं, जो उनकी योजना और स्लॉट उपलब्धता पर निर्भर करता है।",
+    unverified: {
+      note: "निम्नलिखित विवरण अभी मालिक से पुष्टि नहीं हुए हैं। भरोसा करने से पहले +91 94667 09410 पर फोन करके सत्यापित करें।",
+      details: [
+        "5,000+ वर्ग फुट स्थान जिसमें कार्डियो, स्ट्रेचिंग, एरोबिक्स और क्रॉसफिट के लिए जोन हैं",
+        "आयातित वाणिज्यिक कार्डियो मशीनें, क्रॉस ट्रेनर्स, बहु-कार्यात्मक स्टेशन, फोरआर्म मशीनें, और एक समर्पित डेडलिफ्ट प्लेटफॉर्म",
+        "केवल महिलाओं के बैच (समय उपलब्ध नहीं)",
+        "संरचित वर्कआउट योजनाएं, अनुकूलित आहार चार्ट, वर्कआउट अवलोकन, और पूरक (प्रोटीन, प्री-वर्कआउट, बीसीएए) उपलब्ध हैं"
+      ]
+    }
   }
 };
 
@@ -456,8 +488,8 @@ export const languageStrings = {
   en: {
     nav: { home: "Home", about: "About", gallery: "Gallery", contact: "Contact" },
     hero: { joinNow: "Join Now", callNow: "Call Now", openingHours: "Opening Hours" },
-    about: { knowMore: "Know More", ourStory: "Our Story", mission: "Mission", vision: "Vision", meetOwner: "Meet the Owner", ourTrainers: "Our Trainers", ourValues: "Our Values", whyEmpire: "Why Empire" },
-    programs: { title: "Our Programs", viewAll: "View All" },
+    about: { knowMore: "Know More", ourStory: "Our Story Empire The Gym", mission: "Mission", vision: "Vision", meetOwner: "Meet the Owner", ourTrainers: "Our Trainers", ourValues: "Our Values", whyEmpire: "Why Empire" },
+    programs: { title: "Our Programs", viewAll: "Enquire Now" },
     whyChoose: { title: "Why Choose Us" },
     stats: { title: "Our Journey in Numbers" },
     amenities: { title: "Amenities" },
@@ -479,14 +511,14 @@ export const languageStrings = {
       prevImage: "Previous image",
       nextImage: "Next image",
       openFullSize: "Open full size",
-      whatsappMessage: "Hi Empire The Gym, I want to know more about your membership plans."
+      whatsappMessage: "नमस्ते! एम्पायर द जिम"
     }
   },
   hi: {
     nav: { home: "होम", about: "हमारे बारे में", gallery: "गैलरी", contact: "संपर्क" },
     hero: { joinNow: "अभी जॉइन करें", callNow: "अभी कॉल करें", openingHours: "खुलने का समय" },
-    about: { knowMore: "और जानें", ourStory: "हमारी कहानी", mission: "हमारा मिशन", vision: "हमारा विजन", meetOwner: "ओनर से मिलें", ourTrainers: "हमारे ट्रेनर्स", ourValues: "हमारे मूल्य", whyEmpire: "क्यों एम्पायर" },
-    programs: { title: "हमारे प्रोग्राम्स", viewAll: "सभी देखें" },
+    about: { knowMore: "और जानें", ourStory: "एम्पायर द जिम की कहानी", mission: "हमारा मिशन", vision: "हमारा विजन", meetOwner: "ओनर से मिलें", ourTrainers: "हमारे ट्रेनर्स", ourValues: "हमारे मूल्य", whyEmpire: "क्यों एम्पायर" },
+    programs: { title: "हमारे प्रोग्राम्स", viewAll: "पूछताछ करें" },
     whyChoose: { title: "हमें क्यों चुनें" },
     stats: { title: "संख्याओं में हमारा सफर" },
     amenities: { title: "सुविधाएं" },
@@ -508,7 +540,7 @@ export const languageStrings = {
       prevImage: "पिछली छवि",
       nextImage: "अगली छवि",
       openFullSize: "पूर्ण आकार खोलें",
-      whatsappMessage: "नमस्ते एम्पायर द जिम, मुझे आपके मेंबरशिप प्लान के बारे में और जानना है।"
+      whatsappMessage: "नमस्ते! एम्पायर द जिम"
     }
   }
 };
