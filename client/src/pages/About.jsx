@@ -246,7 +246,7 @@ export default function About() {
           <SectionHeading title={strings.programs.title} />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {programCards.map((program) => (
+            {programCards.map((program, index) => (
               <motion.div
                 key={program.id}
                 variants={itemVariants}
@@ -255,7 +255,6 @@ export default function About() {
                 viewport={{ once: true, margin: '-100px', amount: 0.1 }}
                 transition={{ delay: program.delay }}
               >
-                <Link to="/contact#contact" className="block h-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-gym-red">
                 <Card hover padding="p-8" className="h-full group border-gradient">
                   <CardHeader>
                     <motion.div
@@ -288,21 +287,9 @@ export default function About() {
                     ))}
                   </ul>
                 </Card>
-                </Link>
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <Link to="/contact" className="btn-secondary">
-              {strings.programs.viewAll}
-            </Link>
-          </motion.div>
         </div>
       </section>
 
@@ -449,7 +436,6 @@ export default function About() {
                 viewport={{ once: true, margin: '-100px', amount: 0.1 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link to="/contact#contact" className="block h-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-gym-red">
                   <Card hover padding="p-8" className="flex h-full flex-col relative">
                     <div className="mb-6 text-center">
                       <h3 className="mb-2 font-heading text-xl uppercase tracking-wider text-gym-white">{plan.name}</h3>
@@ -457,7 +443,7 @@ export default function About() {
                         <span className="font-heading text-4xl text-gym-white">{plan.price}</span>
                       </div>
                     </div>
-                    <ul className="mb-8 flex-1 space-y-3">
+                    <ul className="mb-6 flex-1 space-y-3">
                       {plan.features.map((feature, i) => (
                         <motion.li
                           key={i}
@@ -471,15 +457,12 @@ export default function About() {
                         </motion.li>
                       ))}
                     </ul>
+                    <a href={`tel:+${data.phoneClean}`} className="btn-secondary w-full text-center mt-auto">
+                      {strings.hero.callNow}
+                    </a>
                   </Card>
-                </Link>
               </motion.div>
             ))}
-          </div>
-          <div className="mt-12 text-center">
-            <Link to="/contact" className="btn-secondary">
-              {strings.programs.viewAll}
-            </Link>
           </div>
         </div>
       </section>

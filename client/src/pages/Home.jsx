@@ -269,7 +269,6 @@ export default function Home() {
                 viewport={{ once: true, margin: '-100px', amount: 0.1 }}
                 transition={{ delay: program.delay }}
               >
-                <a href="https://wa.me/919466709410?text=नमस्ते! एम्पायर द जिम" target="_blank" rel="noreferrer" className="block h-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-gym-red">
                 <Card hover padding="p-8" className="h-full group border-gradient">
                   <CardHeader>
                     <motion.div
@@ -302,21 +301,9 @@ export default function Home() {
                     ))}
                   </ul>
                 </Card>
-                </a>
               </motion.div>
             ))}
           </div>
-
-          <motion.div
-            className="text-center mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <Link to="/contact" className="btn-secondary">
-              {strings.programs.viewAll}
-            </Link>
-          </motion.div>
         </div>
       </section>
 
@@ -509,10 +496,9 @@ export default function Home() {
                 viewport={{ once: true, margin: '-100px', amount: 0.1 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <a href="https://wa.me/919466709410?text=नमस्ते! एम्पायर द जिम" target="_blank" rel="noreferrer" className="block h-full rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-gym-red">
-                <Card 
-                  hover 
-                  padding="p-8" 
+                <Card
+                  hover
+                  padding="p-8"
                   className="h-full flex flex-col relative"
                 >
                   <div className="text-center mb-6">
@@ -521,7 +507,7 @@ export default function Home() {
                       <span className="font-heading text-4xl text-gym-white">{plan.price}</span>
                     </div>
                   </div>
-                  <ul className="space-y-3 mb-8 flex-1">
+                  <ul className="space-y-3 mb-6 flex-1">
                     {plan.features.map((feature, i) => (
                       <motion.li
                         key={i}
@@ -535,15 +521,12 @@ export default function Home() {
                       </motion.li>
                     ))}
                   </ul>
+                  <a href={`tel:+${data.phoneClean}`} className="btn-secondary w-full text-center mt-auto">
+                    {strings.hero.callNow}
+                  </a>
                 </Card>
-                </a>
               </motion.div>
             ))}
-          </div>
-          <div className="mt-12 text-center">
-            <Link to="/contact" className="btn-secondary">
-              {strings.programs.viewAll}
-            </Link>
           </div>
         </div>
       </section>
