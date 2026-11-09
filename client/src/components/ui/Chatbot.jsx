@@ -99,7 +99,28 @@ export default function Chatbot() {
         whileHover={{ scale: 1.05 }}
         style={{ position:'fixed', bottom:204, left:24, zIndex:9999, width:48, height:48, borderRadius:'50%', background:'linear-gradient(135deg,#ef4444,#f97316)', border:'none', color:'#fff', fontSize:22, cursor:'pointer', boxShadow:'0 4px 20px rgba(0,0,0,.4)', display:'flex', alignItems:'center', justifyContent:'center', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}
         title={strings.title}
-      >🤖</motion.button>
+      >
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={{display: 'block'}}>
+          <defs>
+            <linearGradient id="botGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.25"/>
+              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0"/>
+            </linearGradient>
+          </defs>
+          <circle cx="16" cy="16" r="15" fill="url(#botGrad)"/>
+          <circle cx="16" cy="16" r="15" stroke="#3b82f6" strokeWidth="1.5" strokeOpacity="0.6"/>
+          <rect x="8" y="7" width="16" height="14" rx="3" fill="#3b82f6" fillOpacity="0.15"/>
+          <rect x="8" y="7" width="16" height="14" rx="3" stroke="#3b82f6" strokeWidth="1.5" strokeOpacity="0.5"/>
+          <circle cx="12" cy="12" r="2" fill="#60a5fa"/>
+          <circle cx="20" cy="12" r="2" fill="#60a5fa"/>
+          <rect x="10" y="18" width="12" height="1.5" rx="0.75" fill="#93c5fd" fillOpacity="0.9"/>
+          <rect x="5" y="11" width="3" height="6" rx="1" fill="#3b82f6" fillOpacity="0.9"/>
+          <rect x="24" y="11" width="3" height="6" rx="1" fill="#3b82f6" fillOpacity="0.9"/>
+          <circle cx="5.5" cy="8" r="1.5" fill="#60a5fa" fillOpacity="0.8"/>
+          <circle cx="26.5" cy="8" r="1.5" fill="#60a5fa" fillOpacity="0.8"/>
+          <rect x="14" y="2" width="4" height="5" rx="2" fill="#3b82f6" fillOpacity="0.7"/>
+        </svg>
+      </motion.button>
       <AnimatePresence>
         {open && (
           <motion.div

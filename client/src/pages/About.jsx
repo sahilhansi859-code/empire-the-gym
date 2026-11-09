@@ -106,10 +106,6 @@ export default function About() {
                   loading="lazy"
                   onError={(e) => { e.target.onerror = null; e.target.src = "/images/gallery/gallery-3.svg"; }}
                 />
-                <div className="absolute bottom-6 left-6 right-6 bg-gym-black/80 backdrop-blur-sm border border-gym-border rounded-xl p-6">
-                  <h3 className="font-heading text-xl text-gym-white mb-1">{data.name}</h3>
-                  <p className="text-gym-red font-heading text-sm uppercase tracking-wider">{data.slogan}</p>
-                </div>
               </div>
             </motion.div>
 
