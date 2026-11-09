@@ -98,48 +98,9 @@ export default function Home() {
         </motion.button>
       </section>
       
-      <section id="about" className="section-padding" aria-labelledby="about-heading">
-        <div className="container-custom">
-          <SectionHeading
-            title={t === 'en' ? 'About Empire The Gym' : 'एम्पायर द जिम के बारे में'}
-          />
-          
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <motion.div
-              className="relative aspect-[4/3] rounded-2xl overflow-hidden"
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-100px', amount: 0.1 }}
-              transition={{ duration: 0.8 }}
-            >
-              <img
-                src="/images/about/about.jpg"
-                alt="Empire The Gym Facility"
-                className="w-full h-full object-cover"
-                loading="lazy"
-                onError={(e) => { e.target.onerror = null; e.target.src = "/images/about/about-1.svg"; }}
-              />
-              <div className="absolute bottom-6 left-6 right-6 bg-gym-black/80 backdrop-blur-sm border border-gym-border rounded-xl p-6">
-                <h3 className="font-heading text-xl text-gym-white mb-2">{data.name}</h3>
-                <p className="text-gym-red font-heading text-sm uppercase tracking-wider">{data.slogan}</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-100px', amount: 0.1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <p className="text-body mb-6">{data.about.story}</p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       <section id="story" className="section-padding section-alt" aria-labelledby="story-heading">
         <div className="container-custom">
-          <SectionHeading title={strings.about.ourStory} />
+          <SectionHeading title={t === 'en' ? 'About Empire The Gym' : 'एम्पायर द जिम के बारे में'} />
 
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
@@ -149,7 +110,7 @@ export default function Home() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <img
-                  src={data.gallery[2].src}
+                  src="/images/about/about empire the gym home or about section .png"
                   alt="Empire The Gym Interior"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -191,7 +152,7 @@ export default function Home() {
             >
               <div className="relative aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden">
                 <img
-                  src={data.about.owner.photo}
+                  src="/images/about/meet the owner home or about section.png"
                   alt={data.about.owner.name}
                   className="w-full h-full object-cover"
                   loading="lazy"

@@ -488,7 +488,7 @@ export const languageStrings = {
   en: {
     nav: { home: "Home", about: "About", gallery: "Gallery", contact: "Contact" },
     hero: { joinNow: "Join Now", callNow: "Call Now", openingHours: "Opening Hours" },
-    about: { knowMore: "Know More", ourStory: "Our Story Empire The Gym", mission: "Mission", vision: "Vision", meetOwner: "Meet the Owner", ourTrainers: "Our Trainers", ourValues: "Our Values", whyEmpire: "Why Empire" },
+    about: { knowMore: "Know More", ourStory: "About Empire The Gym", mission: "Mission", vision: "Vision", meetOwner: "Meet the Owner", ourTrainers: "Our Trainers", ourValues: "Our Values", whyEmpire: "Why Empire" },
     programs: { title: "Our Programs", viewAll: "Enquire Now" },
     whyChoose: { title: "Why Choose Us" },
     stats: { title: "Our Journey in Numbers" },
@@ -517,7 +517,7 @@ export const languageStrings = {
   hi: {
     nav: { home: "होम", about: "हमारे बारे में", gallery: "गैलरी", contact: "संपर्क" },
     hero: { joinNow: "अभी जॉइन करें", callNow: "अभी कॉल करें", openingHours: "खुलने का समय" },
-    about: { knowMore: "और जानें", ourStory: "एम्पायर द जिम की कहानी", mission: "हमारा मिशन", vision: "हमारा विजन", meetOwner: "ओनर से मिलें", ourTrainers: "हमारे ट्रेनर्स", ourValues: "हमारे मूल्य", whyEmpire: "क्यों एम्पायर" },
+    about: { knowMore: "और जानें", ourStory: "एम्पायर द जिम के बारे में", mission: "हमारा मिशन", vision: "हमारा विजन", meetOwner: "ओनर से मिलें", ourTrainers: "हमारे ट्रेनर्स", ourValues: "हमारे मूल्य", whyEmpire: "क्यों एम्पायर" },
     programs: { title: "हमारे प्रोग्राम्स", viewAll: "पूछताछ करें" },
     whyChoose: { title: "हमें क्यों चुनें" },
     stats: { title: "संख्याओं में हमारा सफर" },
