@@ -28,7 +28,14 @@ export default function Chatbot() {
   const [msgs, setMsgs] = useState([])
   const [input, setInput] = useState('')
   const [typing, setTyping] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
   const endRef = useRef(null)
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768)
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
   
   useEffect(() => {
     const strings = uiStrings[siteLang === 'hi' ? 'hi' : 'en']
@@ -97,29 +104,10 @@ export default function Chatbot() {
       <motion.button
         onClick={() => setOpen(o=>!o)}
         whileHover={{ scale: 1.05 }}
-        style={{ position:'fixed', bottom:204, left:24, zIndex:9999, width:48, height:48, borderRadius:'50%', background:'linear-gradient(135deg,#ef4444,#f97316)', border:'none', color:'#fff', fontSize:22, cursor:'pointer', boxShadow:'0 4px 20px rgba(0,0,0,.4)', display:'flex', alignItems:'center', justifyContent:'center', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}
+        style={{ position:'fixed', bottom: isMobile ? 20 : 24, right: isMobile ? 16 : 24, zIndex:9999, width: isMobile ? 64 : 100, height: isMobile ? 64 : 100, borderRadius:'50%', background:'transparent', border:'4px solid #f97316', padding: isMobile ? 2 : 4, cursor:'pointer', boxSizing:'border-box', display:'flex', alignItems:'center', justifyContent:'center' }}
         title={strings.title}
       >
-        <svg width="30" height="30" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style={{display: 'block'}}>
-          <defs>
-            <linearGradient id="botGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="#3b82f6" stopOpacity="0.25"/>
-              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0"/>
-            </linearGradient>
-          </defs>
-          <circle cx="16" cy="16" r="15" fill="url(#botGrad)"/>
-          <circle cx="16" cy="16" r="15" stroke="#3b82f6" strokeWidth="1.5" strokeOpacity="0.6"/>
-          <rect x="8" y="7" width="16" height="14" rx="3" fill="#3b82f6" fillOpacity="0.15"/>
-          <rect x="8" y="7" width="16" height="14" rx="3" stroke="#3b82f6" strokeWidth="1.5" strokeOpacity="0.5"/>
-          <circle cx="12" cy="12" r="2" fill="#60a5fa"/>
-          <circle cx="20" cy="12" r="2" fill="#60a5fa"/>
-          <rect x="10" y="18" width="12" height="1.5" rx="0.75" fill="#93c5fd" fillOpacity="0.9"/>
-          <rect x="5" y="11" width="3" height="6" rx="1" fill="#3b82f6" fillOpacity="0.9"/>
-          <rect x="24" y="11" width="3" height="6" rx="1" fill="#3b82f6" fillOpacity="0.9"/>
-          <circle cx="5.5" cy="8" r="1.5" fill="#60a5fa" fillOpacity="0.8"/>
-          <circle cx="26.5" cy="8" r="1.5" fill="#60a5fa" fillOpacity="0.8"/>
-          <rect x="14" y="2" width="4" height="5" rx="2" fill="#3b82f6" fillOpacity="0.7"/>
-        </svg>
+        <img src="/chatbot%20logo.png" alt="Chatbot" style={{ width:'100%', height:'100%', objectFit:'contain', display:'block' }} />
       </motion.button>
       <AnimatePresence>
         {open && (
@@ -127,7 +115,7 @@ export default function Chatbot() {
             initial={{ opacity:0, y:40, scale:.9 }}
             animate={{ opacity:1, y:0, scale:1 }}
             exit={{ opacity:0, y:40, scale:.9 }}
-            style={{ position:'fixed', bottom:90, left:24, zIndex:9999, width:'min(360px, calc(100vw - 32px))', height:480, background:'#111', borderRadius:16, display:'flex', flexDirection:'column', overflow:'hidden', border:'1px solid #333', boxShadow:'0 8px 40px rgba(0,0,0,.6)', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}
+            style={{ position:'fixed', bottom: isMobile ? 100 : 100, right: isMobile ? 16 : 24, zIndex:9999, width:'min(360px, calc(100vw - 32px))', height:480, background:'#111', borderRadius:16, display:'flex', flexDirection:'column', overflow:'hidden', border:'1px solid #333', boxShadow:'0 8px 40px rgba(0,0,0,.6)', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}
           >
             <div style={{ padding:'12px 16px', background:'linear-gradient(135deg,#ef4444,#f97316)', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
               <strong style={{ color:'#fff' }}>{strings.title}</strong>

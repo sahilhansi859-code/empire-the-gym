@@ -78,26 +78,8 @@ export default function Home() {
         <div className="container-custom relative z-10 py-24 sm:py-28">
           <HeroContent data={data} strings={strings} t={t} headingId="hero-heading" />
         </div>
-
-        <motion.button
-          type="button"
-          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-          className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 cursor-pointer rounded-full p-2 text-white/80 transition-colors hover:text-white focus:outline-none focus:ring-2 focus:ring-white"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.5 }}
-          aria-label={t === 'en' ? 'Scroll to learn more' : 'और जानने के लिए स्क्रॉल करें'}
-        >
-          <motion.div
-            className="flex h-10 w-6 justify-center rounded-full border-2 border-white/60 pt-2"
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <span className="h-1.5 w-1.5 rounded-full bg-white" />
-          </motion.div>
-        </motion.button>
       </section>
-      
+
       <section id="story" className="section-padding section-alt" aria-labelledby="story-heading">
         <div className="container-custom">
           <SectionHeading title={t === 'en' ? 'About Empire The Gym' : 'एम्पायर द जिम के बारे में'} />

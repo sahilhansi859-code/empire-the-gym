@@ -160,6 +160,7 @@ export function Navbar() {
                   <Link
                     key={link.path}
                     to={link.path}
+                    onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setIsOpen(false); }}
                     className={`font-heading uppercase tracking-wider text-lg py-3 text-gym-white hover:text-gym-red transition-colors ${
                       location.pathname === link.path ? 'text-gym-red' : ''
                     }`}
@@ -188,12 +189,13 @@ export function Navbar() {
                     href={whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center p-4 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-colors"
+                    className="flex items-center justify-center gap-2 px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg font-heading text-sm uppercase tracking-wide transition-all"
                     whileTap={{ scale: 0.98 }}
                     aria-label={strings.ui.whatsapp}
                     title={strings.ui.whatsapp}
                   >
                     <FaWhatsapp className="w-5 h-5" />
+                    <span>whatsapp</span>
                   </motion.a>
                   <motion.a
                     href={social.instagram}

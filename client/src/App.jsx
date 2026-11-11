@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
-import { Navbar, Footer, ScrollToTop, WhatsAppButton } from './components/layout'
+import { Navbar, Footer, WhatsAppButton } from './components/layout'
 import { Loader } from './components/ui'
 import Chatbot from './components/ui/Chatbot'
 import Home from './pages/Home'
@@ -18,7 +18,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gym-black text-gym-white">
+    <div className="min-h-screen bg-gym-black text-gym-white overflow-x-hidden max-w-full">
       <Navbar />
 
       <main id="main-content" className="pt-16 lg:pt-20">
@@ -35,7 +35,6 @@ function App() {
 
       <WhatsAppButton />
       <Chatbot />
-      <ScrollToTop />
     </div>
   )
 }

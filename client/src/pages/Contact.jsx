@@ -285,17 +285,15 @@ export default function Contact() {
                   aria-label={t === 'en' ? 'Open Empire The Gym location in Google Maps' : 'गूगल मैप्स में एम्पायर द जिम का स्थान खोलें'}
                   title={t === 'en' ? 'Open in Google Maps' : 'गूगल मैप्स में खोलें'}
                 >
-                  <img
-                    src="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=75.9577,29.1021,75.9629,29.1043&bboxSR=4326&imageSR=4326&size=1000,500&format=jpg&f=image"
-                    alt="Satellite view of Empire The Gym, Hansi"
-                    width="1000"
-                    height="500"
-                    loading="eager"
-                    fetchPriority="high"
-                    decoding="async"
-                    referrerPolicy="no-referrer"
-                    className="w-full h-[300px] object-cover"
-                  />
+                    <img
+                      src="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=75.9577,29.1021,75.9629,29.1043&bboxSR=4326&imageSR=4326&size=1000,500&format=jpg&f=image"
+                      alt="Satellite view of Empire The Gym, Hansi"
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="async"
+                      referrerPolicy="no-referrer"
+                      className="w-full h-[300px] object-cover"
+                    />
                   <svg
                     viewBox="0 0 24 24"
                     aria-hidden="true"

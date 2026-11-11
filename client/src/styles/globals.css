@@ -47,6 +47,11 @@
   ::-webkit-scrollbar-thumb:hover {
     @apply bg-gym-red-light;
   }
+  
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #e63946 #111111;
+  }
 }
 
 @layer components {
