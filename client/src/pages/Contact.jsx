@@ -119,15 +119,26 @@ export default function Contact() {
     <>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden isolate" aria-labelledby="contact-hero-heading">
         <div className="absolute inset-0 z-0">
-          <motion.img
-            src={data.heroImages.contact}
-            alt=""
-            className="w-full h-full object-cover scale-105"
+          <motion.picture
             initial={{ scale: 1.08 }}
             animate={{ scale: 1.02 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
             aria-hidden="true"
-          />
+          >
+            <source
+              type="image/webp"
+              srcSet={data.heroImages.contact.srcset}
+              sizes={data.heroImages.contact.sizes}
+            />
+            <img
+              src={data.heroImages.contact.src}
+              alt=""
+              className="w-full h-full object-cover scale-105"
+              width="1920"
+              height="1080"
+              aria-hidden="true"
+            />
+          </motion.picture>
         </div>
 
         <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/55 via-black/30 to-transparent" aria-hidden="true" />

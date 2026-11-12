@@ -105,9 +105,10 @@ export default function Chatbot() {
         onClick={() => setOpen(o=>!o)}
         whileHover={{ scale: 1.05 }}
         style={{ position:'fixed', bottom: isMobile ? 20 : 24, right: isMobile ? 16 : 24, zIndex:9999, width: isMobile ? 64 : 100, height: isMobile ? 64 : 100, borderRadius:'50%', background:'transparent', border:'4px solid #f97316', padding: isMobile ? 2 : 4, cursor:'pointer', boxSizing:'border-box', display:'flex', alignItems:'center', justifyContent:'center' }}
+        aria-label={strings.title}
         title={strings.title}
       >
-        <img src="/chatbot%20logo.png" alt="Chatbot" style={{ width:'100%', height:'100%', objectFit:'contain', display:'block' }} />
+        <img src="/images/chatbot-logo.webp" alt="Chatbot" style={{ width:'100%', height:'100%', objectFit:'contain', display:'block' }} onError={(e) => { e.target.onerror = null; e.target.src = "/chatbot%20logo.png"; }} />
       </motion.button>
       <AnimatePresence>
         {open && (
@@ -116,20 +117,23 @@ export default function Chatbot() {
             animate={{ opacity:1, y:0, scale:1 }}
             exit={{ opacity:0, y:40, scale:.9 }}
             style={{ position:'fixed', bottom: isMobile ? 100 : 100, right: isMobile ? 16 : 24, zIndex:9999, width:'min(360px, calc(100vw - 32px))', height:480, background:'#111', borderRadius:16, display:'flex', flexDirection:'column', overflow:'hidden', border:'1px solid #333', boxShadow:'0 8px 40px rgba(0,0,0,.6)', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}
+            role="dialog"
+            aria-modal="true"
+            aria-label={strings.title}
           >
             <div style={{ padding:'12px 16px', background:'linear-gradient(135deg,#ef4444,#f97316)', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
               <strong style={{ color:'#fff' }}>{strings.title}</strong>
-              <button onClick={()=>setOpen(false)} style={{ background:'transparent', border:'none', color:'#fff', fontSize:20, cursor:'pointer' }}>✕</button>
+              <button onClick={()=>setOpen(false)} style={{ background:'transparent', border:'none', color:'#fff', fontSize:20, cursor:'pointer' }} aria-label={siteLang === 'hi' ? 'चैट बंद करें' : 'Close chat'}>✕</button>
             </div>
-            <div style={{ flex:1, overflowY:'auto', padding:12, display:'flex', flexDirection:'column', gap:8 }}>
+            <div style={{ flex:1, overflowY:'auto', padding:12, display:'flex', flexDirection:'column', gap:8 }} aria-live="polite" aria-atomic="false">
               {msgs.map((m,i) => (
                 <div key={i} style={{ alignSelf: m.role==='user' ? 'flex-end' : 'flex-start', background: m.role==='user' ? 'linear-gradient(135deg,#ef4444,#f97316)' : '#222', color:'#fff', padding:'8px 12px', borderRadius:12, maxWidth:'85%', fontSize:14, whiteSpace:'pre-wrap', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}>{renderContent(m.content)}</div>
               ))}
-              {typing && <div style={{ alignSelf:'flex-start', color:'#aaa', fontSize:13, fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}>{strings.typing}</div>}
+              {typing && <div style={{ alignSelf:'flex-start', color:'#aaa', fontSize:13, fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }} aria-live="polite">{strings.typing}</div>}
               <div ref={endRef} />
             </div>
             <div style={{ padding:8, display:'flex', gap:6, borderTop:'1px solid #333' }}>
-              <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==='Enter'&&send()} placeholder={strings.placeholder} style={{ flex:1, padding:'8px 12px', borderRadius:8, border:'1px solid #444', background:'#1a1a1a', color:'#fff', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }} />
+              <input value={input} onChange={e=>setInput(e.target.value)} onKeyDown={e=>e.key==='Enter'&&send()} placeholder={strings.placeholder} style={{ flex:1, padding:'8px 12px', borderRadius:8, border:'1px solid #444', background:'#1a1a1a', color:'#fff', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }} aria-label={strings.placeholder} />
               <button onClick={()=>send()} style={{ padding:'8px 14px', borderRadius:8, border:'none', background:'linear-gradient(135deg,#ef4444,#f97316)', color:'#fff', cursor:'pointer', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}>{strings.send}</button>
             </div>
           </motion.div>

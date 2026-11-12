@@ -93,8 +93,10 @@ export function Lightbox({
               src={currentImage.src}
               alt={currentImage.alt}
               className="max-w-[90vw] max-h-[90vh] object-contain"
+              width={currentImage.width}
+              height={currentImage.height}
               onLoad={() => setIsLoading(false)}
-              onError={(e) => { e.target.onerror = null; e.target.src = currentImage.src.replace(".jpg", ".svg"); }}
+              onError={(e) => { e.target.onerror = null; e.target.src = currentImage.src.replace("-1200.webp", ".svg"); }}
             />
           )}
         </motion.div>

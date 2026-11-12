@@ -148,18 +148,18 @@ export const gymDataBilingual = {
       }
     ],
     gallery: [
-      { id: 1, category: "Equipment", src: "/images/gallery/gallery-1.jpg", alt: "Modern gym equipment", caption: "Dumbbells neatly racked for training" },
-      { id: 2, category: "Equipment", src: "/images/gallery/gallery-2.jpg", alt: "Free weights area", caption: "Free-weight rack in a modern gym" },
-      { id: 3, category: "Workouts", src: "/images/gallery/gallery-3.jpg", alt: "Barbell training", caption: "Heavy barbell ready for the next set" },
-      { id: 4, category: "Workouts", src: "/images/gallery/gallery-4.jpg", alt: "Cardio session", caption: "Cardio machines on the gym floor" },
-      { id: 5, category: "Training", src: "/images/gallery/gallery-5.jpg", alt: "Personal training", caption: "Trainer and client celebrating progress" },
-      { id: 6, category: "Workouts", src: "/images/gallery/gallery-6.jpg", alt: "Core workout", caption: "Core and strength session" },
-      { id: 7, category: "Training", src: "/images/gallery/gallery-7.jpg", alt: "Functional training", caption: "Functional rope training" },
-      { id: 8, category: "Members", src: "/images/gallery/gallery-8.jpg", alt: "Group stretching", caption: "Group stretching session" },
-      { id: 9, category: "Equipment", src: "/images/gallery/gallery-9.jpg", alt: "Cardio equipment", caption: "Row of treadmills and cardio machines" },
-      { id: 10, category: "Workouts", src: "/images/gallery/gallery-10.jpg", alt: "Strength workout", caption: "Full gym floor with machines and weights" },
-      { id: 11, category: "Training", src: "/images/gallery/gallery-11.jpg", alt: "Barbell preparation", caption: "Preparing for a barbell lift" },
-      { id: 12, category: "Workouts", src: "/images/gallery/gallery-12.jpg", alt: "Barbell training", caption: "Barbell strength training" }
+      { id: 1, category: "Equipment", src: "/images/gallery/gallery-1-1200.webp", srcset: "/images/gallery/gallery-1-480.webp 480w, /images/gallery/gallery-1-800.webp 800w, /images/gallery/gallery-1-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Modern gym equipment", caption: "Dumbbells neatly racked for training", width: 1200, height: 900 },
+      { id: 2, category: "Equipment", src: "/images/gallery/gallery-2-1200.webp", srcset: "/images/gallery/gallery-2-480.webp 480w, /images/gallery/gallery-2-800.webp 800w, /images/gallery/gallery-2-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Free weights area", caption: "Free-weight rack in a modern gym", width: 1200, height: 900 },
+      { id: 3, category: "Workouts", src: "/images/gallery/gallery-3-1200.webp", srcset: "/images/gallery/gallery-3-480.webp 480w, /images/gallery/gallery-3-800.webp 800w, /images/gallery/gallery-3-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Barbell training", caption: "Heavy barbell ready for the next set", width: 1200, height: 900 },
+      { id: 4, category: "Workouts", src: "/images/gallery/gallery-4-1200.webp", srcset: "/images/gallery/gallery-4-480.webp 480w, /images/gallery/gallery-4-800.webp 800w, /images/gallery/gallery-4-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Cardio session", caption: "Cardio machines on the gym floor", width: 1200, height: 900 },
+      { id: 5, category: "Training", src: "/images/gallery/gallery-5-1200.webp", srcset: "/images/gallery/gallery-5-480.webp 480w, /images/gallery/gallery-5-800.webp 800w, /images/gallery/gallery-5-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Personal training", caption: "Trainer and client celebrating progress", width: 1200, height: 900 },
+      { id: 6, category: "Workouts", src: "/images/gallery/gallery-6-1200.webp", srcset: "/images/gallery/gallery-6-480.webp 480w, /images/gallery/gallery-6-800.webp 800w, /images/gallery/gallery-6-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Core workout", caption: "Core and strength session", width: 1200, height: 900 },
+      { id: 7, category: "Training", src: "/images/gallery/gallery-7-1200.webp", srcset: "/images/gallery/gallery-7-480.webp 480w, /images/gallery/gallery-7-800.webp 800w, /images/gallery/gallery-7-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Functional training", caption: "Functional rope training", width: 1200, height: 900 },
+      { id: 8, category: "Members", src: "/images/gallery/gallery-8-1200.webp", srcset: "/images/gallery/gallery-8-480.webp 480w, /images/gallery/gallery-8-800.webp 800w, /images/gallery/gallery-8-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Group stretching", caption: "Group stretching session", width: 1200, height: 900 },
+      { id: 9, category: "Equipment", src: "/images/gallery/gallery-9-1200.webp", srcset: "/images/gallery/gallery-9-480.webp 480w, /images/gallery/gallery-9-800.webp 800w, /images/gallery/gallery-9-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Cardio equipment", caption: "Row of treadmills and cardio machines", width: 1200, height: 900 },
+      { id: 10, category: "Workouts", src: "/images/gallery/gallery-10-1200.webp", srcset: "/images/gallery/gallery-10-480.webp 480w, /images/gallery/gallery-10-800.webp 800w, /images/gallery/gallery-10-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Strength workout", caption: "Full gym floor with machines and weights", width: 1200, height: 900 },
+      { id: 11, category: "Training", src: "/images/gallery/gallery-11-1200.webp", srcset: "/images/gallery/gallery-11-480.webp 480w, /images/gallery/gallery-11-800.webp 800w, /images/gallery/gallery-11-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Barbell preparation", caption: "Preparing for a barbell lift", width: 1200, height: 900 },
+      { id: 12, category: "Workouts", src: "/images/gallery/gallery-12-1200.webp", srcset: "/images/gallery/gallery-12-480.webp 480w, /images/gallery/gallery-12-800.webp 800w, /images/gallery/gallery-12-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "Barbell training", caption: "Barbell strength training", width: 1200, height: 900 }
     ],
     testimonials: [
       { id: 1, name: "Member Name", role: "Regular Member", text: "Amazing gym with great equipment and motivating atmosphere. Trainers are very knowledgeable and helpful. Highly recommended!", rating: 5, avatar: null },
@@ -170,11 +170,22 @@ export const gymDataBilingual = {
       story: "Empire The Gym was founded with a vision to bring world-class fitness facilities to Hansi. What started as a passion project has grown into the region's most trusted fitness destination. We believe fitness is not just about lifting weights - it's about building discipline, mental strength, and a lifestyle that empowers you in every aspect of life.",
       mission: "To provide a premium fitness experience that's accessible, result-oriented, and community-driven. We strive to be the catalyst in your transformation journey.",
       vision: "To become the leading fitness empire in North India, known for excellence in training, equipment, and member success stories.",
+      gymPhoto: {
+        src: "/images/about/about-gym-1200.webp",
+        srcset: "/images/about/about-gym-480.webp 480w, /images/about/about-gym-800.webp 800w, /images/about/about-gym-1200.webp 1200w",
+        sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px",
+        width: 1200,
+        height: 900
+      },
       owner: {
         name: "Ramandeep Singh",
         title: "Founder & Owner",
         bio: "A fitness enthusiast turned entrepreneur, Ramandeep Singh brings years of industry experience and a deep passion for helping others achieve their fitness goals. His vision for Empire The Gym is to create a space where everyone - from beginners to athletes - feels welcomed, motivated, and empowered.",
-        photo: "/images/about/owner.jpg"
+        photo: "/images/about/owner-1200.webp",
+        photoSrcset: "/images/about/owner-480.webp 480w, /images/about/owner-800.webp 800w, /images/about/owner-1200.webp 1200w",
+        photoSizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px",
+        photoWidth: 1200,
+        photoHeight: 1200
       },
       values: [
         { id: "discipline", title: "Discipline", description: "Consistency beats intensity. We build habits that last a lifetime.", icon: "target" },
@@ -219,10 +230,14 @@ export const gymDataBilingual = {
       ogImage: "https://empirethegym.com/og-image.jpg"
     },
     heroImages: {
-      home: ["/images/hero/hero%201.png", "/images/hero/hero%202.png", "/images/hero/hero%203.png"],
-      about: "/images/hero/hero%201.png",
-      gallery: "/images/hero/hero%202.png",
-      contact: "/images/hero/hero%203.png"
+      home: [
+        { src: "/images/hero/hero-1-1920.webp", srcset: "/images/hero/hero-1-640.webp 640w, /images/hero/hero-1-1024.webp 1024w, /images/hero/hero-1-1920.webp 1920w", sizes: "100vw" },
+        { src: "/images/hero/hero-2-1920.webp", srcset: "/images/hero/hero-2-640.webp 640w, /images/hero/hero-2-1024.webp 1024w, /images/hero/hero-2-1920.webp 1920w", sizes: "100vw" },
+        { src: "/images/hero/hero-3-1920.webp", srcset: "/images/hero/hero-3-640.webp 640w, /images/hero/hero-3-1024.webp 1024w, /images/hero/hero-3-1920.webp 1920w", sizes: "100vw" }
+      ],
+      about: { src: "/images/hero/hero-1-1920.webp", srcset: "/images/hero/hero-1-640.webp 640w, /images/hero/hero-1-1024.webp 1024w, /images/hero/hero-1-1920.webp 1920w", sizes: "100vw" },
+      gallery: { src: "/images/hero/hero-2-1920.webp", srcset: "/images/hero/hero-2-640.webp 640w, /images/hero/hero-2-1024.webp 1024w, /images/hero/hero-2-1920.webp 1920w", sizes: "100vw" },
+      contact: { src: "/images/hero/hero-3-1920.webp", srcset: "/images/hero/hero-3-640.webp 640w, /images/hero/hero-3-1024.webp 1024w, /images/hero/hero-3-1920.webp 1920w", sizes: "100vw" }
     },
     marqueeText: "STRENGTH • DISCIPLINE • POWER • EMPIRE • CONSISTENCY • GRIND • HUSTLE • ACHIEVE • TRANSFORM • DOMINATE • ",
     ctaText: "Be The Part Of An Epic Empire",
@@ -386,18 +401,18 @@ export const gymDataBilingual = {
       }
     ],
     gallery: [
-      { id: 1, category: "उपकरण", src: "/images/gallery/gallery-1.jpg", alt: "आधुनिक जिम उपकरण", caption: "प्रशिक्षण के लिए व्यवस्थित रूप से रखे डम्बल" },
-      { id: 2, category: "उपकरण", src: "/images/gallery/gallery-2.jpg", alt: "फ्री वेट्स क्षेत्र", caption: "आधुनिक जिम में फ्री-वेट रैक" },
-      { id: 3, category: "वर्कआउट", src: "/images/gallery/gallery-3.jpg", alt: "बारबेल प्रशिक्षण", caption: "अगले सेट के लिए तैयार भारी बारबेल" },
-      { id: 4, category: "वर्कआउट", src: "/images/gallery/gallery-4.jpg", alt: "कार्डियो सत्र", caption: "जिम फ्लोर पर कार्डियो मशीनें" },
-      { id: 5, category: "ट्रेनिंग", src: "/images/gallery/gallery-5.jpg", alt: "पर्सनल ट्रेनिंग", caption: "ट्रेनर और क्लाइंट प्रगति का जश्न मनाते हुए" },
-      { id: 6, category: "वर्कआउट", src: "/images/gallery/gallery-6.jpg", alt: "कोर वर्कआउट", caption: "कोर और ताकत सत्र" },
-      { id: 7, category: "ट्रेनिंग", src: "/images/gallery/gallery-7.jpg", alt: "फंक्शनल ट्रेनिंग", caption: "फंक्शनल रस्सी प्रशिक्षण" },
-      { id: 8, category: "मेंबर्स", src: "/images/gallery/gallery-8.jpg", alt: "समूह स्ट्रेचिंग", caption: "समूह स्ट्रेचिंग सत्र" },
-      { id: 9, category: "उपकरण", src: "/images/gallery/gallery-9.jpg", alt: "कार्डियो उपकरण", caption: "ट्रेडमिल और कार्डियो मशीनों की पंक्ति" },
-      { id: 10, category: "वर्कआउट", src: "/images/gallery/gallery-10.jpg", alt: "शक्ति वर्कआउट", caption: "मशीनों और वेट्स के साथ पूर्ण जिम फ्लोर" },
-      { id: 11, category: "ट्रेनिंग", src: "/images/gallery/gallery-11.jpg", alt: "बारबेल तैयारी", caption: "बारबेल लिफ्ट की तैयारी" },
-      { id: 12, category: "वर्कआउट", src: "/images/gallery/gallery-12.jpg", alt: "बारबेल प्रशिक्षण", caption: "बारबेल शक्ति प्रशिक्षण" }
+      { id: 1, category: "उपकरण", src: "/images/gallery/gallery-1-1200.webp", srcset: "/images/gallery/gallery-1-480.webp 480w, /images/gallery/gallery-1-800.webp 800w, /images/gallery/gallery-1-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "आधुनिक जिम उपकरण", caption: "प्रशिक्षण के लिए व्यवस्थित रूप से रखे डम्बल", width: 1200, height: 900 },
+      { id: 2, category: "उपकरण", src: "/images/gallery/gallery-2-1200.webp", srcset: "/images/gallery/gallery-2-480.webp 480w, /images/gallery/gallery-2-800.webp 800w, /images/gallery/gallery-2-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "फ्री वेट्स क्षेत्र", caption: "आधुनिक जिम में फ्री-वेट रैक", width: 1200, height: 900 },
+      { id: 3, category: "वर्कआउट", src: "/images/gallery/gallery-3-1200.webp", srcset: "/images/gallery/gallery-3-480.webp 480w, /images/gallery/gallery-3-800.webp 800w, /images/gallery/gallery-3-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "बारबेल प्रशिक्षण", caption: "अगले सेट के लिए तैयार भारी बारबेल", width: 1200, height: 900 },
+      { id: 4, category: "वर्कआउट", src: "/images/gallery/gallery-4-1200.webp", srcset: "/images/gallery/gallery-4-480.webp 480w, /images/gallery/gallery-4-800.webp 800w, /images/gallery/gallery-4-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "कार्डियो सत्र", caption: "जिम फ्लोर पर कार्डियो मशीनें", width: 1200, height: 900 },
+      { id: 5, category: "ट्रेनिंग", src: "/images/gallery/gallery-5-1200.webp", srcset: "/images/gallery/gallery-5-480.webp 480w, /images/gallery/gallery-5-800.webp 800w, /images/gallery/gallery-5-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "पर्सनल ट्रेनिंग", caption: "ट्रेनर और क्लाइंट प्रगति का जश्न मनाते हुए", width: 1200, height: 900 },
+      { id: 6, category: "वर्कआउट", src: "/images/gallery/gallery-6-1200.webp", srcset: "/images/gallery/gallery-6-480.webp 480w, /images/gallery/gallery-6-800.webp 800w, /images/gallery/gallery-6-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "कोर वर्कआउट", caption: "कोर और ताकत सत्र", width: 1200, height: 900 },
+      { id: 7, category: "ट्रेनिंग", src: "/images/gallery/gallery-7-1200.webp", srcset: "/images/gallery/gallery-7-480.webp 480w, /images/gallery/gallery-7-800.webp 800w, /images/gallery/gallery-7-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "फंक्शनल ट्रेनिंग", caption: "फंक्शनल रस्सी प्रशिक्षण", width: 1200, height: 900 },
+      { id: 8, category: "मेंबर्स", src: "/images/gallery/gallery-8-1200.webp", srcset: "/images/gallery/gallery-8-480.webp 480w, /images/gallery/gallery-8-800.webp 800w, /images/gallery/gallery-8-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "समूह स्ट्रेचिंग", caption: "समूह स्ट्रेचिंग सत्र", width: 1200, height: 900 },
+      { id: 9, category: "उपकरण", src: "/images/gallery/gallery-9-1200.webp", srcset: "/images/gallery/gallery-9-480.webp 480w, /images/gallery/gallery-9-800.webp 800w, /images/gallery/gallery-9-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "कार्डियो उपकरण", caption: "ट्रेडमिल और कार्डियो मशीनों की पंक्ति", width: 1200, height: 900 },
+      { id: 10, category: "वर्कआउट", src: "/images/gallery/gallery-10-1200.webp", srcset: "/images/gallery/gallery-10-480.webp 480w, /images/gallery/gallery-10-800.webp 800w, /images/gallery/gallery-10-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "शक्ति वर्कआउट", caption: "मशीनों और वेट्स के साथ पूर्ण जिम फ्लोर", width: 1200, height: 900 },
+      { id: 11, category: "ट्रेनिंग", src: "/images/gallery/gallery-11-1200.webp", srcset: "/images/gallery/gallery-11-480.webp 480w, /images/gallery/gallery-11-800.webp 800w, /images/gallery/gallery-11-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "बारबेल तैयारी", caption: "बारबेल लिफ्ट की तैयारी", width: 1200, height: 900 },
+      { id: 12, category: "वर्कआउट", src: "/images/gallery/gallery-12-1200.webp", srcset: "/images/gallery/gallery-12-480.webp 480w, /images/gallery/gallery-12-800.webp 800w, /images/gallery/gallery-12-1200.webp 1200w", sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px", alt: "बारबेल प्रशिक्षण", caption: "बारबेल शक्ति प्रशिक्षण", width: 1200, height: 900 }
     ],
     testimonials: [
       { id: 1, name: "मेंबर का नाम", role: "नियमित मेंबर", text: "बहुत अच्छा जिम है, बढ़िया उपकरण और प्रेरणादायक माहौल। ट्रेनर बहुत जानकार और सहायक हैं। अत्यधिक अनुशंसित!", rating: 5, avatar: null },
@@ -408,11 +423,22 @@ export const gymDataBilingual = {
       story: "एम्पायर द जिम की स्थापना हांसी में विश्वस्तरीय फिटनेस सुविधाएं लाने के दृष्टिकोण के साथ की गई थी। जुनून की शुरुआत से लेकर यह अब क्षेत्र का सबसे विश्वसनीय फिटनेस गंतव्य बन गया है। हम मानते हैं कि फिटनेस सिर्फ वजन उठाने के बारे में नहीं है - यह अनुशासन, मानसिक शक्ति और जीवनशैली बनाने के बारे में है जो आपको जीवन के हर पहलू में सशक्त बनाती है।",
       mission: "एक प्रीमियम फिटनेस अनुभव प्रदान करना जो सुलभ, परिणामोन्मुखी और समुदाय संचालित हो। हम आपकी परिवर्तन यात्रा में उत्प्रेरक बनने का प्रयास करते हैं।",
       vision: "उत्तर भारत का प्रमुख फिटनेस साम्राज्य बनना, प्रशिक्षण, उपकरण और मेंबर की सफलता की कहानियों में उत्कृष्टता के लिए जाना जाना।",
+      gymPhoto: {
+        src: "/images/about/about-gym-1200.webp",
+        srcset: "/images/about/about-gym-480.webp 480w, /images/about/about-gym-800.webp 800w, /images/about/about-gym-1200.webp 1200w",
+        sizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px",
+        width: 1200,
+        height: 900
+      },
       owner: {
         name: "रामनदीप सिंह",
         title: "संस्थापक और मालिक",
         bio: "फिटनेस उत्साही से उद्यमी बने रामनदीप सिंह लाते हैं उद्योग का वर्षों का अनुभव और दूसरों को उनके फिटनेस लक्ष्यों को प्राप्त करने में मदद करने का गहरा जुनून। एम्पायर द जिम के लिए उनका दृष्टिकोण एक ऐसी जगह बनाना है जहां हर कोई - शुरुआती से लेकर एथलीट तक - स्वागत महसूस करे, प्रेरित हो और सशक्त हो।",
-        photo: "/images/about/owner.jpg"
+        photo: "/images/about/owner-1200.webp",
+        photoSrcset: "/images/about/owner-480.webp 480w, /images/about/owner-800.webp 800w, /images/about/owner-1200.webp 1200w",
+        photoSizes: "(max-width: 480px) 480px, (max-width: 800px) 800px, 1200px",
+        photoWidth: 1200,
+        photoHeight: 1200
       },
       values: [
         { id: "discipline", title: "अनुशासन", description: "निरंतरता तीव्रता से जीतती है। हम ऐसी आदतें बनाते हैं जो जीवन भर रहती हैं।", icon: "target" },
@@ -457,10 +483,14 @@ export const gymDataBilingual = {
       ogImage: "https://empirethegym.com/og-image.jpg"
     },
     heroImages: {
-      home: ["/images/hero/hero%201.png", "/images/hero/hero%202.png", "/images/hero/hero%203.png"],
-      about: "/images/hero/hero%201.png",
-      gallery: "/images/hero/hero%202.png",
-      contact: "/images/hero/hero%203.png"
+      home: [
+        { src: "/images/hero/hero-1-1920.webp", srcset: "/images/hero/hero-1-640.webp 640w, /images/hero/hero-1-1024.webp 1024w, /images/hero/hero-1-1920.webp 1920w", sizes: "100vw" },
+        { src: "/images/hero/hero-2-1920.webp", srcset: "/images/hero/hero-2-640.webp 640w, /images/hero/hero-2-1024.webp 1024w, /images/hero/hero-2-1920.webp 1920w", sizes: "100vw" },
+        { src: "/images/hero/hero-3-1920.webp", srcset: "/images/hero/hero-3-640.webp 640w, /images/hero/hero-3-1024.webp 1024w, /images/hero/hero-3-1920.webp 1920w", sizes: "100vw" }
+      ],
+      about: { src: "/images/hero/hero-1-1920.webp", srcset: "/images/hero/hero-1-640.webp 640w, /images/hero/hero-1-1024.webp 1024w, /images/hero/hero-1-1920.webp 1920w", sizes: "100vw" },
+      gallery: { src: "/images/hero/hero-2-1920.webp", srcset: "/images/hero/hero-2-640.webp 640w, /images/hero/hero-2-1024.webp 1024w, /images/hero/hero-2-1920.webp 1920w", sizes: "100vw" },
+      contact: { src: "/images/hero/hero-3-1920.webp", srcset: "/images/hero/hero-3-640.webp 640w, /images/hero/hero-3-1024.webp 1024w, /images/hero/hero-3-1920.webp 1920w", sizes: "100vw" }
     },
     marqueeText: "शक्ति • अनुशासन • ताकत • साम्राज्य • निरंतरता • मेहनत • परिश्रम • प्राप्ति • परिवर्तन • विजय • ",
     ctaText: "एक महाकाव्य साम्राज्य का हिस्सा बनें",

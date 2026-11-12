@@ -39,3 +39,6 @@ coverage/
 # Misc
 *.tgz
 .cache/
+
+# Backup original images (large files)
+backup-originals/

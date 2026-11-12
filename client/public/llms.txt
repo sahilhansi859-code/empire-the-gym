@@ -1,0 +1,28 @@
+# Empire The Gym
+
+> Hansi's premier fitness destination. Modern equipment, expert trainers, disciplined atmosphere. Join the epic empire today!
+
+## Pages
+
+- [Home](https://empire-the-gym.vercel.app/) - Main landing page with hero, programs, amenities, and membership plans
+- [About](https://empire-the-gym.vercel.app/about) - Our story, mission, vision, owner profile, values, and why choose us
+- [Gallery](https://empire-the-gym.vercel.app/gallery) - Photo gallery of equipment, workouts, training sessions, and members
+- [Contact](https://empire-the-gym.vercel.app/contact) - Contact form, address, phone, WhatsApp, Google Maps, and FAQs
+
+## Key Facts
+
+- **Name**: Empire The Gym
+- **Address**: Near Royal Kids School, Bajriya Chowk, Laal Sadak, Hansi, Hisar, Haryana 125033
+- **Phone**: +91 94667 09410
+- **Timings**: Monday to Saturday 5:30 AM - 10:00 PM, Sunday Closed
+- **Programs**: Gym Workout (Strength/Muscle/Fat Loss), Abs Training (Core/Posture/Stamina), Personal Training (Custom Plans/1-on-1 Coaching), Weight Loss / Muscle Gain (Transform/Sculpt/Achieve)
+- **Facilities**: Air Conditioned Hall, Parking Facility (2/4 wheelers), Water Cooler
+- **USPs**: Disciplined & Motivating Atmosphere, Modern Equipment, Knowledgeable Trainers, Affordable Fees
+- **Partner**: FITPASS (bookable via FITPASS app)
+
+## Verified Contact Information
+
+- **Phone**: +91 94667 09410
+- **WhatsApp**: https://wa.me/919466709410
+- **Instagram**: https://instagram.com/empirethegym
+- **Google Maps**: https://www.google.com/maps/place/empire+the+gym+hansi

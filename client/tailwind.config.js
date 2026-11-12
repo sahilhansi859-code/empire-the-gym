@@ -17,6 +17,7 @@ export default {
           'border-strong': '#333333',
           red: '#e63946',
           'red-light': '#ff4d5a',
+          'red-text': '#ff6b6b',
           'red-dark': '#c1121f',
           gold: '#f4a261',
           'gold-light': '#ffb87a',
@@ -25,7 +26,7 @@ export default {
           'white-soft': '#f5f5f5',
           gray: '#a3a3a3',
           'gray-dark': '#525252',
-          'text-muted': '#a3a3a3',
+          'text-muted': '#b3b3b3',
         }
       },
       fontFamily: {

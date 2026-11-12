@@ -58,15 +58,26 @@ export default function Gallery() {
     <>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden isolate" aria-labelledby="gallery-hero-heading">
         <div className="absolute inset-0 z-0">
-          <motion.img
-            src={data.heroImages.gallery}
-            alt=""
-            className="w-full h-full object-cover scale-105"
+          <motion.picture
             initial={{ scale: 1.08 }}
             animate={{ scale: 1.02 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
             aria-hidden="true"
-          />
+          >
+            <source
+              type="image/webp"
+              srcSet={data.heroImages.gallery.srcset}
+              sizes={data.heroImages.gallery.sizes}
+            />
+            <img
+              src={data.heroImages.gallery.src}
+              alt=""
+              className="w-full h-full object-cover scale-105"
+              width="1920"
+              height="1080"
+              aria-hidden="true"
+            />
+          </motion.picture>
         </div>
 
         <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/55 via-black/30 to-transparent" aria-hidden="true" />
@@ -131,13 +142,23 @@ export default function Gallery() {
                   aria-label={`View ${image.alt} in lightbox`}
                   onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleImageClick(index); } }}
                 >
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    onError={(e) => { e.target.onerror = null; e.target.src = `/images/gallery/gallery-${image.id}.svg`; }}
-                  />
+                  <picture>
+                    <source
+                      type="image/webp"
+                      srcSet={image.srcset}
+                      sizes={image.sizes}
+                    />
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      width={image.width}
+                      height={image.height}
+                      loading="lazy"
+                      decoding="async"
+                      onError={(e) => { e.target.onerror = null; e.target.src = `/images/gallery/gallery-${image.id}.svg`; }}
+                    />
+                  </picture>
                   <div className="absolute inset-0 bg-gradient-to-t from-gym-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <div className="w-full flex items-center justify-between">
                       <span className="font-heading text-sm text-gym-white">{image.alt}</span>
