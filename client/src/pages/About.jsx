@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiTarget, FiRepeat, FiUsers, FiAward, FiArrowRight, FiPhone, FiTool, FiCheck, FiStar, FiTag, FiDroplet, FiTruck, FiWind } from 'react-icons/fi'
@@ -18,7 +18,6 @@ export default function About() {
   const [lightboxIndex, setLightboxIndex] = useState(null)
   const heroSlides = data.heroImages.home
   const [heroSlide, setHeroSlide] = useState(0)
-  const [loadedSlides, setLoadedSlides] = useState(new Set([0]))
   const galleryPreview = data.gallery.slice(0, 6)
 
   useEffect(() => {
@@ -28,37 +27,37 @@ export default function About() {
     return () => clearInterval(timer)
   }, [heroSlides.length])
 
-  const handleSlideLoad = useCallback((index) => {
-    setLoadedSlides(prev => new Set([...prev, index]))
-  }, [])
+  const whyChooseCards = data.usps.map((usp, index) => ({
+    ...usp,
+    delay: index * 0.1
+  }))
+
+  const programCards = data.activities.map((activity, index) => ({
+    ...activity,
+    delay: index * 0.1
+  }))
+
+  const amenityCards = data.amenities.map((amenity, index) => ({
+    ...amenity,
+    delay: index * 0.1
+  }))
 
   return (
     <>
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden isolate" aria-labelledby="about-hero-heading">
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="wait">
-            <motion.picture
+            <motion.img
               key={heroSlide}
+              src={heroSlides[heroSlide]}
+              alt=""
+              className="w-full h-full object-cover scale-105"
               initial={{ opacity: 0, scale: 1.08 }}
               animate={{ opacity: 1, scale: 1.02 }}
               exit={{ opacity: 0, scale: 1.06 }}
               transition={{ duration: 1.2, ease: 'easeOut' }}
               aria-hidden="true"
-            >
-              <source
-                type="image/webp"
-                srcSet={heroSlides[heroSlide].srcset}
-                sizes={heroSlides[heroSlide].sizes}
-              />
-              <img
-                src={heroSlides[heroSlide].src}
-                alt=""
-                className="w-full h-full object-cover scale-105"
-                width="1920"
-                height="1080"
-                onLoad={() => handleSlideLoad(heroSlide)}
-              />
-            </motion.picture>
+            />
           </AnimatePresence>
         </div>
 
@@ -82,23 +81,13 @@ export default function About() {
               viewport={{ once: true, margin: '-100px', amount: 0.1 }}
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                <picture>
-                  <source
-                    type="image/webp"
-                    srcSet={data.about.gymPhoto.srcset}
-                    sizes={data.about.gymPhoto.sizes}
-                  />
-                  <img
-                    src={data.about.gymPhoto.src}
-                    alt="Empire The Gym Interior"
-                    className="w-full h-full object-cover"
-                    width={data.about.gymPhoto.width}
-                    height={data.about.gymPhoto.height}
-                    loading="lazy"
-                    decoding="async"
-                    onError={(e) => { e.target.onerror = null; e.target.src = "/images/gallery/gallery-3.svg"; }}
-                  />
-                </picture>
+                <img
+                  src="/images/about/about empire the gym home or about section .png"
+                  alt="Empire The Gym Interior"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/gallery/gallery-3.svg"; }}
+                />
               </div>
             </motion.div>
 
@@ -130,23 +119,13 @@ export default function About() {
               viewport={{ once: true, margin: '-100px', amount: 0.1 }}
             >
               <div className="relative aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden">
-                <picture>
-                  <source
-                    type="image/webp"
-                    srcSet={data.about.owner.photoSrcset}
-                    sizes={data.about.owner.photoSizes}
-                  />
-                  <img
-                    src={data.about.owner.photo}
-                    alt={data.about.owner.name}
-                    className="w-full h-full object-cover"
-                    width={data.about.owner.photoWidth}
-                    height={data.about.owner.photoHeight}
-                    loading="lazy"
-                    decoding="async"
-                    onError={(e) => { e.target.onerror = null; e.target.src = "/images/about/owner.svg"; }}
-                  />
-                </picture>
+                <img
+                  src="/images/about/meet the owner home or about section.png"
+                  alt={data.about.owner.name}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/about/owner.svg"; }}
+                />
               </div>
             </motion.div>
 
@@ -356,23 +335,13 @@ export default function About() {
                 onClick={() => setLightboxIndex(index)}
                 aria-label={t === 'en' ? `View ${image.alt}` : `${image.alt} देखें`}
               >
-                <picture>
-                  <source
-                    type="image/webp"
-                    srcSet={image.srcset}
-                    sizes={image.sizes}
-                  />
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    width={image.width}
-                    height={image.height}
-                    loading="lazy"
-                    decoding="async"
-                    onError={(e) => { e.target.onerror = null; e.target.src = image.src.replace("-1200.webp", ".svg") }}
-                  />
-                </picture>
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                  onError={(e) => { e.target.onerror = null; e.target.src = image.src.replace('.jpg', '.svg') }}
+                />
                 <div className="absolute inset-0 flex items-end bg-gradient-to-t from-gym-black/80 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <span className="font-heading text-sm text-gym-white">{image.alt}</span>
                 </div>
@@ -473,23 +442,7 @@ export default function About() {
 
       <section id="cta" className="relative isolate flex min-h-[65vh] items-center justify-center overflow-hidden py-24 sm:py-28" aria-label={t === 'en' ? 'Join Empire The Gym' : 'एम्पायर द जिम से जुड़ें'}>
         <div className="absolute inset-0 z-0">
-          <picture>
-            <source
-              type="image/webp"
-              srcSet={data.heroImages.contact.srcset}
-              sizes={data.heroImages.contact.sizes}
-            />
-            <img
-              src={data.heroImages.contact.src}
-              alt=""
-              className="h-full w-full object-cover"
-              width="1920"
-              height="1080"
-              loading="lazy"
-              decoding="async"
-              aria-hidden="true"
-            />
-          </picture>
+          <img src={data.heroImages.contact} alt="" className="h-full w-full object-cover" aria-hidden="true" />
         </div>
         <div className="absolute inset-0 z-[1] bg-gradient-to-r from-black/45 via-black/25 to-black/45" aria-hidden="true" />
         <div className="absolute inset-0 z-[1] bg-gradient-to-t from-black/30 via-transparent to-black/10" aria-hidden="true" />

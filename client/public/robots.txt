@@ -1,6 +1,0 @@
-# Robots.txt for Empire The Gym
-User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://empire-the-gym.vercel.app/sitemap.xml

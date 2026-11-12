@@ -24,16 +24,6 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-motion': ['framer-motion'],
-          'vendor-icons': ['react-icons'],
-          'vendor-utils': ['axios', 'react-hot-toast']
-        }
-      }
-    }
+    sourcemap: true
   }
 })
