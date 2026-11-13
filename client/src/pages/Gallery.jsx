@@ -62,6 +62,8 @@ export default function Gallery() {
             src={data.heroImages.gallery}
             alt=""
             className="w-full h-full object-cover scale-105"
+            loading="eager"
+            fetchpriority="high"
             initial={{ scale: 1.08 }}
             animate={{ scale: 1.02 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}

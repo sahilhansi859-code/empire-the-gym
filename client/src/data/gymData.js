@@ -148,18 +148,18 @@ export const gymDataBilingual = {
       }
     ],
     gallery: [
-      { id: 1, category: "Equipment", src: "/images/gallery/gallery-1.jpg", alt: "Modern gym equipment", caption: "Dumbbells neatly racked for training" },
-      { id: 2, category: "Equipment", src: "/images/gallery/gallery-2.jpg", alt: "Free weights area", caption: "Free-weight rack in a modern gym" },
-      { id: 3, category: "Workouts", src: "/images/gallery/gallery-3.jpg", alt: "Barbell training", caption: "Heavy barbell ready for the next set" },
-      { id: 4, category: "Workouts", src: "/images/gallery/gallery-4.jpg", alt: "Cardio session", caption: "Cardio machines on the gym floor" },
-      { id: 5, category: "Training", src: "/images/gallery/gallery-5.jpg", alt: "Personal training", caption: "Trainer and client celebrating progress" },
-      { id: 6, category: "Workouts", src: "/images/gallery/gallery-6.jpg", alt: "Core workout", caption: "Core and strength session" },
-      { id: 7, category: "Training", src: "/images/gallery/gallery-7.jpg", alt: "Functional training", caption: "Functional rope training" },
-      { id: 8, category: "Members", src: "/images/gallery/gallery-8.jpg", alt: "Group stretching", caption: "Group stretching session" },
-      { id: 9, category: "Equipment", src: "/images/gallery/gallery-9.jpg", alt: "Cardio equipment", caption: "Row of treadmills and cardio machines" },
-      { id: 10, category: "Workouts", src: "/images/gallery/gallery-10.jpg", alt: "Strength workout", caption: "Full gym floor with machines and weights" },
-      { id: 11, category: "Training", src: "/images/gallery/gallery-11.jpg", alt: "Barbell preparation", caption: "Preparing for a barbell lift" },
-      { id: 12, category: "Workouts", src: "/images/gallery/gallery-12.jpg", alt: "Barbell training", caption: "Barbell strength training" }
+      { id: 1, category: "Equipment", src: "/images/gallery/gallery-1-800.webp", alt: "Modern gym equipment", caption: "Dumbbells neatly racked for training" },
+      { id: 2, category: "Equipment", src: "/images/gallery/gallery-2-800.webp", alt: "Free weights area", caption: "Free-weight rack in a modern gym" },
+      { id: 3, category: "Workouts", src: "/images/gallery/gallery-3-800.webp", alt: "Barbell training", caption: "Heavy barbell ready for the next set" },
+      { id: 4, category: "Workouts", src: "/images/gallery/gallery-4-800.webp", alt: "Cardio session", caption: "Cardio machines on the gym floor" },
+      { id: 5, category: "Training", src: "/images/gallery/gallery-5-800.webp", alt: "Personal training", caption: "Trainer and client celebrating progress" },
+      { id: 6, category: "Workouts", src: "/images/gallery/gallery-6-800.webp", alt: "Core workout", caption: "Core and strength session" },
+      { id: 7, category: "Training", src: "/images/gallery/gallery-7-800.webp", alt: "Functional training", caption: "Functional rope training" },
+      { id: 8, category: "Members", src: "/images/gallery/gallery-8-800.webp", alt: "Group stretching", caption: "Group stretching session" },
+      { id: 9, category: "Equipment", src: "/images/gallery/gallery-9-800.webp", alt: "Cardio equipment", caption: "Row of treadmills and cardio machines" },
+      { id: 10, category: "Workouts", src: "/images/gallery/gallery-10-800.webp", alt: "Strength workout", caption: "Full gym floor with machines and weights" },
+      { id: 11, category: "Training", src: "/images/gallery/gallery-11-800.webp", alt: "Barbell preparation", caption: "Preparing for a barbell lift" },
+      { id: 12, category: "Workouts", src: "/images/gallery/gallery-12-800.webp", alt: "Barbell training", caption: "Barbell strength training" }
     ],
     testimonials: [
       { id: 1, name: "Member Name", role: "Regular Member", text: "Amazing gym with great equipment and motivating atmosphere. Trainers are very knowledgeable and helpful. Highly recommended!", rating: 5, avatar: null },
@@ -219,10 +219,10 @@ export const gymDataBilingual = {
       ogImage: "https://empirethegym.com/og-image.jpg"
     },
     heroImages: {
-      home: ["/images/hero/hero%201.png", "/images/hero/hero%202.png", "/images/hero/hero%203.png"],
-      about: "/images/hero/hero%201.png",
-      gallery: "/images/hero/hero%202.png",
-      contact: "/images/hero/hero%203.png"
+      home: ["/images/hero/hero 1-1920.webp", "/images/hero/hero 2-1920.webp", "/images/hero/hero 3-1920.webp"],
+      about: "/images/hero/hero 1-1200.webp",
+      gallery: "/images/hero/hero 2-1200.webp",
+      contact: "/images/hero/hero 3-1200.webp"
     },
     marqueeText: "STRENGTH • DISCIPLINE • POWER • EMPIRE • CONSISTENCY • GRIND • HUSTLE • ACHIEVE • TRANSFORM • DOMINATE • ",
     ctaText: "Be The Part Of An Epic Empire",
@@ -457,10 +457,10 @@ export const gymDataBilingual = {
       ogImage: "https://empirethegym.com/og-image.jpg"
     },
     heroImages: {
-      home: ["/images/hero/hero%201.png", "/images/hero/hero%202.png", "/images/hero/hero%203.png"],
-      about: "/images/hero/hero%201.png",
-      gallery: "/images/hero/hero%202.png",
-      contact: "/images/hero/hero%203.png"
+      home: ["/images/hero/hero 1-1920.webp", "/images/hero/hero 2-1920.webp", "/images/hero/hero 3-1920.webp"],
+      about: "/images/hero/hero 1-1200.webp",
+      gallery: "/images/hero/hero 2-1200.webp",
+      contact: "/images/hero/hero 3-1200.webp"
     },
     marqueeText: "शक्ति • अनुशासन • ताकत • साम्राज्य • निरंतरता • मेहनत • परिश्रम • प्राप्ति • परिवर्तन • विजय • ",
     ctaText: "एक महाकाव्य साम्राज्य का हिस्सा बनें",

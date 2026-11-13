@@ -107,7 +107,7 @@ export default function Chatbot() {
         style={{ position:'fixed', bottom: isMobile ? 20 : 24, right: isMobile ? 16 : 24, zIndex:9999, width: isMobile ? 64 : 100, height: isMobile ? 64 : 100, borderRadius:'50%', background:'transparent', border:'4px solid #f97316', padding: isMobile ? 2 : 4, cursor:'pointer', boxSizing:'border-box', display:'flex', alignItems:'center', justifyContent:'center' }}
         title={strings.title}
       >
-        <img src="/chatbot%20logo.png" alt="Chatbot" style={{ width:'100%', height:'100%', objectFit:'contain', display:'block' }} />
+        <img src="/chatbot-logo.webp" alt="Chatbot" style={{ width:'100%', height:'100%', objectFit:'contain', display:'block' }} />
       </motion.button>
       <AnimatePresence>
         {open && (

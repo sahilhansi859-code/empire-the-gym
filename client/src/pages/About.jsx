@@ -52,6 +52,8 @@ export default function About() {
               src={heroSlides[heroSlide]}
               alt=""
               className="w-full h-full object-cover scale-105"
+              loading="eager"
+              fetchpriority="high"
               initial={{ opacity: 0, scale: 1.08 }}
               animate={{ opacity: 1, scale: 1.02 }}
               exit={{ opacity: 0, scale: 1.06 }}
@@ -82,7 +84,7 @@ export default function About() {
             >
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <img
-                  src="/images/about/about empire the gym home or about section .png"
+                  src="/images/about/about empire the gym home or about section -1200.webp"
                   alt="Empire The Gym Interior"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -120,7 +122,7 @@ export default function About() {
             >
               <div className="relative aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden">
                 <img
-                  src="/images/about/meet the owner home or about section.png"
+                  src="/images/about/meet the owner home or about section-1200.webp"
                   alt={data.about.owner.name}
                   className="w-full h-full object-cover"
                   loading="lazy"
