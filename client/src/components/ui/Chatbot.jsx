@@ -104,10 +104,10 @@ export default function Chatbot() {
       <motion.button
         onClick={() => setOpen(o=>!o)}
         whileHover={{ scale: 1.05 }}
-        style={{ position:'fixed', bottom: isMobile ? 20 : 24, right: isMobile ? 16 : 24, zIndex:9999, width: isMobile ? 64 : 100, height: isMobile ? 64 : 100, borderRadius:'50%', background:'transparent', border:'4px solid #f97316', padding: isMobile ? 2 : 4, cursor:'pointer', boxSizing:'border-box', display:'flex', alignItems:'center', justifyContent:'center' }}
+        style={{ position:'fixed', bottom: isMobile ? 20 : 24, right: isMobile ? 16 : 24, zIndex:9999, width: isMobile ? 64 : 72, height: isMobile ? 64 : 72, borderRadius:'50%', background:'#111', border:'none', padding: 0, cursor:'pointer', boxSizing:'border-box', display:'flex', alignItems:'center', justifyContent:'center', overflow:'hidden' }}
         title={strings.title}
       >
-        <img src="/chatbot-logo.webp" alt="Chatbot" style={{ width:'100%', height:'100%', objectFit:'contain', display:'block' }} />
+        <img src="/chatbot-logo.webp" alt="Chatbot" style={{ width:'100%', height:'100%', objectFit:'cover', display:'block' }} />
       </motion.button>
       <AnimatePresence>
         {open && (
@@ -118,7 +118,10 @@ export default function Chatbot() {
             style={{ position:'fixed', bottom: isMobile ? 100 : 100, right: isMobile ? 16 : 24, zIndex:9999, width:'min(360px, calc(100vw - 32px))', height:480, background:'#111', borderRadius:16, display:'flex', flexDirection:'column', overflow:'hidden', border:'1px solid #333', boxShadow:'0 8px 40px rgba(0,0,0,.6)', fontFamily: "'Noto Sans Devanagari', 'Inter', system-ui, sans-serif" }}
           >
             <div style={{ padding:'12px 16px', background:'linear-gradient(135deg,#ef4444,#f97316)', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-              <strong style={{ color:'#fff' }}>{strings.title}</strong>
+              <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+                <img src="/chatbot-logo.webp" alt="" style={{ width:28, height:28, borderRadius:'50%', objectFit:'cover' }} />
+                <strong style={{ color:'#fff' }}>{strings.title}</strong>
+              </div>
               <button onClick={()=>setOpen(false)} style={{ background:'transparent', border:'none', color:'#fff', fontSize:20, cursor:'pointer' }}>✕</button>
             </div>
             <div style={{ flex:1, overflowY:'auto', padding:12, display:'flex', flexDirection:'column', gap:8 }}>
