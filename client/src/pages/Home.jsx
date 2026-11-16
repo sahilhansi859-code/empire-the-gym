@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FiArrowRight, FiPhone, FiCheck, FiStar, FiTarget, FiRepeat, FiUsers, FiTag, FiDroplet, FiMessageCircle, FiZap, FiTruck, FiWind, FiTool, FiAward, FiHelpCircle, FiCornerUpLeft } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings, interestedOptions } from '../data/gymData'
+import Seo from '../components/Seo'
 import { 
   SectionHeading, 
   HeroContent,
@@ -25,6 +26,34 @@ export default function Home() {
   const strings = languageStrings[t]
   const data = gymData[t]
   const [lightboxIndex, setLightboxIndex] = useState(null)
+  const siteUrl = data.seo.siteUrl || 'https://empire-the-gym.vercel.app'
+  const pageTitle = t === 'en'
+    ? 'Best Gym in Hansi, Hisar | Empire The Gym - Personal Training & Fitness'
+    : 'हांसी, हिसार का बेस्ट जिम | एम्पायर द जिम - पर्सनल ट्रेनिंग और फिटनेस'
+  const pageDescription = t === 'en'
+    ? 'Looking for the best gym in Hansi or Hisar? Empire The Gym offers modern equipment, certified trainers, personal training, weight loss and muscle gain programs near Bajariya Chowk, Lal Sadak, Hansi.'
+    : 'हांसी या हिसार में बेस्ट जिम खोज रहे हैं? एम्पायर द जिम में आधुनिक उपकरण, प्रमाणित ट्रेनर, पर्सनल ट्रेनिंग, वेट लॉस और मसल गेन प्रोग्राम उपलब्ध हैं - बजरिया चौक, लाल सड़क, हांसी।'
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'HealthClub',
+    name: 'Empire The Gym',
+    image: `${siteUrl}/images/hero/hero%201-1200.webp`,
+    url: `${siteUrl}/`,
+    telephone: data.phone,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Near Royal Kids School, Bajariya Chowk, Laal Sadak',
+      addressLocality: 'Hansi',
+      addressRegion: 'Haryana',
+      postalCode: '125033',
+      addressCountry: 'IN'
+    },
+    areaServed: ['Hansi', 'Hisar', 'Haryana'],
+    openingHoursSpecification: [
+      { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'], opens: '05:30', closes: '22:00' }
+    ],
+    sameAs: [data.social.instagram, data.social.facebook, data.social.youtube].filter(Boolean)
+  }
 
   const whyChooseCards = data.usps.map((usp, index) => ({
     ...usp,
@@ -54,6 +83,17 @@ export default function Home() {
 
   return (
     <>
+      <Seo
+        title={pageTitle}
+        description={pageDescription}
+        keywords={data.seo.keywords}
+        canonical={`${siteUrl}/`}
+        ogTitle={pageTitle}
+        ogDescription={pageDescription}
+        ogImage={data.seo.ogImage}
+        schema={schema}
+        lang={t === 'hi' ? 'hi' : 'en-IN'}
+      />
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden isolate" aria-labelledby="hero-heading">
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="wait">
@@ -95,10 +135,10 @@ export default function Home() {
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <img
                   src="/images/about/about empire the gym home or about section -1200.webp"
-                  alt="Empire The Gym Interior"
+                  alt="Empire The Gym interior in Hansi, Hisar with modern fitness equipment"
                   className="w-full h-full object-cover"
                   loading="lazy"
-                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/gallery/gallery-3.svg"; }}
+                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/about/about empire the gym home or about section .png"; }}
                 />
               </div>
             </motion.div>
@@ -133,7 +173,7 @@ export default function Home() {
               <div className="relative aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden">
                 <img
                   src="/images/about/meet the owner home or about section-1200.webp"
-                  alt={data.about.owner.name}
+                  alt={`${data.about.owner.name}, owner of Empire The Gym Hansi`}
                   className="w-full h-full object-cover"
                   loading="lazy"
                   onError={(e) => { e.target.onerror = null; e.target.src = "/images/about/owner.svg"; }}
@@ -400,7 +440,7 @@ export default function Home() {
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
-                  onError={(e) => { e.target.onerror = null; e.target.src = image.src.replace(".jpg", ".svg"); }}
+                  onError={(e) => { e.target.onerror = null; e.target.src = `/images/gallery/gallery-${image.id}-1200.webp`; }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-gym-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <span className="font-heading text-sm text-gym-white">{image.alt}</span>

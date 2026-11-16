@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { FiHome, FiSearch, FiArrowLeft } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { languageStrings } from '../data/gymData'
+import Seo from '../components/Seo'
 
 export default function NotFound() {
   const navigate = useNavigate()
@@ -12,6 +13,7 @@ export default function NotFound() {
 
   return (
     <section className="min-h-[70vh] flex items-center justify-center px-4">
+      <Seo title={t === 'en' ? 'Page Not Found | Empire The Gym Hansi' : 'पेज नहीं मिला | एम्पायर द जिम हांसी'} description={t === 'en' ? 'The page you requested could not be found on Empire The Gym website.' : 'आपके द्वारा अनुरोधित पेज एम्पायर द जिम वेबसाइट पर नहीं मिला।'} canonical="https://empire-the-gym.vercel.app/404" robots="noindex, follow" lang={t === 'hi' ? 'hi' : 'en-IN'} />
       <motion.div
         className="text-center max-w-md mx-auto"
         initial={{ opacity: 0, y: 30 }}

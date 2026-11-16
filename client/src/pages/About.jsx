@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { FiTarget, FiRepeat, FiUsers, FiAward, FiArrowRight, FiPhone, FiTool, FiCheck, FiStar, FiTag, FiDroplet, FiTruck, FiWind } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings } from '../data/gymData'
+import Seo from '../components/Seo'
 import { SectionHeading, HeroContent, Card, CardHeader, CardTitle, CardDescription, Counter, Lightbox } from '../components/ui'
 
 const itemVariants = {
@@ -16,6 +17,11 @@ export default function About() {
   const strings = languageStrings[t]
   const data = gymData[t]
   const [lightboxIndex, setLightboxIndex] = useState(null)
+  const siteUrl = data.seo.siteUrl || 'https://empire-the-gym.vercel.app'
+  const pageTitle = t === 'en' ? 'About Empire The Gym Hansi | Trusted Gym in Hansi, Hisar' : 'एम्पायर द जिम हांसी के बारे में | हांसी, हिसार का विश्वसनीय जिम'
+  const pageDescription = t === 'en'
+    ? 'Learn about Empire The Gym in Hansi, Hisar - our mission, vision, values, trainers and fitness programs helping members achieve strength, weight loss and muscle gain goals.'
+    : 'हांसी, हिसार में एम्पायर द जिम के बारे में जानें - हमारा मिशन, विजन, वैल्यूज, ट्रेनर्स और फिटनेस प्रोग्राम जो मेंबर्स को ताकत, वेट लॉस और मसल गेन लक्ष्यों तक पहुंचाते हैं।'
   const heroSlides = data.heroImages.home
   const [heroSlide, setHeroSlide] = useState(0)
   const galleryPreview = data.gallery.slice(0, 6)
@@ -44,6 +50,7 @@ export default function About() {
 
   return (
     <>
+      <Seo title={pageTitle} description={pageDescription} keywords={data.seo.keywords} canonical={`${siteUrl}/about`} ogTitle={pageTitle} ogDescription={pageDescription} ogImage={data.seo.ogImage} lang={t === 'hi' ? 'hi' : 'en-IN'} />
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden isolate" aria-labelledby="about-hero-heading">
         <div className="absolute inset-0 z-0">
           <AnimatePresence mode="wait">
@@ -85,10 +92,10 @@ export default function About() {
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <img
                   src="/images/about/about empire the gym home or about section -1200.webp"
-                  alt="Empire The Gym Interior"
+                  alt="Empire The Gym interior and workout area in Hansi, Hisar"
                   className="w-full h-full object-cover"
                   loading="lazy"
-                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/gallery/gallery-3.svg"; }}
+                  onError={(e) => { e.target.onerror = null; e.target.src = "/images/about/about empire the gym home or about section .png"; }}
                 />
               </div>
             </motion.div>
@@ -123,7 +130,7 @@ export default function About() {
               <div className="relative aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden">
                 <img
                   src="/images/about/meet the owner home or about section-1200.webp"
-                  alt={data.about.owner.name}
+                  alt={`${data.about.owner.name}, founder of Empire The Gym Hansi`}
                   className="w-full h-full object-cover"
                   loading="lazy"
                   onError={(e) => { e.target.onerror = null; e.target.src = "/images/about/owner.svg"; }}
@@ -342,7 +349,7 @@ export default function About() {
                   alt={image.alt}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
-                  onError={(e) => { e.target.onerror = null; e.target.src = image.src.replace('.jpg', '.svg') }}
+                  onError={(e) => { e.target.onerror = null; e.target.src = `/images/gallery/gallery-${image.id}-1200.webp` }}
                 />
                 <div className="absolute inset-0 flex items-end bg-gradient-to-t from-gym-black/80 to-transparent p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <span className="font-heading text-sm text-gym-white">{image.alt}</span>

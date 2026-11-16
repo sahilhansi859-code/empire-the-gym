@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FiFilter, FiSearch, FiChevronLeft, FiChevronRight, FiX, FiMaximize2 } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, languageStrings } from '../data/gymData'
+import Seo from '../components/Seo'
 import { SectionHeading, HeroContent, Button } from '../components/ui'
 import { Lightbox } from '../components/ui/Lightbox'
 
@@ -22,6 +23,11 @@ export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState('all')
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const [lightboxIndex, setLightboxIndex] = useState(0)
+  const siteUrl = data.seo.siteUrl || 'https://empire-the-gym.vercel.app'
+  const pageTitle = t === 'en' ? 'Gym Gallery Hansi | Empire The Gym Photos & Equipment' : 'जिम गैलरी हांसी | एम्पायर द जिम की फोटो और उपकरण'
+  const pageDescription = t === 'en'
+    ? 'Explore Empire The Gym gallery in Hansi, Hisar. View photos of our modern equipment, workout area, personal training sessions and fitness facilities.'
+    : 'हांसी, हिसार में एम्पायर द जिम की गैलरी देखें। हमारे आधुनिक उपकरण, वर्कआउट एरिया, पर्सनल ट्रेनिंग सेशन और फिटनेस सुविधाओं की फोटो देखें।'
 
   const getCategoryId = (image) => (
     gymData.en.gallery.find(({ id }) => id === image.id)?.category.toLowerCase()
@@ -56,6 +62,7 @@ export default function Gallery() {
 
   return (
     <>
+      <Seo title={pageTitle} description={pageDescription} keywords={data.seo.keywords} canonical={`${siteUrl}/gallery`} ogTitle={pageTitle} ogDescription={pageDescription} ogImage={data.seo.ogImage} lang={t === 'hi' ? 'hi' : 'en-IN'} />
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden isolate" aria-labelledby="gallery-hero-heading">
         <div className="absolute inset-0 z-0">
           <motion.img
@@ -138,7 +145,7 @@ export default function Gallery() {
                     alt={image.alt}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
-                    onError={(e) => { e.target.onerror = null; e.target.src = `/images/gallery/gallery-${image.id}.svg`; }}
+                    onError={(e) => { e.target.onerror = null; e.target.src = `/images/gallery/gallery-${image.id}-1200.webp`; }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gym-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <div className="w-full flex items-center justify-between">

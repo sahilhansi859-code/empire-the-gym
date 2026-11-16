@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FiMapPin, FiPhone, FiUser, FiPlus, FiMinus, FiCheck, FiHelpCircle } from 'react-icons/fi'
 import { useLanguage } from '../context/LanguageContext'
 import { gymData, gymMapsUrl, languageStrings, interestedOptions } from '../data/gymData'
+import Seo from '../components/Seo'
 import { SectionHeading, HeroContent, Button, Card, CardTitle, CardDescription } from '../components/ui'
 import axios from 'axios'
 import toast from 'react-hot-toast'
@@ -66,6 +67,11 @@ export default function Contact() {
   const data = gymData[t]
   const strings = languageStrings[t]
   const interestedOptionsData = interestedOptions[t]
+  const siteUrl = data.seo.siteUrl || 'https://empire-the-gym.vercel.app'
+  const pageTitle = t === 'en' ? 'Contact Empire The Gym Hansi | Gym Near Bajariya Chowk, Hisar' : 'संपर्क करें एम्पायर द जिम हांसी | बजरिया चौक, हिसार के पास जिम'
+  const pageDescription = t === 'en'
+    ? 'Contact Empire The Gym in Hansi, Hisar for membership, personal training and enquiries. Visit near Royal Kids School, Bajariya Chowk, Lal Sadak, Hansi or call +91 94667 09410.'
+    : 'मेंबरशिप, पर्सनल ट्रेनिंग और पूछताछ के लिए हांसी, हिसार में एम्पायर द जिम से संपर्क करें। नियर रॉयल किड्स स्कूल, बजरिया चौक, लाल सड़क, हांसी या कॉल करें +91 94667 09410।'
 
   const [formData, setFormData] = useState({
     name: '',
@@ -117,6 +123,7 @@ export default function Contact() {
 
   return (
     <>
+      <Seo title={pageTitle} description={pageDescription} keywords={data.seo.keywords} canonical={`${siteUrl}/contact`} ogTitle={pageTitle} ogDescription={pageDescription} ogImage={data.seo.ogImage} lang={t === 'hi' ? 'hi' : 'en-IN'} />
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden isolate" aria-labelledby="contact-hero-heading">
         <div className="absolute inset-0 z-0">
           <motion.img
@@ -287,7 +294,7 @@ export default function Contact() {
                 >
                     <img
                       src="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/export?bbox=75.9577,29.1021,75.9629,29.1043&bboxSR=4326&imageSR=4326&size=1000,500&format=jpg&f=image"
-                      alt="Satellite view of Empire The Gym, Hansi"
+                      alt="Map location of Empire The Gym near Bajariya Chowk, Lal Sadak, Hansi, Hisar"
                       loading="eager"
                       fetchPriority="high"
                       decoding="async"

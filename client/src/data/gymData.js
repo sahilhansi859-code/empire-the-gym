@@ -148,18 +148,18 @@ export const gymDataBilingual = {
       }
     ],
     gallery: [
-      { id: 1, category: "Equipment", src: "/images/gallery/gallery-1-800.webp", alt: "Modern gym equipment", caption: "Dumbbells neatly racked for training" },
-      { id: 2, category: "Equipment", src: "/images/gallery/gallery-2-800.webp", alt: "Free weights area", caption: "Free-weight rack in a modern gym" },
-      { id: 3, category: "Workouts", src: "/images/gallery/gallery-3-800.webp", alt: "Barbell training", caption: "Heavy barbell ready for the next set" },
-      { id: 4, category: "Workouts", src: "/images/gallery/gallery-4-800.webp", alt: "Cardio session", caption: "Cardio machines on the gym floor" },
-      { id: 5, category: "Training", src: "/images/gallery/gallery-5-800.webp", alt: "Personal training", caption: "Trainer and client celebrating progress" },
-      { id: 6, category: "Workouts", src: "/images/gallery/gallery-6-800.webp", alt: "Core workout", caption: "Core and strength session" },
-      { id: 7, category: "Training", src: "/images/gallery/gallery-7-800.webp", alt: "Functional training", caption: "Functional rope training" },
-      { id: 8, category: "Members", src: "/images/gallery/gallery-8-800.webp", alt: "Group stretching", caption: "Group stretching session" },
-      { id: 9, category: "Equipment", src: "/images/gallery/gallery-9-800.webp", alt: "Cardio equipment", caption: "Row of treadmills and cardio machines" },
-      { id: 10, category: "Workouts", src: "/images/gallery/gallery-10-800.webp", alt: "Strength workout", caption: "Full gym floor with machines and weights" },
-      { id: 11, category: "Training", src: "/images/gallery/gallery-11-800.webp", alt: "Barbell preparation", caption: "Preparing for a barbell lift" },
-      { id: 12, category: "Workouts", src: "/images/gallery/gallery-12-800.webp", alt: "Barbell training", caption: "Barbell strength training" }
+      { id: 1, category: "Equipment", src: "/images/gallery/gallery-1-800.webp", alt: "Modern gym equipment and dumbbells at Empire The Gym Hansi", caption: "Dumbbells neatly racked for training" },
+      { id: 2, category: "Equipment", src: "/images/gallery/gallery-2-800.webp", alt: "Free weights area at Empire The Gym in Hansi Hisar", caption: "Free-weight rack in a modern gym" },
+      { id: 3, category: "Workouts", src: "/images/gallery/gallery-3-800.webp", alt: "Barbell strength training workout in Hansi gym", caption: "Heavy barbell ready for the next set" },
+      { id: 4, category: "Workouts", src: "/images/gallery/gallery-4-800.webp", alt: "Cardio workout machines at Empire The Gym Hansi", caption: "Cardio machines on the gym floor" },
+      { id: 5, category: "Training", src: "/images/gallery/gallery-5-800.webp", alt: "Personal training session at Empire The Gym Hansi Hisar", caption: "Trainer and client celebrating progress" },
+      { id: 6, category: "Workouts", src: "/images/gallery/gallery-6-800.webp", alt: "Core and abs workout training in Hansi gym", caption: "Core and strength session" },
+      { id: 7, category: "Training", src: "/images/gallery/gallery-7-800.webp", alt: "Functional training with battle ropes at Empire The Gym Hansi", caption: "Functional rope training" },
+      { id: 8, category: "Members", src: "/images/gallery/gallery-8-800.webp", alt: "Group stretching session for members in Hansi gym", caption: "Group stretching session" },
+      { id: 9, category: "Equipment", src: "/images/gallery/gallery-9-800.webp", alt: "Treadmills and cardio equipment at Empire The Gym Hansi", caption: "Row of treadmills and cardio machines" },
+      { id: 10, category: "Workouts", src: "/images/gallery/gallery-10-800.webp", alt: "Strength workout floor at best gym in Hansi Hisar", caption: "Full gym floor with machines and weights" },
+      { id: 11, category: "Training", src: "/images/gallery/gallery-11-800.webp", alt: "Trainer preparing barbell lift at Empire The Gym Hansi", caption: "Preparing for a barbell lift" },
+      { id: 12, category: "Workouts", src: "/images/gallery/gallery-12-800.webp", alt: "Barbell strength training at Empire The Gym Hansi", caption: "Barbell strength training" }
     ],
     testimonials: [
       { id: 1, name: "Member Name", role: "Regular Member", text: "Amazing gym with great equipment and motivating atmosphere. Trainers are very knowledgeable and helpful. Highly recommended!", rating: 5, avatar: null },
@@ -214,9 +214,11 @@ export const gymDataBilingual = {
       whatsapp: "https://wa.me/919466709410"
     },
     seo: {
-      defaultTitle: "Empire The Gym | Be The Part Of An Epic Empire",
-      defaultDescription: "Hansi's premier fitness destination. Modern equipment, expert trainers, disciplined atmosphere. Join the epic empire today!",
-      ogImage: "https://empirethegym.com/og-image.jpg"
+      siteUrl: "https://empire-the-gym.vercel.app",
+      defaultTitle: "Empire The Gym Hansi | Best Gym in Hansi, Hisar, Haryana",
+      defaultDescription: "Empire The Gym in Hansi, Hisar offers modern equipment, certified trainers, personal training, weight loss and muscle gain programs near Bajariya Chowk, Lal Sadak.",
+      keywords: "gym in Hansi, best gym in Hansi, gym in Hisar, fitness center Hansi, personal training Hansi, weight loss gym Hansi, muscle building gym Hisar, Empire The Gym Hansi",
+      ogImage: "https://empire-the-gym.vercel.app/images/hero/hero%201-1200.webp"
     },
     heroImages: {
       home: ["/images/hero/hero 1-1920.webp", "/images/hero/hero 2-1920.webp", "/images/hero/hero 3-1920.webp"],
@@ -386,18 +388,18 @@ export const gymDataBilingual = {
       }
     ],
     gallery: [
-      { id: 1, category: "उपकरण", src: "/images/gallery/gallery-1.jpg", alt: "आधुनिक जिम उपकरण", caption: "प्रशिक्षण के लिए व्यवस्थित रूप से रखे डम्बल" },
-      { id: 2, category: "उपकरण", src: "/images/gallery/gallery-2.jpg", alt: "फ्री वेट्स क्षेत्र", caption: "आधुनिक जिम में फ्री-वेट रैक" },
-      { id: 3, category: "वर्कआउट", src: "/images/gallery/gallery-3.jpg", alt: "बारबेल प्रशिक्षण", caption: "अगले सेट के लिए तैयार भारी बारबेल" },
-      { id: 4, category: "वर्कआउट", src: "/images/gallery/gallery-4.jpg", alt: "कार्डियो सत्र", caption: "जिम फ्लोर पर कार्डियो मशीनें" },
-      { id: 5, category: "ट्रेनिंग", src: "/images/gallery/gallery-5.jpg", alt: "पर्सनल ट्रेनिंग", caption: "ट्रेनर और क्लाइंट प्रगति का जश्न मनाते हुए" },
-      { id: 6, category: "वर्कआउट", src: "/images/gallery/gallery-6.jpg", alt: "कोर वर्कआउट", caption: "कोर और ताकत सत्र" },
-      { id: 7, category: "ट्रेनिंग", src: "/images/gallery/gallery-7.jpg", alt: "फंक्शनल ट्रेनिंग", caption: "फंक्शनल रस्सी प्रशिक्षण" },
-      { id: 8, category: "मेंबर्स", src: "/images/gallery/gallery-8.jpg", alt: "समूह स्ट्रेचिंग", caption: "समूह स्ट्रेचिंग सत्र" },
-      { id: 9, category: "उपकरण", src: "/images/gallery/gallery-9.jpg", alt: "कार्डियो उपकरण", caption: "ट्रेडमिल और कार्डियो मशीनों की पंक्ति" },
-      { id: 10, category: "वर्कआउट", src: "/images/gallery/gallery-10.jpg", alt: "शक्ति वर्कआउट", caption: "मशीनों और वेट्स के साथ पूर्ण जिम फ्लोर" },
-      { id: 11, category: "ट्रेनिंग", src: "/images/gallery/gallery-11.jpg", alt: "बारबेल तैयारी", caption: "बारबेल लिफ्ट की तैयारी" },
-      { id: 12, category: "वर्कआउट", src: "/images/gallery/gallery-12.jpg", alt: "बारबेल प्रशिक्षण", caption: "बारबेल शक्ति प्रशिक्षण" }
+      { id: 1, category: "उपकरण", src: "/images/gallery/gallery-1-800.webp", alt: "हांसी के एम्पायर द जिम में आधुनिक जिम उपकरण और डम्बल", caption: "प्रशिक्षण के लिए व्यवस्थित रूप से रखे डम्बल" },
+      { id: 2, category: "उपकरण", src: "/images/gallery/gallery-2-800.webp", alt: "हांसी हिसार के एम्पायर द जिम में फ्री वेट्स क्षेत्र", caption: "आधुनिक जिम में फ्री-वेट रैक" },
+      { id: 3, category: "वर्कआउट", src: "/images/gallery/gallery-3-800.webp", alt: "हांसी जिम में बारबेल स्ट्रेंथ ट्रेनिंग वर्कआउट", caption: "अगले सेट के लिए तैयार भारी बारबेल" },
+      { id: 4, category: "वर्कआउट", src: "/images/gallery/gallery-4-800.webp", alt: "एम्पायर द जिम हांसी में कार्डियो वर्कआउट मशीनें", caption: "जिम फ्लोर पर कार्डियो मशीनें" },
+      { id: 5, category: "ट्रेनिंग", src: "/images/gallery/gallery-5-800.webp", alt: "हांसी हिसार में एम्पायर द जिम की पर्सनल ट्रेनिंग", caption: "ट्रेनर और क्लाइंट प्रगति का जश्न मनाते हुए" },
+      { id: 6, category: "वर्कआउट", src: "/images/gallery/gallery-6-800.webp", alt: "हांसी जिम में कोर और एब्स वर्कआउट ट्रेनिंग", caption: "कोर और ताकत सत्र" },
+      { id: 7, category: "ट्रेनिंग", src: "/images/gallery/gallery-7-800.webp", alt: "एम्पायर द जिम हांसी में फंक्शनल ट्रेनिंग", caption: "फंक्शनल रस्सी प्रशिक्षण" },
+      { id: 8, category: "मेंबर्स", src: "/images/gallery/gallery-8-800.webp", alt: "हांसी जिम में मेंबर्स का ग्रुप स्ट्रेचिंग सेशन", caption: "समूह स्ट्रेचिंग सत्र" },
+      { id: 9, category: "उपकरण", src: "/images/gallery/gallery-9-800.webp", alt: "एम्पायर द जिम हांसी में ट्रेडमिल और कार्डियो उपकरण", caption: "ट्रेडमिल और कार्डियो मशीनों की पंक्ति" },
+      { id: 10, category: "वर्कआउट", src: "/images/gallery/gallery-10-800.webp", alt: "हांसी हिसार के बेस्ट जिम में स्ट्रेंथ वर्कआउट फ्लोर", caption: "मशीनों और वेट्स के साथ पूर्ण जिम फ्लोर" },
+      { id: 11, category: "ट्रेनिंग", src: "/images/gallery/gallery-11-800.webp", alt: "एम्पायर द जिम हांसी में बारबेल लिफ्ट की तैयारी", caption: "बारबेल लिफ्ट की तैयारी" },
+      { id: 12, category: "वर्कआउट", src: "/images/gallery/gallery-12-800.webp", alt: "एम्पायर द जिम हांसी में बारबेल स्ट्रेंथ ट्रेनिंग", caption: "बारबेल शक्ति प्रशिक्षण" }
     ],
     testimonials: [
       { id: 1, name: "मेंबर का नाम", role: "नियमित मेंबर", text: "बहुत अच्छा जिम है, बढ़िया उपकरण और प्रेरणादायक माहौल। ट्रेनर बहुत जानकार और सहायक हैं। अत्यधिक अनुशंसित!", rating: 5, avatar: null },
@@ -452,9 +454,11 @@ export const gymDataBilingual = {
       whatsapp: "https://wa.me/919466709410"
     },
     seo: {
-      defaultTitle: "एम्पायर द जिम | एक महाकाव्य साम्राज्य का हिस्सा बनें",
-      defaultDescription: "हांसी का प्रमुख फिटनेस गंतव्य। आधुनिक उपकरण, विशेषज्ञ ट्रेनर, अनुशासित माहौल। आज ही महाकाव्य साम्राज्य में शामिल हों!",
-      ogImage: "https://empirethegym.com/og-image.jpg"
+      siteUrl: "https://empire-the-gym.vercel.app",
+      defaultTitle: "एम्पायर द जिम हांसी | हांसी, हिसार का बेहतरीन जिम",
+      defaultDescription: "हांसी, हिसार में एम्पायर द जिम - आधुनिक उपकरण, प्रमाणित ट्रेनर, पर्सनल ट्रेनिंग, वेट लॉस और मसल गेन प्रोग्राम। बजरिया चौक, लाल सड़क, हांसी।",
+      keywords: "हांसी में जिम, हिसार में जिम, हांसी का बेस्ट जिम, एम्पायर द जिम हांसी, पर्सनल ट्रेनिंग हांसी, वेट लॉस जिम हांसी",
+      ogImage: "https://empire-the-gym.vercel.app/images/hero/hero%201-1200.webp"
     },
     heroImages: {
       home: ["/images/hero/hero 1-1920.webp", "/images/hero/hero 2-1920.webp", "/images/hero/hero 3-1920.webp"],
