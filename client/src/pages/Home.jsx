@@ -74,6 +74,12 @@ export default function Home() {
 
   const heroSlides = data.heroImages.home
   const [heroSlide, setHeroSlide] = useState(0)
+
+  const buildSrcSet = (src) => {
+    const base = src.replace('-1920.webp', '')
+    return `${base}-640.webp 640w, ${base}-1024.webp 1024w, ${base}-1200.webp 1200w, ${base}-1920.webp 1920w`
+  }
+
   useEffect(() => {
     const timer = setInterval(() => {
       setHeroSlide((prev) => (prev + 1) % heroSlides.length)
@@ -100,6 +106,8 @@ export default function Home() {
             <motion.img
               key={heroSlide}
               src={heroSlides[heroSlide]}
+              srcSet={buildSrcSet(heroSlides[heroSlide])}
+              sizes="100vw"
               alt=""
               className="w-full h-full object-cover scale-105"
               loading="eager"

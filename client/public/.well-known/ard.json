@@ -1,0 +1,27 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Empire The Gym",
+    "identifier": "did:web:empire-the-gym.vercel.app",
+    "documentationUrl": "https://empire-the-gym.vercel.app/"
+  },
+  "entries": [
+    {
+      "@context": "agenticresourcediscovery.org/context/v1",
+      "identifier": "urn:air:empire-the-gym.vercel.app:gym:health",
+      "displayName": "Empire The Gym Health Check",
+      "type": "application/json",
+      "url": "https://empire-the-gym.vercel.app/api/health",
+      "description": "Health check endpoint for Empire The Gym website in Hansi, Hisar, Haryana.",
+      "tags": ["gym", "fitness", "hansi", "hisar", "health"],
+      "capabilities": ["healthCheck"],
+      "representativeQueries": [
+        "Is Empire The Gym website online?",
+        "Empire The Gym Hansi health status",
+        "gym in Hansi website availability"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-11-17T05:21:00Z"
+    }
+  ]
+}
