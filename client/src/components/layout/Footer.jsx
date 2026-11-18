@@ -53,7 +53,7 @@ export function Footer() {
             viewport={{ once: true, amount: 0.1 }}
             transition={{ delay: 0.1 }}
           >
-            <h4 className="font-heading text-lg uppercase tracking-wider text-gym-white mb-6">{strings.footer.quickLinks}</h4>
+            <h3 className="font-heading text-lg uppercase tracking-wider text-gym-white mb-6">{strings.footer.quickLinks}</h3>
             <nav aria-label="Quick links">
               <ul className="space-y-3">
                 {quickLinks.map((link) => (
@@ -82,7 +82,7 @@ export function Footer() {
             viewport={{ once: true, amount: 0.1 }}
             transition={{ delay: 0.2 }}
           >
-            <h4 className="font-heading text-lg uppercase tracking-wider text-gym-white mb-6">{strings.contactInfo.title}</h4>
+            <h3 className="font-heading text-lg uppercase tracking-wider text-gym-white mb-6">{strings.contactInfo.title}</h3>
             <address className="not-italic space-y-4 text-body-sm">
               <a
                 href={gymMapsUrl}
@@ -114,7 +114,7 @@ export function Footer() {
             viewport={{ once: true, amount: 0.1 }}
             transition={{ delay: 0.3 }}
           >
-            <h4 className="font-heading text-lg uppercase tracking-wider text-gym-white mb-6">{strings.footer.followUs}</h4>
+            <h3 className="font-heading text-lg uppercase tracking-wider text-gym-white mb-6">{strings.footer.followUs}</h3>
             <div className="flex flex-col items-start gap-3">
               <motion.a
                 href={whatsappUrl}

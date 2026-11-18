@@ -18,9 +18,9 @@ export function Loader({ onComplete }) {
           src="/favicon.png"
           alt="Empire The Gym logo"
           className="h-[min(72vw,20rem)] w-[min(72vw,20rem)] object-contain"
-          initial={{ opacity: 0.75, scale: 0.94 }}
-          animate={{ opacity: [0.75, 1, 0.75], scale: [0.94, 1, 0.94] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+initial={{ opacity: 0.75, scale: 0.94 }}
+animate={{ opacity: [0.75, 1, 0.75], scale: [0.94, 1, 0.94] }}
+transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         />
         <div className="mt-4 flex items-center gap-2">
           <span className="font-heading text-2xl text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] sm:text-3xl lg:text-4xl">
