@@ -80,6 +80,16 @@ export default function Home() {
     return `${base}-640.webp 640w, ${base}-1024.webp 1024w, ${base}-1200.webp 1200w, ${base}-1920.webp 1920w`
   }
 
+  const buildAboutSrcSet = (src) => {
+    const base = src.replace('-1200.webp', '')
+    return `${base}-480.webp 480w, ${base}-800.webp 800w, ${base}-1200.webp 1200w`
+  }
+
+  const buildGallerySrcSet = (src) => {
+    const base = src.replace('-800.webp', '')
+    return `${base}-480.webp 480w, ${base}-800.webp 800w, ${base}-1200.webp 1200w`
+  }
+
   useEffect(() => {
     const timer = setInterval(() => {
       setHeroSlide((prev) => (prev + 1) % heroSlides.length)
@@ -143,6 +153,8 @@ export default function Home() {
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
                 <img
                   src="/images/about/about empire the gym home or about section -1200.webp"
+                  srcSet={buildAboutSrcSet('/images/about/about empire the gym home or about section -1200.webp')}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   alt="Empire The Gym interior in Hansi, Hisar with modern fitness equipment"
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -181,6 +193,8 @@ export default function Home() {
               <div className="relative aspect-square max-w-md mx-auto lg:mx-0 rounded-2xl overflow-hidden">
                 <img
                   src="/images/about/meet the owner home or about section-1200.webp"
+                  srcSet={buildAboutSrcSet('/images/about/meet the owner home or about section-1200.webp')}
+                  sizes="(max-width: 768px) 100vw, 448px"
                   alt={`${data.about.owner.name}, owner of Empire The Gym Hansi`}
                   className="w-full h-full object-cover"
                   loading="lazy"
@@ -445,6 +459,8 @@ export default function Home() {
               >
                 <img
                   src={image.src}
+                  srcSet={buildGallerySrcSet(image.src)}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 16vw"
                   alt={image.alt}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"

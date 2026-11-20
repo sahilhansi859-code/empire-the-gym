@@ -7,7 +7,7 @@
   },
   "entries": [
     {
-      "@context": "agenticresourcediscovery.org/context/v1",
+      "@context": "https://agenticresourcediscovery.org/context/v1",
       "identifier": "urn:air:empire-the-gym.vercel.app:gym:health",
       "displayName": "Empire The Gym Health Check",
       "type": "application/json",

@@ -15,7 +15,7 @@ export function Loader({ onComplete }) {
     >
       <div className="flex flex-col items-center">
         <motion.img
-          src="/favicon.png"
+          src="/favicon.webp"
           alt="Empire The Gym logo"
           className="h-[min(72vw,20rem)] w-[min(72vw,20rem)] object-contain"
 initial={{ opacity: 0.75, scale: 0.94 }}

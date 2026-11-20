@@ -97,7 +97,7 @@ export function Navbar() {
               <div className="flex items-center gap-2 ml-1">
                 <motion.a
                   href={`tel:+${phoneClean}`}
-                  className="flex items-center gap-2 px-3 py-2 bg-gym-red hover:bg-gym-red-light text-gym-white rounded-lg font-heading text-xs xl:text-sm tracking-wide transition-colors whitespace-nowrap"
+                  className="flex items-center gap-2 px-3 py-2 bg-gym-red-dark hover:bg-gym-red-light text-gym-white rounded-lg font-heading text-xs xl:text-sm tracking-wide transition-colors whitespace-nowrap"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   aria-label={`${strings.ui.callNow}: ${phone}`}
@@ -176,9 +176,9 @@ export function Navbar() {
                 ))}
 
                 <div className="grid grid-cols-2 gap-3 pt-2">
-                  <motion.a
-                    href={`tel:+${phoneClean}`}
-                    className="col-span-2 flex items-center justify-center gap-2 px-4 py-3 bg-gym-red hover:bg-gym-red-light text-gym-white rounded-lg font-heading text-sm tracking-wide transition-colors"
+                    <motion.a
+                      href={`tel:+${phoneClean}`}
+                      className="col-span-2 flex items-center justify-center gap-2 px-4 py-3 bg-gym-red-dark hover:bg-gym-red-light text-gym-white rounded-lg font-heading text-sm tracking-wide transition-colors"
                     whileTap={{ scale: 0.98 }}
                     aria-label={`${strings.ui.callNow}: ${phone}`}
                   >

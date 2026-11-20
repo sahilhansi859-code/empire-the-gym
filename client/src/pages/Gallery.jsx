@@ -52,6 +52,11 @@ export default function Gallery() {
     }
   }, [filteredImages])
 
+  const buildGallerySrcSet = (src) => {
+    const base = src.replace('-800.webp', '')
+    return `${base}-480.webp 480w, ${base}-800.webp 800w, ${base}-1200.webp 1200w`
+  }
+
   const categoryLabels = {
     all: strings.gallery.filterAll,
     equipment: strings.gallery.filterEquipment,
@@ -142,6 +147,8 @@ export default function Gallery() {
                 >
                   <img
                     src={image.src}
+                    srcSet={buildGallerySrcSet(image.src)}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 24vw"
                     alt={image.alt}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
